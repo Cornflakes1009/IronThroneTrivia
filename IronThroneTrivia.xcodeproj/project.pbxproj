@@ -1,0 +1,425 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D95EA95F2508C66F00B635E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA95E2508C66F00B635E4 /* AppDelegate.swift */; };
+		D95EA9612508C66F00B635E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA9602508C66F00B635E4 /* SceneDelegate.swift */; };
+		D95EA9632508C66F00B635E4 /* SelectNumberOfQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA9622508C66F00B635E4 /* SelectNumberOfQuestions.swift */; };
+		D95EA9662508C66F00B635E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95EA9642508C66F00B635E4 /* Main.storyboard */; };
+		D95EA9682508C67200B635E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D95EA9672508C67200B635E4 /* Assets.xcassets */; };
+		D95EA96B2508C67200B635E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95EA9692508C67200B635E4 /* LaunchScreen.storyboard */; };
+		D95EA9742508C6FC00B635E4 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA9732508C6FC00B635E4 /* Globals.swift */; };
+		D95EA9792508C74600B635E4 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA9782508C74600B635E4 /* ResultsViewController.swift */; };
+		D95EA97B2508C77800B635E4 /* ConvertJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA97A2508C77800B635E4 /* ConvertJSON.swift */; };
+		D95EA97F2508C8C600B635E4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA97E2508C8C600B635E4 /* Extensions.swift */; };
+		D95EA9812508CA6300B635E4 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA9802508CA6300B635E4 /* QuestionViewController.swift */; };
+		D95EA9832508D58D00B635E4 /* Game of Thrones.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D95EA9822508D58D00B635E4 /* Game of Thrones.ttf */; };
+		D992839F256A40E40033AB9A /* GameModeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D992839E256A40E40033AB9A /* GameModeSelectionViewController.swift */; };
+		D99283A2256A43EB0033AB9A /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99283A1256A43EB0033AB9A /* GameButton.swift */; };
+		D99283A7256AF39F0033AB9A /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99283A6256AF39F0033AB9A /* BackgroundImage.swift */; };
+		D99F66C9255FBF42000EE745 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99F66C8255FBF42000EE745 /* Question.swift */; };
+		D99F66D4255FC326000EE745 /* gameOfThrones.json in Resources */ = {isa = PBXBuildFile; fileRef = D99F66D3255FC326000EE745 /* gameOfThrones.json */; };
+		D9B8A20F256CBFE100945CED /* cinzel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B8A20E256CBFE100945CED /* cinzel.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D95EA95B2508C66F00B635E4 /* IronThroneTrivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IronThroneTrivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D95EA95E2508C66F00B635E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D95EA9602508C66F00B635E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D95EA9622508C66F00B635E4 /* SelectNumberOfQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectNumberOfQuestions.swift; sourceTree = "<group>"; };
+		D95EA9652508C66F00B635E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D95EA9672508C67200B635E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D95EA96A2508C67200B635E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D95EA96C2508C67200B635E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D95EA9732508C6FC00B635E4 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		D95EA9782508C74600B635E4 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		D95EA97A2508C77800B635E4 /* ConvertJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertJSON.swift; sourceTree = "<group>"; };
+		D95EA97E2508C8C600B635E4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D95EA9802508CA6300B635E4 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		D95EA9822508D58D00B635E4 /* Game of Thrones.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Game of Thrones.ttf"; sourceTree = "<group>"; };
+		D992839E256A40E40033AB9A /* GameModeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeSelectionViewController.swift; sourceTree = "<group>"; };
+		D99283A1256A43EB0033AB9A /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
+		D99283A6256AF39F0033AB9A /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		D99F66C8255FBF42000EE745 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		D99F66D3255FC326000EE745 /* gameOfThrones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gameOfThrones.json; sourceTree = SOURCE_ROOT; };
+		D9B8A20E256CBFE100945CED /* cinzel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = cinzel.ttf; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D95EA9582508C66F00B635E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D95EA9522508C66F00B635E4 = {
+			isa = PBXGroup;
+			children = (
+				D95EA95D2508C66F00B635E4 /* IronThroneTrivia */,
+				D95EA95C2508C66F00B635E4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D95EA95C2508C66F00B635E4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D95EA95B2508C66F00B635E4 /* IronThroneTrivia.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D95EA95D2508C66F00B635E4 /* IronThroneTrivia */ = {
+			isa = PBXGroup;
+			children = (
+				D99283A4256AF3240033AB9A /* Views */,
+				D99F66B4255EFC7D000EE745 /* Controllers */,
+				D99F66D0255FC2D3000EE745 /* Models */,
+				D95EA9722508C6E200B635E4 /* SupportingFiles */,
+				D95EA9642508C66F00B635E4 /* Main.storyboard */,
+				D95EA96C2508C67200B635E4 /* Info.plist */,
+			);
+			path = IronThroneTrivia;
+			sourceTree = "<group>";
+		};
+		D95EA9722508C6E200B635E4 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D95EA95E2508C66F00B635E4 /* AppDelegate.swift */,
+				D95EA9602508C66F00B635E4 /* SceneDelegate.swift */,
+				D95EA9822508D58D00B635E4 /* Game of Thrones.ttf */,
+				D95EA9672508C67200B635E4 /* Assets.xcassets */,
+				D95EA9692508C67200B635E4 /* LaunchScreen.storyboard */,
+				D95EA9732508C6FC00B635E4 /* Globals.swift */,
+				D9B8A20E256CBFE100945CED /* cinzel.ttf */,
+				D95EA97E2508C8C600B635E4 /* Extensions.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		D99283A4256AF3240033AB9A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D99283A1256A43EB0033AB9A /* GameButton.swift */,
+				D99283A6256AF39F0033AB9A /* BackgroundImage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D99F66B4255EFC7D000EE745 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D95EA9802508CA6300B635E4 /* QuestionViewController.swift */,
+				D95EA9782508C74600B635E4 /* ResultsViewController.swift */,
+				D95EA9622508C66F00B635E4 /* SelectNumberOfQuestions.swift */,
+				D992839E256A40E40033AB9A /* GameModeSelectionViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D99F66D0255FC2D3000EE745 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D99F66D3255FC326000EE745 /* gameOfThrones.json */,
+				D95EA97A2508C77800B635E4 /* ConvertJSON.swift */,
+				D99F66C8255FBF42000EE745 /* Question.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D95EA95A2508C66F00B635E4 /* IronThroneTrivia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D95EA96F2508C67200B635E4 /* Build configuration list for PBXNativeTarget "IronThroneTrivia" */;
+			buildPhases = (
+				D95EA9572508C66F00B635E4 /* Sources */,
+				D95EA9582508C66F00B635E4 /* Frameworks */,
+				D95EA9592508C66F00B635E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IronThroneTrivia;
+			productName = IronThroneTrivia;
+			productReference = D95EA95B2508C66F00B635E4 /* IronThroneTrivia.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D95EA9532508C66F00B635E4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1210;
+				ORGANIZATIONNAME = HaroldDavidson;
+				TargetAttributes = {
+					D95EA95A2508C66F00B635E4 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = D95EA9562508C66F00B635E4 /* Build configuration list for PBXProject "IronThroneTrivia" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D95EA9522508C66F00B635E4;
+			productRefGroup = D95EA95C2508C66F00B635E4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D95EA95A2508C66F00B635E4 /* IronThroneTrivia */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D95EA9592508C66F00B635E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D99F66D4255FC326000EE745 /* gameOfThrones.json in Resources */,
+				D95EA96B2508C67200B635E4 /* LaunchScreen.storyboard in Resources */,
+				D95EA9832508D58D00B635E4 /* Game of Thrones.ttf in Resources */,
+				D95EA9682508C67200B635E4 /* Assets.xcassets in Resources */,
+				D95EA9662508C66F00B635E4 /* Main.storyboard in Resources */,
+				D9B8A20F256CBFE100945CED /* cinzel.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D95EA9572508C66F00B635E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D95EA9742508C6FC00B635E4 /* Globals.swift in Sources */,
+				D95EA97F2508C8C600B635E4 /* Extensions.swift in Sources */,
+				D95EA9632508C66F00B635E4 /* SelectNumberOfQuestions.swift in Sources */,
+				D99283A7256AF39F0033AB9A /* BackgroundImage.swift in Sources */,
+				D95EA95F2508C66F00B635E4 /* AppDelegate.swift in Sources */,
+				D99F66C9255FBF42000EE745 /* Question.swift in Sources */,
+				D95EA9612508C66F00B635E4 /* SceneDelegate.swift in Sources */,
+				D992839F256A40E40033AB9A /* GameModeSelectionViewController.swift in Sources */,
+				D95EA9792508C74600B635E4 /* ResultsViewController.swift in Sources */,
+				D95EA97B2508C77800B635E4 /* ConvertJSON.swift in Sources */,
+				D99283A2256A43EB0033AB9A /* GameButton.swift in Sources */,
+				D95EA9812508CA6300B635E4 /* QuestionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D95EA9642508C66F00B635E4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D95EA9652508C66F00B635E4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D95EA9692508C67200B635E4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D95EA96A2508C67200B635E4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D95EA96D2508C67200B635E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D95EA96E2508C67200B635E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D95EA9702508C67200B635E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 464PVQ34ND;
+				INFOPLIST_FILE = IronThroneTrivia/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.harolddavidson.IronThroneTrivia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D95EA9712508C67200B635E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 464PVQ34ND;
+				INFOPLIST_FILE = IronThroneTrivia/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.harolddavidson.IronThroneTrivia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D95EA9562508C66F00B635E4 /* Build configuration list for PBXProject "IronThroneTrivia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D95EA96D2508C67200B635E4 /* Debug */,
+				D95EA96E2508C67200B635E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D95EA96F2508C67200B635E4 /* Build configuration list for PBXNativeTarget "IronThroneTrivia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D95EA9702508C67200B635E4 /* Debug */,
+				D95EA9712508C67200B635E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D95EA9532508C66F00B635E4 /* Project object */;
+}
