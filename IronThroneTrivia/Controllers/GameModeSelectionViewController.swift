@@ -162,6 +162,7 @@ class GameModeSelectionViewController: UIViewController {
     }
     
     @objc func creditsTapped() {
+        vibrate()
         let vc = self.storyboard?.instantiateViewController(identifier: "CreditsViewController") as! CreditsViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }

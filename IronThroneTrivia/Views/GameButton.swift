@@ -51,5 +51,6 @@ class GameButton: UIButton {
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         titleLabel?.alpha = 1
+        vibrate()
     }
 }

@@ -24,9 +24,12 @@ var canceViewButtonFont     =   UIFont(name: "cinzel", size: 25)
 var categoryFont            =   UIFont(name: "cinzel", size: 35)
 var subCategoryButtonFont   =   UIFont(name: "cinzel", size: 17)
 var answerButtonFont        =   UIFont(name: "cinzel", size: 17)
+var finalScoreFont          =   UIFont(name: "cinzel", size: 80)
 var questionList            =   [Question]()
 var questionIndex           =   0
 var correctlyAnswered       =   0
+let appId                   =   "ca-app-pub-6504174477930496~3172392437"
+let adUnitId                =   "ca-app-pub-6504174477930496/4924457806"
 
 func resetGame() {
     questionList = []

@@ -21,7 +21,7 @@ class QuestionViewController: UIViewController {
     let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.isEnabled = true
-        button.tintColor = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 1)
+        button.tintColor = whiteColor
         button.setTitleColor(whiteColor, for: .normal)
         button.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
         return button
@@ -37,7 +37,7 @@ class QuestionViewController: UIViewController {
         return label
     }()
     
-    let scoreLabel: UILabel = {
+    let questionNumberLabel: UILabel = {
         let label = UILabel()
         label.font = instructionLabelFont
         label.textAlignment = .center
@@ -45,6 +45,7 @@ class QuestionViewController: UIViewController {
         return label
     }()
     
+    // MARK:- Answer Buttons
     let optionZeroButton: GameButton = {
         let button = GameButton(title: "Sacrifice to the Lord of the Light")
         button.titleLabel?.font = answerButtonFont
@@ -96,11 +97,11 @@ class QuestionViewController: UIViewController {
     let exitGameCancel: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Cancel", for: .normal)
-        button.setTitleColor(UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 1), for: .normal)
+        button.setTitleColor(whiteColor, for: .normal)
         button.titleLabel?.font = canceViewButtonFont
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 5
-        button.layer.borderColor = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+        button.layer.borderColor = whiteColor.cgColor
         button.titleLabel?.layer.shadowRadius = 0.5
         button.addTarget(self, action: #selector(cancelTapped), for: .touchUpInside)
         return button
@@ -109,7 +110,7 @@ class QuestionViewController: UIViewController {
     let exitGameConfirm: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Exit", for: .normal)
-        button.setTitleColor(UIColor.rgb(red: 255, green: 0, blue: 0, alpha: 1), for: .normal)
+        button.setTitleColor(whiteColor, for: .normal)
         button.titleLabel?.font = canceViewButtonFont
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 5
@@ -137,13 +138,15 @@ class QuestionViewController: UIViewController {
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        
         let backButtonImageConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .light, scale: .large)
         let backButtonImage = UIImage(systemName: "chevron.left.square", withConfiguration: backButtonImageConfig)
         
         backButton.setImage(backButtonImage, for: .normal)
         view.addSubview(backButton)
         backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        view.addSubview(questionNumberLabel)
+        questionNumberLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 0, height: 0)
         
         view.addSubview(questionLabel)
         questionLabel.anchor(top: backButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 0)
@@ -207,7 +210,7 @@ class QuestionViewController: UIViewController {
         optionTwoButton.setTitle(questionList[questionIndex].optionTwo, for: .normal)
         optionThreeButton.setTitle(questionList[questionIndex].optionThree, for: .normal)
         
-        scoreLabel.text = "\(questionIndex + 1)/\(questionList.count)"
+        questionNumberLabel.text = "\(questionIndex + 1)/\(questionList.count)"
     }
     
     // MARK:- Check if Answer Tapped is Correct
@@ -263,8 +266,6 @@ class QuestionViewController: UIViewController {
             self.exitConfirmationView.alpha = 0
         }
         backButton.isEnabled = true
-//        correctButton.isEnabled = true
-//        incorrectButton.isEnabled = true
         vibrate()
     }
 
