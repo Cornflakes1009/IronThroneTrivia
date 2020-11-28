@@ -21,10 +21,18 @@
 		D95EA9832508D58D00B635E4 /* Game of Thrones.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D95EA9822508D58D00B635E4 /* Game of Thrones.ttf */; };
 		D992839F256A40E40033AB9A /* GameModeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D992839E256A40E40033AB9A /* GameModeSelectionViewController.swift */; };
 		D99283A2256A43EB0033AB9A /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99283A1256A43EB0033AB9A /* GameButton.swift */; };
-		D99283A7256AF39F0033AB9A /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99283A6256AF39F0033AB9A /* BackgroundImage.swift */; };
 		D99F66C9255FBF42000EE745 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99F66C8255FBF42000EE745 /* Question.swift */; };
 		D99F66D4255FC326000EE745 /* gameOfThrones.json in Resources */ = {isa = PBXBuildFile; fileRef = D99F66D3255FC326000EE745 /* gameOfThrones.json */; };
 		D9B8A20F256CBFE100945CED /* cinzel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B8A20E256CBFE100945CED /* cinzel.ttf */; };
+		D9B8A212256E561D00945CED /* exit_game_views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A211256E561D00945CED /* exit_game_views.swift */; };
+		D9B8A2162571DA5600945CED /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2152571DA5600945CED /* CreditsViewController.swift */; };
+		D9B8A2192571DAB800945CED /* SurvivalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2182571DAB800945CED /* SurvivalViewController.swift */; };
+		D9B8A21C2571DC7600945CED /* BlitzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A21B2571DC7600945CED /* BlitzViewController.swift */; };
+		D9B8A21F2571DC8F00945CED /* HangmanSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A21E2571DC8F00945CED /* HangmanSelectionViewController.swift */; };
+		D9B8A2222571DD6400945CED /* HangmanPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2212571DD6400945CED /* HangmanPlayViewController.swift */; };
+		D9B8A2252571DDE600945CED /* SurvivalResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2242571DDE600945CED /* SurvivalResultsViewController.swift */; };
+		D9B8A2282571DDF600945CED /* HangmanResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2272571DDF600945CED /* HangmanResultsViewController.swift */; };
+		D9B8A22B2571DE0C00945CED /* BlitzResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A22A2571DE0C00945CED /* BlitzResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,10 +52,18 @@
 		D95EA9822508D58D00B635E4 /* Game of Thrones.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Game of Thrones.ttf"; sourceTree = "<group>"; };
 		D992839E256A40E40033AB9A /* GameModeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeSelectionViewController.swift; sourceTree = "<group>"; };
 		D99283A1256A43EB0033AB9A /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
-		D99283A6256AF39F0033AB9A /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
 		D99F66C8255FBF42000EE745 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		D99F66D3255FC326000EE745 /* gameOfThrones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gameOfThrones.json; sourceTree = SOURCE_ROOT; };
 		D9B8A20E256CBFE100945CED /* cinzel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = cinzel.ttf; sourceTree = SOURCE_ROOT; };
+		D9B8A211256E561D00945CED /* exit_game_views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exit_game_views.swift; sourceTree = "<group>"; };
+		D9B8A2152571DA5600945CED /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		D9B8A2182571DAB800945CED /* SurvivalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalViewController.swift; sourceTree = "<group>"; };
+		D9B8A21B2571DC7600945CED /* BlitzViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlitzViewController.swift; sourceTree = "<group>"; };
+		D9B8A21E2571DC8F00945CED /* HangmanSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanSelectionViewController.swift; sourceTree = "<group>"; };
+		D9B8A2212571DD6400945CED /* HangmanPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanPlayViewController.swift; sourceTree = "<group>"; };
+		D9B8A2242571DDE600945CED /* SurvivalResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalResultsViewController.swift; sourceTree = "<group>"; };
+		D9B8A2272571DDF600945CED /* HangmanResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanResultsViewController.swift; sourceTree = "<group>"; };
+		D9B8A22A2571DE0C00945CED /* BlitzResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlitzResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +117,7 @@
 				D95EA9732508C6FC00B635E4 /* Globals.swift */,
 				D9B8A20E256CBFE100945CED /* cinzel.ttf */,
 				D95EA97E2508C8C600B635E4 /* Extensions.swift */,
+				D9B8A211256E561D00945CED /* exit_game_views.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -109,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				D99283A1256A43EB0033AB9A /* GameButton.swift */,
-				D99283A6256AF39F0033AB9A /* BackgroundImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -121,6 +137,14 @@
 				D95EA9782508C74600B635E4 /* ResultsViewController.swift */,
 				D95EA9622508C66F00B635E4 /* SelectNumberOfQuestions.swift */,
 				D992839E256A40E40033AB9A /* GameModeSelectionViewController.swift */,
+				D9B8A2152571DA5600945CED /* CreditsViewController.swift */,
+				D9B8A2182571DAB800945CED /* SurvivalViewController.swift */,
+				D9B8A21B2571DC7600945CED /* BlitzViewController.swift */,
+				D9B8A21E2571DC8F00945CED /* HangmanSelectionViewController.swift */,
+				D9B8A2212571DD6400945CED /* HangmanPlayViewController.swift */,
+				D9B8A2242571DDE600945CED /* SurvivalResultsViewController.swift */,
+				D9B8A2272571DDF600945CED /* HangmanResultsViewController.swift */,
+				D9B8A22A2571DE0C00945CED /* BlitzResultsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -210,13 +234,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D95EA9742508C6FC00B635E4 /* Globals.swift in Sources */,
+				D9B8A2162571DA5600945CED /* CreditsViewController.swift in Sources */,
 				D95EA97F2508C8C600B635E4 /* Extensions.swift in Sources */,
+				D9B8A22B2571DE0C00945CED /* BlitzResultsViewController.swift in Sources */,
+				D9B8A2222571DD6400945CED /* HangmanPlayViewController.swift in Sources */,
+				D9B8A2282571DDF600945CED /* HangmanResultsViewController.swift in Sources */,
 				D95EA9632508C66F00B635E4 /* SelectNumberOfQuestions.swift in Sources */,
-				D99283A7256AF39F0033AB9A /* BackgroundImage.swift in Sources */,
 				D95EA95F2508C66F00B635E4 /* AppDelegate.swift in Sources */,
 				D99F66C9255FBF42000EE745 /* Question.swift in Sources */,
 				D95EA9612508C66F00B635E4 /* SceneDelegate.swift in Sources */,
+				D9B8A21C2571DC7600945CED /* BlitzViewController.swift in Sources */,
+				D9B8A21F2571DC8F00945CED /* HangmanSelectionViewController.swift in Sources */,
+				D9B8A2252571DDE600945CED /* SurvivalResultsViewController.swift in Sources */,
 				D992839F256A40E40033AB9A /* GameModeSelectionViewController.swift in Sources */,
+				D9B8A2192571DAB800945CED /* SurvivalViewController.swift in Sources */,
+				D9B8A212256E561D00945CED /* exit_game_views.swift in Sources */,
 				D95EA9792508C74600B635E4 /* ResultsViewController.swift in Sources */,
 				D95EA97B2508C77800B635E4 /* ConvertJSON.swift in Sources */,
 				D99283A2256A43EB0033AB9A /* GameButton.swift in Sources */,

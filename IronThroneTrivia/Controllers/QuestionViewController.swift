@@ -22,7 +22,7 @@ class QuestionViewController: UIViewController {
         let button = UIButton(type: .system)
         button.isEnabled = true
         button.tintColor = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 1)
-        button.setTitleColor(buttonTitleColor, for: .normal)
+        button.setTitleColor(whiteColor, for: .normal)
         button.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
         return button
     }()
@@ -32,7 +32,7 @@ class QuestionViewController: UIViewController {
         label.text = ""
         label.font = instructionLabelFont
         label.textAlignment = .center
-        label.textColor = buttonTitleColor
+        label.textColor = whiteColor
         label.numberOfLines = 0
         return label
     }()
@@ -41,27 +41,35 @@ class QuestionViewController: UIViewController {
         let label = UILabel()
         label.font = instructionLabelFont
         label.textAlignment = .center
-        label.textColor = buttonTitleColor
+        label.textColor = whiteColor
         return label
     }()
     
     let optionZeroButton: GameButton = {
-        let button = GameButton(title: "")
+        let button = GameButton(title: "Sacrifice to the Lord of the Light")
+        button.titleLabel?.font = answerButtonFont
+        button.addTarget(self, action: #selector(answerTapped(_:)), for: .touchUpInside)
         return button
     }()
     
     let optionOneButton: GameButton = {
         let button = GameButton(title: "")
+        button.titleLabel?.font = answerButtonFont
+        button.addTarget(self, action: #selector(answerTapped(_:)), for: .touchUpInside)
         return button
     }()
     
     let optionTwoButton: GameButton = {
         let button = GameButton(title: "")
+        button.titleLabel?.font = answerButtonFont
+        button.addTarget(self, action: #selector(answerTapped(_:)), for: .touchUpInside)
         return button
     }()
     
     let optionThreeButton: GameButton = {
         let button = GameButton(title: "")
+        button.titleLabel?.font = answerButtonFont
+        button.addTarget(self, action: #selector(answerTapped(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -125,7 +133,7 @@ class QuestionViewController: UIViewController {
     
     // MARK:- Setting up views
     func setupViews() {
-        updateLabels()
+        updateUI()
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
@@ -138,17 +146,9 @@ class QuestionViewController: UIViewController {
         backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         view.addSubview(questionLabel)
-        questionLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 40, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 0)
+        questionLabel.anchor(top: backButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 0)
         
         setupStackView()
-    }
-    
-    func updateLabels() {
-        questionLabel.text = "\(questionList[questionIndex].question)"
-        optionZeroButton.setTitle(questionList[questionIndex].optionZero, for: .normal)
-        optionOneButton.setTitle(questionList[questionIndex].optionOne, for: .normal)
-        optionTwoButton.setTitle(questionList[questionIndex].optionTwo, for: .normal)
-        optionThreeButton.setTitle(questionList[questionIndex].optionThree, for: .normal)
     }
     
     // MARK:- StackView
@@ -163,7 +163,9 @@ class QuestionViewController: UIViewController {
         let stackViewHeight = CGFloat(Int(buttonHeight) * stackView.arrangedSubviews.count + 40)
         
         view.addSubview(stackView)
-        stackView.anchor(top: questionLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: stackViewHeight)
+        stackView.anchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: stackViewHeight)
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     // MARK:- Exit View
@@ -197,9 +199,56 @@ class QuestionViewController: UIViewController {
         exitStackView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: exitStackViewWidth, height: buttonHeight)
     }
     
+    // MARK:- Updating the UI
+    func updateUI() {
+        questionLabel.text = "\(questionList[questionIndex].question)"
+        //optionZeroButton.setTitle(questionList[questionIndex].optionZero, for: .normal)
+        optionOneButton.setTitle(questionList[questionIndex].optionOne, for: .normal)
+        optionTwoButton.setTitle(questionList[questionIndex].optionTwo, for: .normal)
+        optionThreeButton.setTitle(questionList[questionIndex].optionThree, for: .normal)
+        
+        scoreLabel.text = "\(questionIndex + 1)/\(questionList.count)"
+    }
+    
+    // MARK:- Check if Answer Tapped is Correct
+    func checkIfCorrect(buttonNumber: Int) {
+        if buttonNumber == questionList[questionIndex].answer {
+            correctlyAnswered += 1
+        } else {
+            //showCorrectAnswer()
+        }
+        
+        if questionIndex + 1 != questionList.count {
+            questionIndex += 1
+            updateUI()
+        } else {
+//            if (interstitial.isReady) {
+//                interstitial.present(fromRootViewController: self)
+//                interstitial = createAd()
+//            }
+            
+            let vc = self.storyboard?.instantiateViewController(identifier: "ResultsViewController") as! ResultsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     // MARK:- Button Actions
     @objc func backTapped() {
         presentBackConfirmationsView()
+        vibrate()
+    }
+    
+    @objc func answerTapped(_ sender: UIButton!) {
+        // check if selected button has correct answer, if not, present a view with correct answer
+        if sender == optionZeroButton {
+            checkIfCorrect(buttonNumber: 0)
+        } else if sender == optionOneButton {
+            checkIfCorrect(buttonNumber: 1)
+        } else if sender == optionTwoButton {
+            checkIfCorrect(buttonNumber: 2)
+        } else if sender == optionThreeButton {
+            checkIfCorrect(buttonNumber: 3)
+        }
         vibrate()
     }
     

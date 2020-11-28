@@ -47,25 +47,33 @@ class GameModeSelectionViewController: UIViewController {
     
     let classicButton: GameButton = {
         let button = GameButton(title: "Classic")
-        button.addTarget(self, action: #selector(standardTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(classicTapped), for: .touchUpInside)
+        return button
+    }()
+    
+//    let classicButton: UIButton = {
+//        let button = UIButton(title: "Classic", titleColor: whiteColor, font: categoryFont!, backgroundColor: .clear, target: self, action: #selector(classicTapped))
+//        button.layer.cornerRadius = 5
+//        button.layer.borderWidth = 2
+//        button.layer.borderColor = whiteColor.cgColor
+//        return button
+//    }()
+//
+    let survivalButton: GameButton = {
+        let button = GameButton(title: "Survival")
+        button.addTarget(self, action: #selector(survivalTapped), for: .touchUpInside)
         return button
     }()
     
     let blitzButton: GameButton = {
         let button = GameButton(title: "Blitz")
-        button.addTarget(self, action: #selector(standardTapped), for: .touchUpInside)
-        return button
-    }()
-    
-    let survivalButton: GameButton = {
-        let button = GameButton(title: "Survival")
-        button.addTarget(self, action: #selector(standardTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(blitzTapped), for: .touchUpInside)
         return button
     }()
     
     let hangmanButton: GameButton = {
         let button = GameButton(title: "Hangman")
-        button.addTarget(self, action: #selector(standardTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(hangmanTapped), for: .touchUpInside)
         return button
     }()
     
@@ -78,7 +86,7 @@ class GameModeSelectionViewController: UIViewController {
         button.layer.shadowOpacity = 1.0
         button.layer.shadowRadius = 10.0
         button.layer.masksToBounds = false
-        button.addTarget(self, action: #selector(standardTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(creditsTapped), for: .touchUpInside)
         return button
     }()
     
@@ -133,8 +141,28 @@ class GameModeSelectionViewController: UIViewController {
     }
     
 // MARK:- Button Actions
-    @objc func standardTapped() {
+    @objc func classicTapped() {
         let vc = self.storyboard?.instantiateViewController(identifier: "SelectNumberOfQuestions") as! SelectNumberOfQuestions
-        self.navigationController?.pushViewController(vc, animated: true)    }
-
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func survivalTapped() {
+        let vc = self.storyboard?.instantiateViewController(identifier: "SurvivalViewController") as! SurvivalViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func blitzTapped() {
+        let vc = self.storyboard?.instantiateViewController(identifier: "BlitzViewController") as! BlitzViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func hangmanTapped() {
+        let vc = self.storyboard?.instantiateViewController(identifier: "HangmanSelectionViewController") as! HangmanSelectionViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func creditsTapped() {
+        let vc = self.storyboard?.instantiateViewController(identifier: "CreditsViewController") as! CreditsViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

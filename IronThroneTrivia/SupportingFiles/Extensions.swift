@@ -10,7 +10,7 @@
 import UIKit
 import AVFoundation
 
-// MARK: RGB
+// MARK:- RGB
 // Simplifying UIColor.rgb. Removes the need to /255 and alpha value.
 extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
@@ -18,7 +18,7 @@ extension UIColor {
     }
 }
 
-// MARK: Add Constraints
+// MARK:- Add Constraints
 // Extension for simplifying the adding of constraints
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat) {
@@ -54,45 +54,45 @@ extension UIView {
 // MARK: Remove Constraints
 // Extension for removing all constraints of the specified view
 extension UIView {
-
+    
     public func removeAllConstraints() {
         var _superview = self.superview
-
+        
         while let superview = _superview {
             for constraint in superview.constraints {
-
+                
                 if let first = constraint.firstItem as? UIView, first == self {
                     superview.removeConstraint(constraint)
                 }
-
+                
                 if let second = constraint.secondItem as? UIView, second == self {
                     superview.removeConstraint(constraint)
                 }
             }
-
+            
             _superview = superview.superview
         }
-
+        
         self.removeConstraints(self.constraints)
         self.translatesAutoresizingMaskIntoConstraints = true
     }
 }
 
-// MARK: Nav Bar Height
+// MARK:- Nav Bar Height
 // Extension for getting the navigation bar height
 extension UIViewController {
-
+    
     /**
      *  Height of status bar + navigation bar (if navigation bar exist)
      */
-
+    
     var topbarHeight: CGFloat {
         return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
             (self.navigationController?.navigationBar.frame.height ?? 0.0)
     }
 }
 
-// MARK: Done Button
+// MARK:- Done Button on Keyboard
 // Add Done Button
 extension UITextField {
     
@@ -162,7 +162,7 @@ extension UITextView {
     }
 }
 
-// MARK: Make Vibration
+// MARK:- Make Vibration
 /** Use UIDevice.vibrate() to trigger vibration
  */
 extension UIDevice {
@@ -174,7 +174,7 @@ extension UIDevice {
 // MARK: Adding a Light Vibration
 /** Light Haptic Feeback for button taps
  # For other vibrations, see: #
-    https://www.hackingwithswift.com/example-code/uikit/how-to-generate-haptic-feedback-with-uifeedbackgenerator
+ https://www.hackingwithswift.com/example-code/uikit/how-to-generate-haptic-feedback-with-uifeedbackgenerator
  */
 func vibrate() {
     let generator = UIImpactFeedbackGenerator(style: .light)
@@ -186,7 +186,21 @@ func vibrate() {
 extension String
 {
     func trim() -> String
-   {
-    return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
-   }
+    {
+        return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+    }
+}
+
+// MARK:- Button Initializer
+extension UIButton {
+    convenience public init(title: String, titleColor: UIColor, font: UIFont = .systemFont(ofSize: 14), backgroundColor: UIColor = .clear, target: Any? = nil, action: Selector? = nil) {
+        self.init(type: .system)
+        setTitle(title, for: .normal)
+        setTitleColor(titleColor, for: .normal)
+        self.titleLabel?.font = font
+        self.backgroundColor = backgroundColor
+        if let action = action {
+            addTarget(target, action: action, for: .primaryActionTriggered)
+        }
+    }
 }

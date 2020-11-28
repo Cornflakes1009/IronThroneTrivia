@@ -9,6 +9,36 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--HangmanPlayViewController-->
+        <scene sceneID="vAd-YF-doP">
+            <objects>
+                <viewController storyboardIdentifier="HangmanPlayViewController" title="HangmanPlayViewController" id="koa-OK-6Cu" customClass="HangmanPlayViewController" customModule="IronThroneTrivia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CW1-3D-mz8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="86h-6o-Or7"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OND-IU-cfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-765" y="138"/>
+        </scene>
+        <!--HangmanSelectionViewController-->
+        <scene sceneID="9vi-xR-w3J">
+            <objects>
+                <viewController storyboardIdentifier="HangmanSelectionViewController" title="HangmanSelectionViewController" id="I4q-Hg-fnl" customClass="HangmanSelectionViewController" customModule="IronThroneTrivia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eoT-BZ-6GA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Zcp-5a-bFp"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bln-JK-trp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-110" y="138"/>
+        </scene>
         <!--GameModeSelectionViewController-->
         <scene sceneID="ca2-4L-pyc">
             <objects>
@@ -33,7 +63,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
                     </view>
                     <navigationItem key="navigationItem" id="GcJ-Uh-26j"/>
                 </viewController>
@@ -49,12 +79,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="3yI-Mc-UC2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWU-wk-77l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1914" y="138"/>
+        </scene>
+        <!--ResultsViewController-->
+        <scene sceneID="KBP-fD-M14">
+            <objects>
+                <viewController storyboardIdentifier="ResultsViewController" title="ResultsViewController" id="vfm-Cu-5Hf" customClass="ResultsViewController" customModule="IronThroneTrivia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sWs-o4-utA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="z7u-Va-2Ty"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CLl-e3-05S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2586" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ihL-em-JnH">
@@ -72,12 +117,117 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdf-Hz-1RJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-109" y="138"/>
+            <point key="canvasLocation" x="-764" y="-565"/>
+        </scene>
+        <!--CreditsViewController-->
+        <scene sceneID="jw1-qW-cyI">
+            <objects>
+                <viewController storyboardIdentifier="CreditsViewController" title="CreditsViewController" id="RWm-hu-OZ9" customClass="CreditsViewController" customModule="IronThroneTrivia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h5c-eA-poz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UQw-1t-nYZ"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sv0-n2-eQl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-110" y="813"/>
+        </scene>
+        <!--SurvivalViewController-->
+        <scene sceneID="faT-WE-DOo">
+            <objects>
+                <viewController storyboardIdentifier="SurvivalViewController" title="SurvivalViewController" id="hEs-RG-tir" customClass="SurvivalViewController" customModule="IronThroneTrivia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="stO-xm-zZV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="yPw-ds-9GS"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EVJ-hF-P7E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="561" y="813"/>
+        </scene>
+        <!--SurvivalResultsViewController-->
+        <scene sceneID="OJc-v5-qa3">
+            <objects>
+                <viewController storyboardIdentifier="SurvivalResultsViewController" title="SurvivalResultsViewController" id="Lx4-9b-7LU" customClass="SurvivalResultsViewController" customModule="IronThroneTrivia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T9h-xc-vUa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="kei-Zh-ZAa"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qjh-7h-0lv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="561" y="1469"/>
+        </scene>
+        <!--BlitzResultsViewController-->
+        <scene sceneID="JAg-LR-NxS">
+            <objects>
+                <viewController storyboardIdentifier="BlitzResultsViewController" title="BlitzResultsViewController" id="cCg-fG-oLI" customClass="BlitzResultsViewController" customModule="IronThroneTrivia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yXM-RY-ny2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="VJF-1e-Mi7"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dfT-aa-Elw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="561" y="-1235"/>
+        </scene>
+        <!--BlitzViewController-->
+        <scene sceneID="cB3-js-T4z">
+            <objects>
+                <viewController storyboardIdentifier="BlitzViewController" title="BlitzViewController" id="jA6-a4-4HW" customClass="BlitzViewController" customModule="IronThroneTrivia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Vt-xT-tTp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6dq-Yg-D62"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jcu-CW-HZq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="561" y="-565"/>
+        </scene>
+        <!--HangmanResultsViewController-->
+        <scene sceneID="xES-X9-gbb">
+            <objects>
+                <viewController storyboardIdentifier="HangmanResultsViewController" title="HangmanResultsViewController" id="MDt-7K-FJp" customClass="HangmanResultsViewController" customModule="IronThroneTrivia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lYt-7u-McO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="05l-50-e2c"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTT-px-XoJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1462" y="138"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

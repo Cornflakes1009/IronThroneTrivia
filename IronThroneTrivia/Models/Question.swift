@@ -8,10 +8,6 @@
 
 import Foundation
 
-var questionList            =   [Question]()
-var questionIndex           =   0
-var correctlyAnswered       =   0
-
 class Question {
     let category: String
     let question: String
