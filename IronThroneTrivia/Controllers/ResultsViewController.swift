@@ -18,6 +18,16 @@ class ResultsViewController: UIViewController {
         return image
     }()
     
+    let gameOverLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Game Over"
+        label.font = UIFont(name: "Game of Thrones", size: 35)
+        label.textAlignment = .center
+        
+        label.textColor = logoColor
+        return label
+    }()
+    
     let scoreLabel: UILabel = {
         let label = UILabel()
         label.text = "\(correctlyAnswered)/\(questionList.count)"
@@ -45,6 +55,9 @@ class ResultsViewController: UIViewController {
     func setupUI() {
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        view.addSubview(gameOverLabel)
+        gameOverLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 5, paddingBottom: 0, paddingRight: 5, width: 0, height: 0)
         
         view.addSubview(scoreLabel)
         scoreLabel.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)

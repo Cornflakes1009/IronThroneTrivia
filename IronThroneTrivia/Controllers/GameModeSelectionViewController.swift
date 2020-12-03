@@ -51,14 +51,6 @@ class GameModeSelectionViewController: UIViewController {
         return button
     }()
     
-//    let classicButton: UIButton = {
-//        let button = UIButton(title: "Classic", titleColor: whiteColor, font: categoryFont!, backgroundColor: .clear, target: self, action: #selector(classicTapped))
-//        button.layer.cornerRadius = 5
-//        button.layer.borderWidth = 2
-//        button.layer.borderColor = whiteColor.cgColor
-//        return button
-//    }()
-//
     let survivalButton: GameButton = {
         let button = GameButton(title: "Survival")
         button.addTarget(self, action: #selector(survivalTapped), for: .touchUpInside)
@@ -111,7 +103,7 @@ class GameModeSelectionViewController: UIViewController {
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         view.addSubview(gameLabel)
-        gameLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 5, paddingBottom: 0, paddingRight: 5, width: 0, height: 0)
+        gameLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 5, paddingBottom: 0, paddingRight: 5, width: 0, height: 0)
         
         view.addSubview(subGameLabel)
         subGameLabel.anchor(top: gameLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 0)
@@ -147,6 +139,7 @@ class GameModeSelectionViewController: UIViewController {
     }
     
     @objc func survivalTapped() {
+        convertAllJSON(jsonToRead: "gameOfThrones")
         let vc = self.storyboard?.instantiateViewController(identifier: "SurvivalViewController") as! SurvivalViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }

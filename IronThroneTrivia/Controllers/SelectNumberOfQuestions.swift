@@ -6,6 +6,7 @@
 //  Copyright © 2020 HaroldDavidson. All rights reserved.
 //
 
+import GoogleMobileAds
 import UIKit
 
 class SelectNumberOfQuestions: UIViewController {
@@ -35,6 +36,14 @@ class SelectNumberOfQuestions: UIViewController {
         label.textAlignment = .center
         label.textColor = whiteColor
         return label
+    }()
+    
+    // MARK:- Banner View
+    let bannerView: GADBannerView = {
+        let banner = GADBannerView()
+        banner.adUnitID = adUnitId
+        banner.load(GADRequest())
+        return banner
     }()
     
     // MARK:- Selection Buttons
@@ -96,6 +105,11 @@ class SelectNumberOfQuestions: UIViewController {
         view.addSubview(disclaimerLabel)
         disclaimerLabel.anchor(top: backButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: fifthOfScreenHeight)
         
+        bannerView.rootViewController = self
+        view.addSubview(bannerView)
+        bannerView.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: -20, paddingRight: 0, width: 281, height: 50)
+        bannerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
         setupStackView()
     }
     
@@ -112,7 +126,7 @@ class SelectNumberOfQuestions: UIViewController {
         stackViewButtonHeight = CGFloat((stackViewHeight - 40) / 5)
         
         view.addSubview(stackView)
-        stackView.anchor(top: disclaimerLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: stackViewHeight)
+        stackView.anchor(top: nil, left: view.leftAnchor, bottom: bannerView.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -30, paddingRight: 20, width: 0, height: stackViewHeight)
     }
     
     // MARK:- Button Actions

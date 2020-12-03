@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,7 @@
 		D95EA96B2508C67200B635E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95EA9692508C67200B635E4 /* LaunchScreen.storyboard */; };
 		D95EA9742508C6FC00B635E4 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA9732508C6FC00B635E4 /* Globals.swift */; };
 		D95EA9792508C74600B635E4 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA9782508C74600B635E4 /* ResultsViewController.swift */; };
-		D95EA97B2508C77800B635E4 /* ConvertJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA97A2508C77800B635E4 /* ConvertJSON.swift */; };
+		D95EA97B2508C77800B635E4 /* ClassicConvertJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA97A2508C77800B635E4 /* ClassicConvertJSON.swift */; };
 		D95EA97F2508C8C600B635E4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA97E2508C8C600B635E4 /* Extensions.swift */; };
 		D95EA9812508CA6300B635E4 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA9802508CA6300B635E4 /* QuestionViewController.swift */; };
 		D95EA9832508D58D00B635E4 /* Game of Thrones.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D95EA9822508D58D00B635E4 /* Game of Thrones.ttf */; };
@@ -34,6 +34,8 @@
 		D9B8A2252571DDE600945CED /* SurvivalResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2242571DDE600945CED /* SurvivalResultsViewController.swift */; };
 		D9B8A2282571DDF600945CED /* HangmanResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2272571DDF600945CED /* HangmanResultsViewController.swift */; };
 		D9B8A22B2571DE0C00945CED /* BlitzResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A22A2571DE0C00945CED /* BlitzResultsViewController.swift */; };
+		D9B8A25825734ED900945CED /* Cormorant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B8A25725734ED900945CED /* Cormorant-Regular.ttf */; };
+		D9B8A25C25738CDB00945CED /* ConvertAllJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A25B25738CDB00945CED /* ConvertAllJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +51,7 @@
 		D95EA96C2508C67200B635E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D95EA9732508C6FC00B635E4 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		D95EA9782508C74600B635E4 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
-		D95EA97A2508C77800B635E4 /* ConvertJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertJSON.swift; sourceTree = "<group>"; };
+		D95EA97A2508C77800B635E4 /* ClassicConvertJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicConvertJSON.swift; sourceTree = "<group>"; };
 		D95EA97E2508C8C600B635E4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D95EA9802508CA6300B635E4 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		D95EA9822508D58D00B635E4 /* Game of Thrones.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Game of Thrones.ttf"; sourceTree = "<group>"; };
@@ -67,6 +69,8 @@
 		D9B8A2242571DDE600945CED /* SurvivalResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalResultsViewController.swift; sourceTree = "<group>"; };
 		D9B8A2272571DDF600945CED /* HangmanResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanResultsViewController.swift; sourceTree = "<group>"; };
 		D9B8A22A2571DE0C00945CED /* BlitzResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlitzResultsViewController.swift; sourceTree = "<group>"; };
+		D9B8A25725734ED900945CED /* Cormorant-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cormorant-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		D9B8A25B25738CDB00945CED /* ConvertAllJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertAllJSON.swift; sourceTree = "<group>"; };
 		F87EDFE6A4D94B58C1B9F038 /* Pods-IronThroneTrivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronThroneTrivia.release.xcconfig"; path = "Target Support Files/Pods-IronThroneTrivia/Pods-IronThroneTrivia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +92,6 @@
 				A57AD71C4C1B291D88C79B46 /* Pods-IronThroneTrivia.debug.xcconfig */,
 				F87EDFE6A4D94B58C1B9F038 /* Pods-IronThroneTrivia.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -135,14 +138,15 @@
 			isa = PBXGroup;
 			children = (
 				D95EA95E2508C66F00B635E4 /* AppDelegate.swift */,
-				D95EA9602508C66F00B635E4 /* SceneDelegate.swift */,
-				D95EA9822508D58D00B635E4 /* Game of Thrones.ttf */,
 				D95EA9672508C67200B635E4 /* Assets.xcassets */,
-				D95EA9692508C67200B635E4 /* LaunchScreen.storyboard */,
-				D95EA9732508C6FC00B635E4 /* Globals.swift */,
-				D9B8A20E256CBFE100945CED /* cinzel.ttf */,
-				D95EA97E2508C8C600B635E4 /* Extensions.swift */,
 				D9B8A211256E561D00945CED /* exit_game_views.swift */,
+				D95EA97E2508C8C600B635E4 /* Extensions.swift */,
+				D95EA9732508C6FC00B635E4 /* Globals.swift */,
+				D95EA9692508C67200B635E4 /* LaunchScreen.storyboard */,
+				D9B8A25725734ED900945CED /* Cormorant-Regular.ttf */,
+				D95EA9822508D58D00B635E4 /* Game of Thrones.ttf */,
+				D9B8A20E256CBFE100945CED /* cinzel.ttf */,
+				D95EA9602508C66F00B635E4 /* SceneDelegate.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -178,8 +182,9 @@
 			isa = PBXGroup;
 			children = (
 				D99F66D3255FC326000EE745 /* gameOfThrones.json */,
-				D95EA97A2508C77800B635E4 /* ConvertJSON.swift */,
+				D95EA97A2508C77800B635E4 /* ClassicConvertJSON.swift */,
 				D99F66C8255FBF42000EE745 /* Question.swift */,
+				D9B8A25B25738CDB00945CED /* ConvertAllJSON.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9B8A25825734ED900945CED /* Cormorant-Regular.ttf in Resources */,
 				D99F66D4255FC326000EE745 /* gameOfThrones.json in Resources */,
 				D95EA96B2508C67200B635E4 /* LaunchScreen.storyboard in Resources */,
 				D95EA9832508D58D00B635E4 /* Game of Thrones.ttf in Resources */,
@@ -312,6 +318,7 @@
 				D95EA95F2508C66F00B635E4 /* AppDelegate.swift in Sources */,
 				D99F66C9255FBF42000EE745 /* Question.swift in Sources */,
 				D95EA9612508C66F00B635E4 /* SceneDelegate.swift in Sources */,
+				D9B8A25C25738CDB00945CED /* ConvertAllJSON.swift in Sources */,
 				D9B8A21C2571DC7600945CED /* BlitzViewController.swift in Sources */,
 				D9B8A21F2571DC8F00945CED /* HangmanSelectionViewController.swift in Sources */,
 				D9B8A2252571DDE600945CED /* SurvivalResultsViewController.swift in Sources */,
@@ -319,7 +326,7 @@
 				D9B8A2192571DAB800945CED /* SurvivalViewController.swift in Sources */,
 				D9B8A212256E561D00945CED /* exit_game_views.swift in Sources */,
 				D95EA9792508C74600B635E4 /* ResultsViewController.swift in Sources */,
-				D95EA97B2508C77800B635E4 /* ConvertJSON.swift in Sources */,
+				D95EA97B2508C77800B635E4 /* ClassicConvertJSON.swift in Sources */,
 				D99283A2256A43EB0033AB9A /* GameButton.swift in Sources */,
 				D95EA9812508CA6300B635E4 /* QuestionViewController.swift in Sources */,
 			);

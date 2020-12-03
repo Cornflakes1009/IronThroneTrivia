@@ -6,6 +6,7 @@
 //  Copyright © 2020 HaroldDavidson. All rights reserved.
 //
 
+import GoogleMobileAds
 import UIKit
 
 class QuestionViewController: UIViewController {
@@ -74,6 +75,14 @@ class QuestionViewController: UIViewController {
         return button
     }()
     
+    // MARK:- Banner View
+    let bannerView: GADBannerView = {
+        let banner = GADBannerView()
+        banner.adUnitID = adUnitId
+        banner.load(GADRequest())
+        return banner
+    }()
+    
     // MARK:- Exit Confirmation
     let exitConfirmationView: UIView = {
         let view = UIView()
@@ -82,6 +91,15 @@ class QuestionViewController: UIViewController {
         view.alpha = 0
         view.isOpaque = true
         return view
+    }()
+    
+    let popUpBackground: UIImageView = {
+        let image = UIImageView()
+        image.image = popUpBackgroundImage
+        image.contentMode = .scaleAspectFit
+        image.clipsToBounds = true
+        image.alpha = 0.3
+        return image
     }()
     
     let exitConfirmationLabel: UILabel = {
@@ -120,6 +138,43 @@ class QuestionViewController: UIViewController {
         return button
     }()
     
+    // MARK:- Correct Answer View
+    let correctAnswerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 10
+        view.alpha = 0
+        view.isOpaque = true
+        return view
+    }()
+    
+    let correctAnswerTopLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Sorry, the correct answer was:"
+        label.font = instructionLabelFont
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
+    let correctAnswerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "\(questionList[questionIndex].answer)"
+        label.font = instructionLabelFont
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
+    let nextQuestionButton: GameButton = {
+        let button = GameButton(title: "Next Question")
+        button.addTarget(self, action: #selector(nextQuestionTapped), for: .touchUpInside)
+        button.titleLabel?.font = nextQuestionFont
+        return button
+    }()
+    
     // MARK:- Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,6 +206,11 @@ class QuestionViewController: UIViewController {
         view.addSubview(questionLabel)
         questionLabel.anchor(top: backButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 0)
         
+        bannerView.rootViewController = self
+        view.addSubview(bannerView)
+        bannerView.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: -20, paddingRight: 0, width: 281, height: 50)
+        bannerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
         setupStackView()
     }
     
@@ -166,16 +226,20 @@ class QuestionViewController: UIViewController {
         let stackViewHeight = CGFloat(Int(buttonHeight) * stackView.arrangedSubviews.count + 40)
         
         view.addSubview(stackView)
-        stackView.anchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: stackViewHeight)
-        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        stackView.anchor(top: nil, left: view.leftAnchor, bottom: bannerView.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -30, paddingRight: 20, width: 0, height: stackViewHeight)
     }
     
     // MARK:- Exit View
     func presentBackConfirmationsView() {
         backButton.isEnabled = false
         view.addSubview(exitConfirmationView)
-        exitConfirmationView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: -20, paddingRight: 20, width: 0, height: 0)
+        exitConfirmationView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
+        
+        exitConfirmationView.addSubview(popUpBackground)
+        popUpBackground.anchor(top: exitConfirmationView.topAnchor, left: exitConfirmationView.leftAnchor, bottom: exitConfirmationView.bottomAnchor, right: exitConfirmationView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        popUpBackground.centerXAnchor.constraint(equalTo: exitConfirmationView.centerXAnchor).isActive = true
+        popUpBackground.centerYAnchor.constraint(equalTo: exitConfirmationView.centerYAnchor).isActive = true
+        
         
         exitConfirmationView.addSubview(exitConfirmationLabel)
         exitConfirmationLabel.anchor(top: exitConfirmationView.topAnchor, left: exitConfirmationView.leftAnchor, bottom: nil, right: exitConfirmationView.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
@@ -183,7 +247,7 @@ class QuestionViewController: UIViewController {
         setupExitStackView()
         
         UIView.animate(withDuration: 0.5) {
-            self.exitConfirmationView.alpha = 0.95
+            self.exitConfirmationView.alpha = popUpViewAlpha
         }
     }
     
@@ -213,12 +277,50 @@ class QuestionViewController: UIViewController {
         questionNumberLabel.text = "\(questionIndex + 1)/\(questionList.count)"
     }
     
+    // MARK:- Show Correct Answer View
+    func showCorrectAnswer() {
+        backButton.isEnabled = false
+        view.addSubview(correctAnswerView)
+        correctAnswerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
+        UIView.animate(withDuration: 0.5) {
+            self.correctAnswerView.alpha = popUpViewAlpha
+        }
+        
+        let currentCorrectAnswer = questionList[questionIndex].answer
+        if currentCorrectAnswer == 0 {
+            correctAnswerLabel.text = "\(questionList[questionIndex].optionZero)"
+        } else if currentCorrectAnswer == 1 {
+            correctAnswerLabel.text = "\(questionList[questionIndex].optionOne)"
+        } else if currentCorrectAnswer == 2 {
+            correctAnswerLabel.text = "\(questionList[questionIndex].optionTwo)"
+        } else {
+            correctAnswerLabel.text = "\(questionList[questionIndex].optionThree)"
+        }
+        
+        correctAnswerView.addSubview(popUpBackground)
+        popUpBackground.anchor(top: correctAnswerView.topAnchor, left: correctAnswerView.leftAnchor, bottom: correctAnswerView.bottomAnchor, right: correctAnswerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        popUpBackground.centerXAnchor.constraint(equalTo: correctAnswerView.centerXAnchor).isActive = true
+        popUpBackground.centerYAnchor.constraint(equalTo: correctAnswerView.centerYAnchor).isActive = true
+        
+        correctAnswerView.addSubview(correctAnswerTopLabel)
+        correctAnswerTopLabel.anchor(top: correctAnswerView.topAnchor, left: correctAnswerView.leftAnchor, bottom: nil, right: correctAnswerView.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
+        
+        correctAnswerView.addSubview(correctAnswerLabel)
+        correctAnswerLabel.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        correctAnswerLabel.centerXAnchor.constraint(equalTo: correctAnswerView.centerXAnchor).isActive = true
+        correctAnswerLabel.centerYAnchor.constraint(equalTo: correctAnswerView.centerYAnchor).isActive = true
+        
+        correctAnswerView.addSubview(nextQuestionButton)
+        nextQuestionButton.anchor(top: nil, left: correctAnswerView.leftAnchor, bottom: correctAnswerView.bottomAnchor, right: correctAnswerView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -20, paddingRight: 20, width: 0, height: buttonHeight)
+    }
+    
     // MARK:- Check if Answer Tapped is Correct
     func checkIfCorrect(buttonNumber: Int) {
         if buttonNumber == questionList[questionIndex].answer {
             correctlyAnswered += 1
         } else {
-            //showCorrectAnswer()
+            showCorrectAnswer()
         }
         
         if questionIndex + 1 != questionList.count {
@@ -269,4 +371,10 @@ class QuestionViewController: UIViewController {
         vibrate()
     }
 
+    @objc func nextQuestionTapped() {
+        UIView.animate(withDuration: 1) {
+            self.correctAnswerView.alpha = 0
+        }
+        backButton.isEnabled = true
+    }
 }
