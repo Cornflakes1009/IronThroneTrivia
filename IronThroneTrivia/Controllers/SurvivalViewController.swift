@@ -9,20 +9,20 @@
 import GoogleMobileAds
 import UIKit
 
-class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewardBasedVideoAdDelegate, GADRewardedAdDelegate {
-    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
-        print("outdated rewarded")
-    }
+class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewardedAdDelegate {
     
-    
-    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardedAd, didRewardUserWith reward: GADAdReward) {
-        print("rewarded")
-    }
-    
+    // MARK:- handle the completion of watching rewarded ad
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
+        UIView.animate(withDuration: 1) {
+            self.correctAnswerView.alpha = 0
+            self.extraLifeExitButton.removeFromSuperview()
+        }
         
+        time = 15
+        startTimer()
+        backButton.isEnabled = true
+        createAndLoadRewardedAd()
     }
-    
     
     var timer = Timer()
     var time: Double = 15
@@ -250,15 +250,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         interstitial.load(request)
         
         // rewarded ad
-        rewardedAd = GADRewardedAd(adUnitID: rewardedAdUnitID)
-        rewardedAd?.load(GADRequest()) { error in
-              if let error = error {
-                // Handle ad failed to load case.
-                print(error)
-              } else {
-                // Ad successfully loaded.
-              }
-        }
+        createAndLoadRewardedAd()
     }
     
     // MARK:- Setup Views
@@ -293,7 +285,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         
         // needs to be added last so that it shows on top at game mode launch
         addExplanationView()
-        
+        backButton.isEnabled = false
     }
     
     // MARK:- StackView
@@ -422,12 +414,23 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         extraLifeButton.anchor(top: nil, left: correctAnswerView.leftAnchor, bottom: correctAnswerView.bottomAnchor, right: correctAnswerView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -20, paddingRight: 20, width: 0, height: buttonHeight)
     }
     
-    // MARK: AdMob Function
+    // MARK:- AdMob Functions
     func createAd() -> GADInterstitial {
         let inter = GADInterstitial(adUnitID: interstitialAdUnitID)
         inter.delegate = self
         inter.load(GADRequest())
         return inter
+    }
+    
+    func createAndLoadRewardedAd() {
+      rewardedAd = GADRewardedAd(adUnitID: rewardedAdUnitID)
+      rewardedAd?.load(GADRequest()) { error in
+        if let error = error {
+          print("Loading failed: \(error)")
+        } else {
+          print("Loading Succeeded")
+        }
+      }
     }
     
     // MARK:- Check if Answer Tapped is Correct
@@ -453,17 +456,14 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: (#selector(SurvivalViewController.updateTimer)), userInfo: nil, repeats: true)
     }
     
-    func restartTimer() {
-        
-    }
-    
     @objc func updateTimer() {
         time -= 0.1
         // rounding to the tenths. example: 8.1
         time = Double(round(10 * time) / 10)
         timerLabel.text = "\(String(describing: time))"
         if(time == 0) {
-            
+            timer.invalidate()
+            showCorrectAnswer()
 //            let vc = self.storyboard?.instantiateViewController(identifier: "SurvivalResultsViewController") as! SurvivalResultsViewController
 //            self.navigationController?.pushViewController(vc, animated: true)
             
@@ -478,6 +478,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         UIView.animate(withDuration: 1) {
             self.explanationView.alpha = 0
         }
+        backButton.isEnabled = true
     }
     
     @objc func backTapped() {
@@ -504,7 +505,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         time = 15
         // show rewarded ad
         if rewardedAd?.isReady == true {
-            rewardedAd?.present(fromRootViewController: self, delegate: self)
+               rewardedAd?.present(fromRootViewController: self, delegate:self)
         }
     }
     

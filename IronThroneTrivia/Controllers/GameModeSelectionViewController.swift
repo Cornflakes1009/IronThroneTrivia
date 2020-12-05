@@ -71,7 +71,7 @@ class GameModeSelectionViewController: UIViewController {
     
     let creditsButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Credits", for: .normal)
+        button.setTitle("Credits & Scores", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = instructionLabelFont
         button.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -134,22 +134,27 @@ class GameModeSelectionViewController: UIViewController {
     
 // MARK:- Button Actions
     @objc func classicTapped() {
+        vibrate()
         let vc = self.storyboard?.instantiateViewController(identifier: "SelectNumberOfQuestions") as! SelectNumberOfQuestions
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func survivalTapped() {
+        vibrate()
         convertAllJSON(jsonToRead: "gameOfThrones")
         let vc = self.storyboard?.instantiateViewController(identifier: "SurvivalViewController") as! SurvivalViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func blitzTapped() {
+        vibrate()
+        convertAllJSON(jsonToRead: "gameOfThrones")
         let vc = self.storyboard?.instantiateViewController(identifier: "BlitzViewController") as! BlitzViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func hangmanTapped() {
+        vibrate()
         let vc = self.storyboard?.instantiateViewController(identifier: "HangmanSelectionViewController") as! HangmanSelectionViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }

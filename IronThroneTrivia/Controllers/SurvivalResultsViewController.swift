@@ -72,6 +72,4 @@ class SurvivalResultsViewController: UIViewController {
         resetGame()
         self.navigationController?.popToRootViewController(animated: true)
     }
-
-
 }
