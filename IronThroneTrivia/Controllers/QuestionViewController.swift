@@ -9,8 +9,10 @@
 import GoogleMobileAds
 import UIKit
 
-class QuestionViewController: UIViewController {
+class QuestionViewController: UIViewController, GADInterstitialDelegate {
 
+    var interstitial: GADInterstitial!
+    
     let background: UIImageView = {
         let image = UIImageView()
         image.image = backgroundImage
@@ -180,6 +182,13 @@ class QuestionViewController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
+        numOfGamesPlayed += 1
+        defaults.setValue(numOfGamesPlayed, forKey: "numOfGamesPlayed")
+        
+        // interstitial ad
+        interstitial = GADInterstitial(adUnitID: interstitialAdUnitID)
+        let request = GADRequest()
+        interstitial.load(request)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -233,7 +242,7 @@ class QuestionViewController: UIViewController {
     func presentBackConfirmationsView() {
         backButton.isEnabled = false
         view.addSubview(exitConfirmationView)
-        exitConfirmationView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
+        exitConfirmationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
         
         exitConfirmationView.addSubview(popUpBackground)
         popUpBackground.anchor(top: exitConfirmationView.topAnchor, left: exitConfirmationView.leftAnchor, bottom: exitConfirmationView.bottomAnchor, right: exitConfirmationView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -269,7 +278,7 @@ class QuestionViewController: UIViewController {
     // MARK:- Updating the UI
     func updateUI() {
         questionLabel.text = "\(questionList[questionIndex].question)"
-        //optionZeroButton.setTitle(questionList[questionIndex].optionZero, for: .normal)
+        optionZeroButton.setTitle(questionList[questionIndex].optionZero, for: .normal)
         optionOneButton.setTitle(questionList[questionIndex].optionOne, for: .normal)
         optionTwoButton.setTitle(questionList[questionIndex].optionTwo, for: .normal)
         optionThreeButton.setTitle(questionList[questionIndex].optionThree, for: .normal)
@@ -281,7 +290,7 @@ class QuestionViewController: UIViewController {
     func showCorrectAnswer() {
         backButton.isEnabled = false
         view.addSubview(correctAnswerView)
-        correctAnswerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
+        correctAnswerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
         UIView.animate(withDuration: 0.5) {
             self.correctAnswerView.alpha = popUpViewAlpha
         }
@@ -317,7 +326,11 @@ class QuestionViewController: UIViewController {
     
     // MARK:- Check if Answer Tapped is Correct
     func checkIfCorrect(buttonNumber: Int) {
+        historicQuestions += 1
+        defaults.setValue(historicQuestions, forKey: "totalNumberOfQuestions")
         if buttonNumber == questionList[questionIndex].answer {
+            historicAnswered += 1
+            defaults.setValue(historicAnswered, forKey: "totalNumberOfCorrect")
             correctlyAnswered += 1
         } else {
             showCorrectAnswer()
@@ -327,14 +340,22 @@ class QuestionViewController: UIViewController {
             questionIndex += 1
             updateUI()
         } else {
-//            if (interstitial.isReady) {
-//                interstitial.present(fromRootViewController: self)
-//                interstitial = createAd()
-//            }
+            if (interstitial.isReady) {
+                interstitial.present(fromRootViewController: self)
+                interstitial = createAd()
+            }
             
             let vc = self.storyboard?.instantiateViewController(identifier: "ResultsViewController") as! ResultsViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    // MARK:- AdMob Functions
+    func createAd() -> GADInterstitial {
+        let inter = GADInterstitial(adUnitID: interstitialAdUnitID)
+        inter.delegate = self
+        inter.load(GADRequest())
+        return inter
     }
     
     // MARK:- Button Actions

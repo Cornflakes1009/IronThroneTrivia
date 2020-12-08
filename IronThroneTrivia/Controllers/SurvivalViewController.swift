@@ -142,7 +142,6 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
     let readyButton: GameButton = {
         let button = GameButton(title: "Ready?")
         button.addTarget(self, action: #selector(readyTapped), for: .touchUpInside)
-        button.titleLabel?.font = nextQuestionFont
         return button
     }()
 
@@ -179,7 +178,6 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
     let extraLifeButton: GameButton = {
         let button = GameButton(title: "Extra Life?")
         button.addTarget(self, action: #selector(extraLifeTapped), for: .touchUpInside)
-        button.titleLabel?.font = nextQuestionFont
         return button
     }()
     
@@ -244,6 +242,9 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
 
         setupViews()
         
+        numOfGamesPlayed += 1
+        defaults.setValue(numOfGamesPlayed, forKey: "numOfGamesPlayed")
+        
         // interstitial ad
         interstitial = GADInterstitial(adUnitID: interstitialAdUnitID)
         let request = GADRequest()
@@ -251,6 +252,23 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         
         // rewarded ad
         createAndLoadRewardedAd()
+        
+        // handling the app moving to the background and foreground
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc func appMovedToBackground() {
+        if time < 15 {
+            timer.invalidate()
+        }
+    }
+    
+    @objc func appMovedToForeground() {
+        if time < 15 {
+            startTimer()
+        }
     }
     
     // MARK:- Setup Views
@@ -306,7 +324,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
     // MARK:- Explanation View
     func addExplanationView() {
         view.addSubview(explanationView)
-        explanationView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
+        explanationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
         UIView.animate(withDuration: 1) {
             self.explanationView.alpha = 1
         }
@@ -327,7 +345,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
     func presentBackConfirmationsView() {
         backButton.isEnabled = false
         view.addSubview(exitConfirmationView)
-        exitConfirmationView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
+        exitConfirmationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
         
         exitConfirmationView.addSubview(popUpBackground)
         popUpBackground.anchor(top: exitConfirmationView.topAnchor, left: exitConfirmationView.leftAnchor, bottom: exitConfirmationView.bottomAnchor, right: exitConfirmationView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -373,7 +391,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
     func showCorrectAnswer() {
         backButton.isEnabled = false
         view.addSubview(correctAnswerView)
-        correctAnswerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
+        correctAnswerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
         UIView.animate(withDuration: 0.5) {
             self.correctAnswerView.alpha = popUpViewAlpha
         }
@@ -402,7 +420,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         popUpBackground.centerYAnchor.constraint(equalTo: correctAnswerView.centerYAnchor).isActive = true
         
         correctAnswerView.addSubview(correctAnswerTopLabel)
-        correctAnswerTopLabel.anchor(top: correctAnswerView.topAnchor, left: correctAnswerView.leftAnchor, bottom: nil, right: correctAnswerView.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
+        correctAnswerTopLabel.anchor(top: extraLifeExitButton.bottomAnchor, left: correctAnswerView.leftAnchor, bottom: nil, right: correctAnswerView.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
         
         correctAnswerView.addSubview(correctAnswerLabel)
         correctAnswerLabel.anchor(top: nil, left: correctAnswerView.leftAnchor, bottom: nil, right: correctAnswerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -435,7 +453,11 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
     
     // MARK:- Check if Answer Tapped is Correct
     func checkIfCorrect(buttonNumber: Int) {
+        historicQuestions += 1
+        defaults.setValue(historicQuestions, forKey: "totalNumberOfQuestions")
         if buttonNumber == allQuestionList[questionIndex].answer {
+            historicAnswered += 1
+            defaults.setValue(historicAnswered, forKey: "totalNumberOfCorrect")
             correctlyAnswered += 1
             time = 15
             timer.invalidate()
@@ -448,6 +470,15 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         if questionIndex + 1 != allQuestionList.count {
             questionIndex += 1
             updateUI()
+        } else {
+            timer.invalidate()
+            if (interstitial.isReady) {
+                interstitial.present(fromRootViewController: self)
+                interstitial = createAd()
+            }
+            
+            let vc = self.storyboard?.instantiateViewController(identifier: "SurvivalResultsViewController") as! SurvivalResultsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -464,12 +495,8 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         if(time == 0) {
             timer.invalidate()
             showCorrectAnswer()
-//            let vc = self.storyboard?.instantiateViewController(identifier: "SurvivalResultsViewController") as! SurvivalResultsViewController
-//            self.navigationController?.pushViewController(vc, animated: true)
-            
         }
     }
-    
 
     // MARK:- Button Actions
     @objc func readyTapped() {
@@ -522,6 +549,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
     }
     
     @objc func confirmTapped() {
+        timer.invalidate()
         self.navigationController?.popViewController(animated: true)
         resetGame()
         vibrate()

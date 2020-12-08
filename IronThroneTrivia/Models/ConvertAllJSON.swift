@@ -40,15 +40,12 @@ func convertAllJSON(jsonToRead: String) {
             questionArr.append(qa)
         } // end of the for in loop
         
+        // randomly appending to array
         for _ in questionArr {
             let randomNum = (Int(arc4random_uniform(UInt32(questionArr.count))))
             allQuestionList.append(questionArr[randomNum])
             questionArr.remove(at: randomNum)
         }
-        // randomizing the order in which the questions will appear
-//        let randomNum = (Int(arc4random_uniform(UInt32(questionArr.count))))
-//        allQuestionList.append(questionArr[randomNum])
-//        questionArr.remove(at: randomNum)
         
     } catch {
         print(error)

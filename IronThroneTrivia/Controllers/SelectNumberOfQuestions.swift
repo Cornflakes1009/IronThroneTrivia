@@ -162,6 +162,4 @@ class SelectNumberOfQuestions: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
         vibrate()
     }
-    
 }
-

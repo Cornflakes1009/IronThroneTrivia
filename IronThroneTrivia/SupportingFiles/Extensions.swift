@@ -51,7 +51,7 @@ extension UIView {
     }
 }
 
-// MARK: Remove Constraints
+// MARK:- Remove Constraints
 // Extension for removing all constraints of the specified view
 extension UIView {
     

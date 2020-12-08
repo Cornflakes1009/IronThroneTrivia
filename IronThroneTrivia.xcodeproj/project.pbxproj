@@ -25,7 +25,6 @@
 		D99F66C9255FBF42000EE745 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99F66C8255FBF42000EE745 /* Question.swift */; };
 		D99F66D4255FC326000EE745 /* gameOfThrones.json in Resources */ = {isa = PBXBuildFile; fileRef = D99F66D3255FC326000EE745 /* gameOfThrones.json */; };
 		D9B8A20F256CBFE100945CED /* cinzel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B8A20E256CBFE100945CED /* cinzel.ttf */; };
-		D9B8A212256E561D00945CED /* exit_game_views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A211256E561D00945CED /* exit_game_views.swift */; };
 		D9B8A2162571DA5600945CED /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2152571DA5600945CED /* CreditsViewController.swift */; };
 		D9B8A2192571DAB800945CED /* SurvivalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2182571DAB800945CED /* SurvivalViewController.swift */; };
 		D9B8A21C2571DC7600945CED /* BlitzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A21B2571DC7600945CED /* BlitzViewController.swift */; };
@@ -36,6 +35,7 @@
 		D9B8A22B2571DE0C00945CED /* BlitzResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A22A2571DE0C00945CED /* BlitzResultsViewController.swift */; };
 		D9B8A25825734ED900945CED /* Cormorant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B8A25725734ED900945CED /* Cormorant-Regular.ttf */; };
 		D9B8A25C25738CDB00945CED /* ConvertAllJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A25B25738CDB00945CED /* ConvertAllJSON.swift */; };
+		D9E61CDB257DCF160064C477 /* ConfigureVaryingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E61CDA257DCF160064C477 /* ConfigureVaryingViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +60,6 @@
 		D99F66C8255FBF42000EE745 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		D99F66D3255FC326000EE745 /* gameOfThrones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gameOfThrones.json; sourceTree = SOURCE_ROOT; };
 		D9B8A20E256CBFE100945CED /* cinzel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = cinzel.ttf; sourceTree = SOURCE_ROOT; };
-		D9B8A211256E561D00945CED /* exit_game_views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exit_game_views.swift; sourceTree = "<group>"; };
 		D9B8A2152571DA5600945CED /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		D9B8A2182571DAB800945CED /* SurvivalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalViewController.swift; sourceTree = "<group>"; };
 		D9B8A21B2571DC7600945CED /* BlitzViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlitzViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		D9B8A22A2571DE0C00945CED /* BlitzResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlitzResultsViewController.swift; sourceTree = "<group>"; };
 		D9B8A25725734ED900945CED /* Cormorant-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cormorant-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		D9B8A25B25738CDB00945CED /* ConvertAllJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertAllJSON.swift; sourceTree = "<group>"; };
+		D9E61CDA257DCF160064C477 /* ConfigureVaryingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureVaryingViews.swift; sourceTree = "<group>"; };
 		F87EDFE6A4D94B58C1B9F038 /* Pods-IronThroneTrivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronThroneTrivia.release.xcconfig"; path = "Target Support Files/Pods-IronThroneTrivia/Pods-IronThroneTrivia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,7 +139,6 @@
 			children = (
 				D95EA95E2508C66F00B635E4 /* AppDelegate.swift */,
 				D95EA9672508C67200B635E4 /* Assets.xcassets */,
-				D9B8A211256E561D00945CED /* exit_game_views.swift */,
 				D95EA97E2508C8C600B635E4 /* Extensions.swift */,
 				D95EA9732508C6FC00B635E4 /* Globals.swift */,
 				D95EA9692508C67200B635E4 /* LaunchScreen.storyboard */,
@@ -147,6 +146,7 @@
 				D95EA9822508D58D00B635E4 /* Game of Thrones.ttf */,
 				D9B8A20E256CBFE100945CED /* cinzel.ttf */,
 				D95EA9602508C66F00B635E4 /* SceneDelegate.swift */,
+				D9E61CDA257DCF160064C477 /* ConfigureVaryingViews.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -162,18 +162,18 @@
 		D99F66B4255EFC7D000EE745 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D95EA9802508CA6300B635E4 /* QuestionViewController.swift */,
-				D95EA9782508C74600B635E4 /* ResultsViewController.swift */,
-				D95EA9622508C66F00B635E4 /* SelectNumberOfQuestions.swift */,
 				D992839E256A40E40033AB9A /* GameModeSelectionViewController.swift */,
 				D9B8A2152571DA5600945CED /* CreditsViewController.swift */,
+				D95EA9622508C66F00B635E4 /* SelectNumberOfQuestions.swift */,
+				D95EA9802508CA6300B635E4 /* QuestionViewController.swift */,
+				D95EA9782508C74600B635E4 /* ResultsViewController.swift */,
 				D9B8A2182571DAB800945CED /* SurvivalViewController.swift */,
+				D9B8A2242571DDE600945CED /* SurvivalResultsViewController.swift */,
 				D9B8A21B2571DC7600945CED /* BlitzViewController.swift */,
+				D9B8A22A2571DE0C00945CED /* BlitzResultsViewController.swift */,
 				D9B8A21E2571DC8F00945CED /* HangmanSelectionViewController.swift */,
 				D9B8A2212571DD6400945CED /* HangmanPlayViewController.swift */,
-				D9B8A2242571DDE600945CED /* SurvivalResultsViewController.swift */,
 				D9B8A2272571DDF600945CED /* HangmanResultsViewController.swift */,
-				D9B8A22A2571DE0C00945CED /* BlitzResultsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -324,11 +324,11 @@
 				D9B8A2252571DDE600945CED /* SurvivalResultsViewController.swift in Sources */,
 				D992839F256A40E40033AB9A /* GameModeSelectionViewController.swift in Sources */,
 				D9B8A2192571DAB800945CED /* SurvivalViewController.swift in Sources */,
-				D9B8A212256E561D00945CED /* exit_game_views.swift in Sources */,
 				D95EA9792508C74600B635E4 /* ResultsViewController.swift in Sources */,
 				D95EA97B2508C77800B635E4 /* ClassicConvertJSON.swift in Sources */,
 				D99283A2256A43EB0033AB9A /* GameButton.swift in Sources */,
 				D95EA9812508CA6300B635E4 /* QuestionViewController.swift in Sources */,
+				D9E61CDB257DCF160064C477 /* ConfigureVaryingViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -460,7 +460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

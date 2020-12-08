@@ -21,7 +21,7 @@ class SurvivalResultsViewController: UIViewController {
     let gameOverLabel: UILabel = {
         let label = UILabel()
         label.text = "Game Over"
-        label.font = UIFont(name: "Game of Thrones", size: 35)
+        label.font = gameLabelFont
         label.textAlignment = .center
         
         label.textColor = logoColor
@@ -65,7 +65,7 @@ class SurvivalResultsViewController: UIViewController {
         scoreLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         view.addSubview(restartButton)
-        restartButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -20, paddingRight: 20, width: 0, height: buttonHeight)
+        restartButton.anchor(top: nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -20, paddingRight: 20, width: 0, height: buttonHeight)
     }
     
     @objc func restartTapped() {

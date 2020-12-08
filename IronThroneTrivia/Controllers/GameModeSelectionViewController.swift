@@ -21,7 +21,7 @@ class GameModeSelectionViewController: UIViewController {
     let gameLabel: UILabel = {
         let label = UILabel()
         label.text = "Iron Throne"
-        label.font = UIFont(name: "Game of Thrones", size: 35)
+        label.font = gameLabelFont
         label.textAlignment = .center
         label.textColor = logoColor
         return label
@@ -30,7 +30,7 @@ class GameModeSelectionViewController: UIViewController {
     let subGameLabel: UILabel = {
         let label = UILabel()
         label.text = "Trivia"
-        label.font = UIFont(name: "Game of Thrones", size: 25)
+        label.font = subGameLabelFont
         label.textAlignment = .center
         label.textColor = logoColor
         return label
@@ -39,7 +39,7 @@ class GameModeSelectionViewController: UIViewController {
     let disclaimerLabel: UILabel = {
         let label = UILabel()
         label.text = "- TV Series Trivia -"
-        label.font = UIFont(name: "Game of Thrones", size: 15)
+        label.font = disclaimerLabelFont
         label.textAlignment = .center
         label.textColor = subLogoColor
         return label
@@ -71,7 +71,7 @@ class GameModeSelectionViewController: UIViewController {
     
     let creditsButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Credits & Scores", for: .normal)
+        button.setTitle("Credits, Scores, & More", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = instructionLabelFont
         button.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -82,11 +82,12 @@ class GameModeSelectionViewController: UIViewController {
         return button
     }()
     
-    
 // MARK:- View Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let screenHeight = UIScreen.main.bounds.size.height
+        varyForScreenSizes(screenHeight: screenHeight)
+        
         setupViews()
     }
     
@@ -97,6 +98,14 @@ class GameModeSelectionViewController: UIViewController {
     
 // MARK:- Setting up views
     func setupViews() {
+        gameLabel.font = gameLabelFont
+        subGameLabel.font = subGameLabelFont
+        classicButton.titleLabel?.font = buttonFont
+        survivalButton.titleLabel?.font = buttonFont
+        blitzButton.titleLabel?.font = buttonFont
+        disclaimerLabel.font = disclaimerLabelFont
+        creditsButton.titleLabel?.font = instructionLabelFont
+        
         let screenHeight = UIScreen.main.bounds.size.height
         buttonHeight = screenHeight / 10
         view.addSubview(background)
@@ -114,19 +123,19 @@ class GameModeSelectionViewController: UIViewController {
         creditsButton.anchor(top: stackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         view.addSubview(disclaimerLabel)
-        disclaimerLabel.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
+        disclaimerLabel.anchor(top: nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
     }
     
     var stackView = UIStackView()
     // MARK: Setting Up the StackView
     func setupStackView() {
-        stackView = UIStackView(arrangedSubviews: [classicButton, survivalButton, blitzButton, hangmanButton])
+        stackView = UIStackView(arrangedSubviews: [classicButton, survivalButton, blitzButton])
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
         stackView.spacing = 10
         
         // calculating based on the number of buttons in stack view and adding 20 padding
-        let stackViewHeight = CGFloat(Int(buttonHeight) * stackView.arrangedSubviews.count + 40)
+        let stackViewHeight = CGFloat(Int(buttonHeight) * stackView.arrangedSubviews.count + 30)
         
         view.addSubview(stackView)
         stackView.anchor(top: subGameLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: stackViewHeight)
@@ -160,6 +169,12 @@ class GameModeSelectionViewController: UIViewController {
     }
     
     @objc func creditsTapped() {
+        vibrate()
+        let vc = self.storyboard?.instantiateViewController(identifier: "CreditsViewController") as! CreditsViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func scoresTapped() {
         vibrate()
         let vc = self.storyboard?.instantiateViewController(identifier: "CreditsViewController") as! CreditsViewController
         self.navigationController?.pushViewController(vc, animated: true)

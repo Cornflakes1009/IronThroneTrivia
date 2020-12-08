@@ -17,7 +17,6 @@ class GameButton: UIButton {
         super.init(frame: .zero)
         alpha = 0.8
         setTitle(title, for: .normal)
-        //backgroundColor = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 0.01)
         setTitleColor(UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 0.01), for: .normal)
         layer.cornerRadius = 5
         layer.borderWidth = 2

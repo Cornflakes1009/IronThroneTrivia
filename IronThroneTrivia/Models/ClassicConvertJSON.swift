@@ -41,7 +41,7 @@ func convertJSON(jsonToRead: String, numberOfQuestions: Int) {
             
         } // end of the for in loop
         
-        // picking 15 questions per team
+        // randomly appending questions to array
         for _ in 1...numberOfQuestions {
             let randomNum = (Int(arc4random_uniform(UInt32(questionArr.count))))
             questionList.append(questionArr[randomNum])
