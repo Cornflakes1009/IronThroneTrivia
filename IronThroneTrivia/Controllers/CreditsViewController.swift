@@ -181,6 +181,7 @@ class CreditsViewController: UIViewController, MFMailComposeViewControllerDelega
     }
     
     @objc func emailTapped() {
+        vibrate()
         sendEmail()
     }
 }
