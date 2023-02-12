@@ -35,7 +35,7 @@ enum Devices: CGFloat {
     case airTwoHeight               =     1024
 }
 
-func varyForScreenSizes(screenHeight: CGFloat) {
+public func varyForScreenSizes(screenHeight: CGFloat) {
     switch screenHeight {
     case Devices.twelveProMaxHeight.rawValue:
         gameLabelFont           =   UIFont(name: "Game of Thrones", size: 45)

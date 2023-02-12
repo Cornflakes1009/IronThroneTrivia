@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Question {
+struct Question {
     let category: String
     let question: String
     let answer: Int
@@ -17,13 +17,13 @@ class Question {
     let optionTwo: String
     let optionThree: String
     
-    init(category: String, question: String, answer: Int, optionZero: String, optionOne: String, optionTwo: String, optionThree: String) {
-        self.category = category
-        self.question = question
-        self.answer = answer
-        self.optionZero = optionZero
-        self.optionOne = optionOne
-        self.optionTwo = optionTwo
-        self.optionThree = optionThree
-    }
+//    init(category: String, question: String, answer: Int, optionZero: String, optionOne: String, optionTwo: String, optionThree: String) {
+//        self.category = category
+//        self.question = question
+//        self.answer = answer
+//        self.optionZero = optionZero
+//        self.optionOne = optionOne
+//        self.optionTwo = optionTwo
+//        self.optionThree = optionThree
+//    }
 }

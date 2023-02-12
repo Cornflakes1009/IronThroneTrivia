@@ -433,7 +433,7 @@
     },
     {
       "category": "Game of Thrones",
-      "question": "Who is Sansa Stark's dancing instructor? ",
+      "question": "Who is Arya Stark's dancing instructor? ",
       "answer": 1,
       "0": "Old Nan",
       "1": "Syrio Forel",
@@ -1005,7 +1005,7 @@
       "0": "Robin Arryn",
       "1": "Robb Stark",
       "2": "Prince Doran Martell",
-      "3": "Prince Doran Martell"
+      "3": "Theon Greyjoy"
     },
     {
       "category": "Game of Thrones",
@@ -1181,7 +1181,7 @@
     {
       "category": "Game of Thrones",
       "question": "To whom does Ygritte say I've got you a present?",
-      "answer": 2,
+      "answer": 1,
       "0": "Jeor Mormont",
       "1": "Lord Bones",
       "2": "Mance Rayder",
@@ -2017,7 +2017,7 @@
     },
     {
       "category": "Game of Thrones",
-      "question": "Who steals Gregor Clegane's money and leaves him to die?",
+      "question": "Who steals Sandor Clegane's money and leaves him to die?",
       "answer": 0,
       "0": "Arya Stark",
       "1": "Beric Dondarrion",
@@ -2282,7 +2282,7 @@
       "answer": 2,
       "0": "Ser Jorah Mormont",
       "1": "Daario",
-      "2": "Dogon",
+      "2": "Drogon",
       "3": "Grey Worm"
     },
     {

@@ -11,7 +11,7 @@ import UIKit
 
 class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewardedAdDelegate {
     
-    // MARK:- handle the completion of watching rewarded ad
+    // MARK: - handle the completion of watching rewarded ad
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
         UIView.animate(withDuration: 1) {
             self.correctAnswerView.alpha = 0
@@ -24,12 +24,12 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         createAndLoadRewardedAd()
     }
     
-    var timer = Timer()
-    var time: Double = 15
-    var interstitial: GADInterstitial!
-    var rewardedAd: GADRewardedAd?
+    private var timer = Timer()
+    private var time: Double = 15
+    private var interstitial: GADInterstitial!
+    private var rewardedAd: GADRewardedAd?
     
-    let background: UIImageView = {
+    private let background: UIImageView = {
         let image = UIImageView()
         image.image = backgroundImage
         image.contentMode = .scaleAspectFill
@@ -37,7 +37,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return image
     }()
     
-    let backButton: UIButton = {
+    private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
         button.isEnabled = true
         button.tintColor = whiteColor
@@ -46,7 +46,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return button
     }()
     
-    let questionLabel: UILabel = {
+    private let questionLabel: UILabel = {
         let label = UILabel()
         label.text = ""
         label.font = instructionLabelFont
@@ -56,7 +56,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return label
     }()
     
-    let timerLabel: UILabel = {
+    private let timerLabel: UILabel = {
         let label = UILabel()
         label.text = "15.0"
         label.font = instructionLabelFont
@@ -65,7 +65,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return label
     }()
     
-    let questionNumberLabel: UILabel = {
+    private let questionNumberLabel: UILabel = {
         let label = UILabel()
         label.font = instructionLabelFont
         label.textAlignment = .center
@@ -73,7 +73,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return label
     }()
     
-    let popUpBackground: UIImageView = {
+    private let popUpBackground: UIImageView = {
         let image = UIImageView()
         image.image = popUpBackgroundImage
         image.contentMode = .scaleAspectFit
@@ -82,45 +82,45 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return image
     }()
     
-    // MARK:- Banner View
-    let bannerView: GADBannerView = {
+    // MARK: - Banner View
+    private let bannerView: GADBannerView = {
         let banner = GADBannerView()
         banner.adUnitID = adUnitId
         banner.load(GADRequest())
         return banner
     }()
     
-    // MARK:- Answer Buttons
-    let optionZeroButton: GameButton = {
+    // MARK: - Answer Buttons
+    private lazy var optionZeroButton: GameButton = {
         let button = GameButton(title: "Sacrifice to the Lord of the Light")
         button.titleLabel?.font = answerButtonFont
         button.addTarget(self, action: #selector(answerTapped(_:)), for: .touchUpInside)
         return button
     }()
     
-    let optionOneButton: GameButton = {
+    private lazy var optionOneButton: GameButton = {
         let button = GameButton(title: "")
         button.titleLabel?.font = answerButtonFont
         button.addTarget(self, action: #selector(answerTapped(_:)), for: .touchUpInside)
         return button
     }()
     
-    let optionTwoButton: GameButton = {
+    private lazy var optionTwoButton: GameButton = {
         let button = GameButton(title: "")
         button.titleLabel?.font = answerButtonFont
         button.addTarget(self, action: #selector(answerTapped(_:)), for: .touchUpInside)
         return button
     }()
     
-    let optionThreeButton: GameButton = {
+    private lazy var optionThreeButton: GameButton = {
         let button = GameButton(title: "")
         button.titleLabel?.font = answerButtonFont
         button.addTarget(self, action: #selector(answerTapped(_:)), for: .touchUpInside)
         return button
     }()
     
-    // MARK:- Correct Answer View
-    let explanationView: UIView = {
+    // MARK: - Correct Answer View
+    private let explanationView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         view.layer.cornerRadius = 10
@@ -129,7 +129,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return view
     }()
     
-    let explanationTopLabel: UILabel = {
+    private let explanationTopLabel: UILabel = {
         let label = UILabel()
         label.text = "Answer questions for as long as you can. Get one wrong and the game is over."
         label.font = instructionLabelFont
@@ -139,14 +139,14 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return label
     }()
     
-    let readyButton: GameButton = {
+    private lazy var readyButton: GameButton = {
         let button = GameButton(title: "Ready?")
         button.addTarget(self, action: #selector(readyTapped), for: .touchUpInside)
         return button
     }()
 
-    // MARK:- Correct Answer View
-    let correctAnswerView: UIView = {
+    // MARK: - Correct Answer View
+    private let correctAnswerView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         view.layer.cornerRadius = 10
@@ -155,7 +155,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return view
     }()
     
-    let correctAnswerTopLabel: UILabel = {
+    private let correctAnswerTopLabel: UILabel = {
         let label = UILabel()
         label.text = "Sorry, the correct answer was:"
         label.font = instructionLabelFont
@@ -165,7 +165,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return label
     }()
     
-    let correctAnswerLabel: UILabel = {
+    private let correctAnswerLabel: UILabel = {
         let label = UILabel()
         label.text = "\(allQuestionList[questionIndex].answer)"
         label.font = instructionLabelFont
@@ -175,13 +175,13 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return label
     }()
     
-    let extraLifeButton: GameButton = {
+    private lazy var extraLifeButton: GameButton = {
         let button = GameButton(title: "Extra Life?")
         button.addTarget(self, action: #selector(extraLifeTapped), for: .touchUpInside)
         return button
     }()
     
-    let extraLifeExitButton: UIButton = {
+    private lazy var extraLifeExitButton: UIButton = {
         let button = UIButton(type: .system)
         button.isEnabled = true
         button.tintColor = whiteColor
@@ -190,8 +190,8 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return button
     }()
     
-    // MARK:- Exit Confirmation
-    let exitConfirmationView: UIView = {
+    // MARK: - Exit Confirmation
+    private let exitConfirmationView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         view.layer.cornerRadius = 10
@@ -200,7 +200,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return view
     }()
     
-    let exitConfirmationLabel: UILabel = {
+    private let exitConfirmationLabel: UILabel = {
         let label = UILabel()
         label.text = "Are you sure you wish to exit? This will exit the game and you'll lose your current progress"
         label.font = instructionLabelFont
@@ -210,7 +210,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return label
     }()
     
-    let exitGameCancel: UIButton = {
+    private lazy var exitGameCancel: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(whiteColor, for: .normal)
@@ -223,7 +223,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return button
     }()
     
-    let exitGameConfirm: UIButton = {
+    private lazy var exitGameConfirm: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Exit", for: .normal)
         button.setTitleColor(whiteColor, for: .normal)
@@ -236,7 +236,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         return button
     }()
     
-    // MARK:- Lifecycle Methods
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -271,8 +271,8 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         }
     }
     
-    // MARK:- Setup Views
-    func setupViews() {
+    // MARK: - Setup Views
+    private func setupViews() {
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
@@ -306,9 +306,9 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         backButton.isEnabled = false
     }
     
-    // MARK:- StackView
-    var stackView = UIStackView()
-    func setupStackView() {
+    // MARK: - StackView
+    private var stackView = UIStackView()
+    private func setupStackView() {
         stackView = UIStackView(arrangedSubviews: [optionZeroButton, optionOneButton, optionTwoButton, optionThreeButton])
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
@@ -321,8 +321,8 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         stackView.anchor(top: nil, left: view.leftAnchor, bottom: bannerView.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -30, paddingRight: 20, width: 0, height: stackViewHeight)
     }
     
-    // MARK:- Explanation View
-    func addExplanationView() {
+    // MARK: - Explanation View
+    private func addExplanationView() {
         view.addSubview(explanationView)
         explanationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
         UIView.animate(withDuration: 1) {
@@ -341,8 +341,8 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         readyButton.anchor(top: nil, left: explanationView.leftAnchor, bottom: explanationView.bottomAnchor, right: explanationView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -20, paddingRight: 20, width: 0, height: buttonHeight)
     }
     
-    // MARK:- Exit View
-    func presentBackConfirmationsView() {
+    // MARK: - Exit View
+    private func presentBackConfirmationsView() {
         backButton.isEnabled = false
         view.addSubview(exitConfirmationView)
         exitConfirmationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
@@ -362,9 +362,9 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         }
     }
     
-    // MARK:- Exit StackView
-    var exitStackView = UIStackView()
-    func setupExitStackView() {
+    // MARK: - Exit StackView
+    private var exitStackView = UIStackView()
+    private func setupExitStackView() {
         exitStackView = UIStackView(arrangedSubviews: [exitGameCancel, exitGameConfirm])
         let exitStackViewWidth = UIScreen.main.bounds.size.width - 80
         exitStackView.distribution = .fillEqually
@@ -377,7 +377,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         exitStackView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: exitStackViewWidth, height: buttonHeight)
     }
     
-    func updateUI() {
+    private func updateUI() {
         questionLabel.text = "\(allQuestionList[questionIndex].question)"
         optionZeroButton.setTitle(allQuestionList[questionIndex].optionZero, for: .normal)
         optionOneButton.setTitle(allQuestionList[questionIndex].optionOne, for: .normal)
@@ -387,8 +387,8 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         questionNumberLabel.text = "\(questionIndex + 1)/\(allQuestionList.count)"
     }
     
-    // MARK:- Show Correct Answer View
-    func showCorrectAnswer() {
+    // MARK: - Show Correct Answer View
+    private func showCorrectAnswer() {
         backButton.isEnabled = false
         view.addSubview(correctAnswerView)
         correctAnswerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
@@ -432,15 +432,15 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         extraLifeButton.anchor(top: nil, left: correctAnswerView.leftAnchor, bottom: correctAnswerView.bottomAnchor, right: correctAnswerView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -20, paddingRight: 20, width: 0, height: buttonHeight)
     }
     
-    // MARK:- AdMob Functions
-    func createAd() -> GADInterstitial {
+    // MARK: - AdMob Functions
+    private func createAd() -> GADInterstitial {
         let inter = GADInterstitial(adUnitID: interstitialAdUnitID)
         inter.delegate = self
         inter.load(GADRequest())
         return inter
     }
     
-    func createAndLoadRewardedAd() {
+    private func createAndLoadRewardedAd() {
       rewardedAd = GADRewardedAd(adUnitID: rewardedAdUnitID)
       rewardedAd?.load(GADRequest()) { error in
         if let error = error {
@@ -451,8 +451,8 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
       }
     }
     
-    // MARK:- Check if Answer Tapped is Correct
-    func checkIfCorrect(buttonNumber: Int) {
+    // MARK: - Check if Answer Tapped is Correct
+    private func checkIfCorrect(buttonNumber: Int) {
         historicQuestions += 1
         defaults.setValue(historicQuestions, forKey: "totalNumberOfQuestions")
         if buttonNumber == allQuestionList[questionIndex].answer {
@@ -482,8 +482,8 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         }
     }
     
-    // MARK:- Timer
-    func startTimer() {
+    // MARK: - Timer
+    private func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: (#selector(SurvivalViewController.updateTimer)), userInfo: nil, repeats: true)
     }
     
@@ -498,7 +498,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         }
     }
 
-    // MARK:- Button Actions
+    // MARK: - Button Actions
     @objc func readyTapped() {
         // starting the game timer
         startTimer()

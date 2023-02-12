@@ -11,7 +11,9 @@ import UIKit
 
 class SelectNumberOfQuestions: UIViewController {
     
-    let background: UIImageView = {
+    public var jsonString = ""
+    
+    private let background: UIImageView = {
         let image = UIImageView()
         image.image = backgroundImage
         image.contentMode = .scaleAspectFill
@@ -19,7 +21,7 @@ class SelectNumberOfQuestions: UIViewController {
         return image
     }()
     
-    let backButton: UIButton = {
+    private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
         button.isEnabled = true
         button.tintColor = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 1)
@@ -28,50 +30,50 @@ class SelectNumberOfQuestions: UIViewController {
         return button
     }()
     
-    let disclaimerLabel: UILabel = {
+    private let disclaimerLabel: UILabel = {
         let label = UILabel()
         label.font = instructionLabelFont
-        label.text = "Note: All trivia is from the TV series"
+        label.text = "*All trivia is from the TV series*"
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = whiteColor
         return label
     }()
     
-    // MARK:- Banner View
-    let bannerView: GADBannerView = {
+    // MARK: - Banner View
+    private let bannerView: GADBannerView = {
         let banner = GADBannerView()
         banner.adUnitID = adUnitId
         banner.load(GADRequest())
         return banner
     }()
     
-    // MARK:- Selection Buttons
-    let fifteenButton: GameButton = {
+    // MARK: - Selection Buttons
+    private lazy var fifteenButton: GameButton = {
         let button = GameButton(title: "15 Questions")
         button.addTarget(self, action: #selector(fifteenTapped), for: .touchUpInside)
         return button
     }()
     
-    let twentyFiveButton: GameButton = {
+    private lazy var twentyFiveButton: GameButton = {
         let button = GameButton(title: "25 Questions")
         button.addTarget(self, action: #selector(twentyFiveTapped), for: .touchUpInside)
         return button
     }()
     
-    let fiftyButton: GameButton = {
+    private lazy var fiftyButton: GameButton = {
         let button = GameButton(title: "50 Questions")
         button.addTarget(self, action: #selector(fiftyTapped), for: .touchUpInside)
         return button
     }()
     
-    let oneHundredButton: GameButton = {
+    private lazy var oneHundredButton: GameButton = {
         let button = GameButton(title: "100 Questions")
         button.addTarget(self, action: #selector(oneHundredTapped), for: .touchUpInside)
         return button
     }()
     
-    // MARK:- Lifecycle Methods
+    // MARK: - Lifecycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -88,9 +90,7 @@ class SelectNumberOfQuestions: UIViewController {
         setupViews()
     }
     
-    func setupViews() {
-        let screenHeight = UIScreen.main.bounds.size.height
-        let fifthOfScreenHeight = screenHeight / 5
+    private func setupViews() {
         
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -103,7 +103,7 @@ class SelectNumberOfQuestions: UIViewController {
         backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         view.addSubview(disclaimerLabel)
-        disclaimerLabel.anchor(top: backButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: fifthOfScreenHeight)
+        disclaimerLabel.anchor(top: backButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         bannerView.rootViewController = self
         view.addSubview(bannerView)
@@ -113,9 +113,9 @@ class SelectNumberOfQuestions: UIViewController {
         setupStackView()
     }
     
-    var stackView = UIStackView()
+    private var stackView = UIStackView()
     // MARK: Setting Up the StackView
-    func setupStackView() {
+    private func setupStackView() {
         stackView = UIStackView(arrangedSubviews: [fifteenButton, twentyFiveButton, fiftyButton, oneHundredButton])
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
@@ -126,38 +126,39 @@ class SelectNumberOfQuestions: UIViewController {
         stackViewButtonHeight = CGFloat((stackViewHeight - 40) / 5)
         
         view.addSubview(stackView)
-        stackView.anchor(top: nil, left: view.leftAnchor, bottom: bannerView.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -30, paddingRight: 20, width: 0, height: stackViewHeight)
+        stackView.anchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -30, paddingRight: 20, width: 0, height: stackViewHeight)
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
-    // MARK:- Button Actions
+    // MARK: - Button Actions
     @objc func backTapped() {
         self.navigationController?.popViewController(animated: true)
         vibrate()
     }
     
     @objc func fifteenTapped() {
-        convertJSON(jsonToRead: "gameOfThrones", numberOfQuestions: 15)
+        convertJSON(jsonToRead: jsonString, numberOfQuestions: 15)
         let vc = self.storyboard?.instantiateViewController(identifier: "QuestionViewController") as! QuestionViewController
         self.navigationController?.pushViewController(vc, animated: true)
         vibrate()
     }
     
     @objc func twentyFiveTapped() {
-        convertJSON(jsonToRead: "gameOfThrones", numberOfQuestions: 25)
+        convertJSON(jsonToRead: jsonString, numberOfQuestions: 25)
         let vc = self.storyboard?.instantiateViewController(identifier: "QuestionViewController") as! QuestionViewController
         self.navigationController?.pushViewController(vc, animated: true)
         vibrate()
     }
     
     @objc func fiftyTapped() {
-        convertJSON(jsonToRead: "gameOfThrones", numberOfQuestions: 50)
+        convertJSON(jsonToRead: jsonString, numberOfQuestions: 50)
         let vc = self.storyboard?.instantiateViewController(identifier: "QuestionViewController") as! QuestionViewController
         self.navigationController?.pushViewController(vc, animated: true)
         vibrate()
     }
     
     @objc func oneHundredTapped() {
-        convertJSON(jsonToRead: "gameOfThrones", numberOfQuestions: 100)
+        convertJSON(jsonToRead: jsonString, numberOfQuestions: 100)
         let vc = self.storyboard?.instantiateViewController(identifier: "QuestionViewController") as! QuestionViewController
         self.navigationController?.pushViewController(vc, animated: true)
         vibrate()

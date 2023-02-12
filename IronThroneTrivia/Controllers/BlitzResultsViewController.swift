@@ -41,7 +41,7 @@ class BlitzResultsViewController: UIViewController {
         return label
     }()
     
-    let restartButton: GameButton = {
+    lazy var restartButton: GameButton = {
         let button = GameButton(title: "Restart")
         button.addTarget(self, action: #selector(restartTapped), for: .touchUpInside)
         return button
@@ -50,6 +50,7 @@ class BlitzResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        completedGame = true
     }
     
     func setupUI() {

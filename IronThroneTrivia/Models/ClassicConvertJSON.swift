@@ -8,8 +8,7 @@
 
 import Foundation
 
-func convertJSON(jsonToRead: String, numberOfQuestions: Int) {
-    // clearing out the questionArr before converting JSON
+public func convertJSON(jsonToRead: String, numberOfQuestions: Int) {
     var questionArr = [Question]()
     
     guard let path = Bundle.main.path(forResource: jsonToRead, ofType: "json") else { return }

@@ -10,7 +10,7 @@ import UIKit
 
 class ResultsViewController: UIViewController {
 
-    let background: UIImageView = {
+    private let background: UIImageView = {
         let image = UIImageView()
         image.image = backgroundImage
         image.contentMode = .scaleAspectFill
@@ -18,7 +18,7 @@ class ResultsViewController: UIViewController {
         return image
     }()
     
-    let gameOverLabel: UILabel = {
+    private let gameOverLabel: UILabel = {
         let label = UILabel()
         label.text = "Game Over"
         label.font = gameLabelFont
@@ -28,7 +28,7 @@ class ResultsViewController: UIViewController {
         return label
     }()
     
-    let scoreLabel: UILabel = {
+    private let scoreLabel: UILabel = {
         let label = UILabel()
         label.text = "\(correctlyAnswered)/\(questionList.count)"
         label.textColor = whiteColor
@@ -36,23 +36,26 @@ class ResultsViewController: UIViewController {
         return label
     }()
     
-    let percentageLabel: UILabel = {
+    private let percentageLabel: UILabel = {
         let label = UILabel()
         return label
     }()
     
-    let restartButton: GameButton = {
+    private lazy var restartButton: GameButton = {
         let button = GameButton(title: "Restart")
         button.addTarget(self, action: #selector(restartTapped), for: .touchUpInside)
         return button
     }()
     
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        completedGame = true
     }
     
-    func setupUI() {
+    // MARK: - Setup UI
+    private func setupUI() {
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         

@@ -7,12 +7,28 @@
 //
 import GoogleMobileAds
 import UIKit
+import AVFoundation
+
+var backgroundMusic: AVAudioPlayer?
+
+let path = Bundle.main.path(forResource: "lord-of-war.mp3", ofType:nil)!
+let url = URL(fileURLWithPath: path)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+        // MARK: - Audio
+        do {
+            backgroundMusic = try AVAudioPlayer(contentsOf: url)
+            backgroundMusic?.numberOfLoops = -1
+            backgroundMusic?.play()
+        } catch {
+            // couldn't load file :(
+            print("failed")
+        }
         return true
     }
 

@@ -10,7 +10,7 @@
 import UIKit
 import AVFoundation
 
-// MARK:- RGB
+// MARK: - RGB
 // Simplifying UIColor.rgb. Removes the need to /255 and alpha value.
 extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
@@ -18,7 +18,7 @@ extension UIColor {
     }
 }
 
-// MARK:- Add Constraints
+// MARK: - Add Constraints
 // Extension for simplifying the adding of constraints
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat) {
@@ -51,7 +51,7 @@ extension UIView {
     }
 }
 
-// MARK:- Remove Constraints
+// MARK: - Remove Constraints
 // Extension for removing all constraints of the specified view
 extension UIView {
     
@@ -78,7 +78,7 @@ extension UIView {
     }
 }
 
-// MARK:- Nav Bar Height
+// MARK: - Nav Bar Height
 // Extension for getting the navigation bar height
 extension UIViewController {
     
@@ -92,7 +92,7 @@ extension UIViewController {
     }
 }
 
-// MARK:- Done Button on Keyboard
+// MARK: - Done Button on Keyboard
 // Add Done Button
 extension UITextField {
     
@@ -158,7 +158,7 @@ extension UITextView {
     }
 }
 
-// MARK:- Make Vibration
+// MARK: - Make Vibration
 /** Use UIDevice.vibrate() to trigger vibration
  */
 extension UIDevice {
@@ -187,7 +187,7 @@ extension String
     }
 }
 
-// MARK:- Button Initializer
+// MARK: - Button Initializer
 extension UIButton {
     convenience public init(title: String, titleColor: UIColor, font: UIFont = .systemFont(ofSize: 14), backgroundColor: UIColor = .clear, target: Any? = nil, action: Selector? = nil) {
         self.init(type: .system)

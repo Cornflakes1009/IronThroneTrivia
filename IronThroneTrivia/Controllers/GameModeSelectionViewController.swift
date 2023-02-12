@@ -10,7 +10,9 @@ import UIKit
 
 class GameModeSelectionViewController: UIViewController {
 
-    let background: UIImageView = {
+    public var jsonString = ""
+    
+    private let background: UIImageView = {
         let image = UIImageView()
         image.image = backgroundImage
         image.contentMode = .scaleAspectFill
@@ -18,25 +20,26 @@ class GameModeSelectionViewController: UIViewController {
         return image
     }()
     
-    let gameLabel: UILabel = {
+    private lazy var backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.isEnabled = true
+        button.tintColor = whiteColor
+        button.setTitleColor(whiteColor, for: .normal)
+        button.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private let inststructionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Iron Throne"
-        label.font = gameLabelFont
+        label.font = instructionLabelFont
+        label.text = "Select a Game Type"
+        label.numberOfLines = 0
         label.textAlignment = .center
-        label.textColor = logoColor
+        label.textColor = whiteColor
         return label
     }()
     
-    let subGameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Trivia"
-        label.font = subGameLabelFont
-        label.textAlignment = .center
-        label.textColor = logoColor
-        return label
-    }()
-    
-    let disclaimerLabel: UILabel = {
+    private let disclaimerLabel: UILabel = {
         let label = UILabel()
         label.text = "- TV Series Trivia -"
         label.font = disclaimerLabelFont
@@ -45,44 +48,31 @@ class GameModeSelectionViewController: UIViewController {
         return label
     }()
     
-    let classicButton: GameButton = {
+    private lazy var classicButton: GameButton = {
         let button = GameButton(title: "Classic")
         button.addTarget(self, action: #selector(classicTapped), for: .touchUpInside)
         return button
     }()
     
-    let survivalButton: GameButton = {
+    private lazy var survivalButton: GameButton = {
         let button = GameButton(title: "Survival")
         button.addTarget(self, action: #selector(survivalTapped), for: .touchUpInside)
         return button
     }()
     
-    let blitzButton: GameButton = {
+    private lazy var blitzButton: GameButton = {
         let button = GameButton(title: "Blitz")
         button.addTarget(self, action: #selector(blitzTapped), for: .touchUpInside)
         return button
     }()
     
-    let hangmanButton: GameButton = {
+    private lazy var hangmanButton: GameButton = {
         let button = GameButton(title: "Hangman")
         button.addTarget(self, action: #selector(hangmanTapped), for: .touchUpInside)
         return button
     }()
     
-    let creditsButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Credits, Scores, & More", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = instructionLabelFont
-        button.layer.shadowOffset = CGSize(width: 0, height: 3)
-        button.layer.shadowOpacity = 1.0
-        button.layer.shadowRadius = 10.0
-        button.layer.masksToBounds = false
-        button.addTarget(self, action: #selector(creditsTapped), for: .touchUpInside)
-        return button
-    }()
-    
-// MARK:- View Functions
+// MARK: - View Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         let screenHeight = UIScreen.main.bounds.size.height
@@ -96,39 +86,37 @@ class GameModeSelectionViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-// MARK:- Setting up views
-    func setupViews() {
-        gameLabel.font = gameLabelFont
-        subGameLabel.font = subGameLabelFont
+// MARK: - Setting up views
+    private func setupViews() {
         classicButton.titleLabel?.font = buttonFont
         survivalButton.titleLabel?.font = buttonFont
         blitzButton.titleLabel?.font = buttonFont
         disclaimerLabel.font = disclaimerLabelFont
-        creditsButton.titleLabel?.font = instructionLabelFont
         
         let screenHeight = UIScreen.main.bounds.size.height
         buttonHeight = screenHeight / 10
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        view.addSubview(gameLabel)
-        gameLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 5, paddingBottom: 0, paddingRight: 5, width: 0, height: 0)
+        let backButtonImageConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .light, scale: .large)
+        let backButtonImage = UIImage(systemName: "chevron.left.square", withConfiguration: backButtonImageConfig)
         
-        view.addSubview(subGameLabel)
-        subGameLabel.anchor(top: gameLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 0)
+        backButton.setImage(backButtonImage, for: .normal)
+        view.addSubview(backButton)
+        backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        view.addSubview(inststructionLabel)
+        inststructionLabel.anchor(top: backButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         setupStackView()
-        
-        view.addSubview(creditsButton)
-        creditsButton.anchor(top: stackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         view.addSubview(disclaimerLabel)
         disclaimerLabel.anchor(top: nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
     }
     
-    var stackView = UIStackView()
-    // MARK: Setting Up the StackView
-    func setupStackView() {
+    private var stackView = UIStackView()
+    // MARK: - Setting Up the StackView
+    private func setupStackView() {
         stackView = UIStackView(arrangedSubviews: [classicButton, survivalButton, blitzButton])
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
@@ -138,26 +126,33 @@ class GameModeSelectionViewController: UIViewController {
         let stackViewHeight = CGFloat(Int(buttonHeight) * stackView.arrangedSubviews.count + 30)
         
         view.addSubview(stackView)
-        stackView.anchor(top: subGameLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: stackViewHeight)
+        stackView.anchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: stackViewHeight)
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
-// MARK:- Button Actions
+// MARK: - Button Actions
+    @objc func backTapped() {
+        self.navigationController?.popViewController(animated: true)
+        vibrate()
+    }
+    
     @objc func classicTapped() {
         vibrate()
         let vc = self.storyboard?.instantiateViewController(identifier: "SelectNumberOfQuestions") as! SelectNumberOfQuestions
+        vc.jsonString = jsonString
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func survivalTapped() {
         vibrate()
-        convertAllJSON(jsonToRead: "gameOfThrones")
+        convertAllJSON(jsonToRead: jsonString)
         let vc = self.storyboard?.instantiateViewController(identifier: "SurvivalViewController") as! SurvivalViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func blitzTapped() {
         vibrate()
-        convertAllJSON(jsonToRead: "gameOfThrones")
+        convertAllJSON(jsonToRead: jsonString)
         let vc = self.storyboard?.instantiateViewController(identifier: "BlitzViewController") as! BlitzViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -165,12 +160,6 @@ class GameModeSelectionViewController: UIViewController {
     @objc func hangmanTapped() {
         vibrate()
         let vc = self.storyboard?.instantiateViewController(identifier: "HangmanSelectionViewController") as! HangmanSelectionViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func creditsTapped() {
-        vibrate()
-        let vc = self.storyboard?.instantiateViewController(identifier: "CreditsViewController") as! CreditsViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

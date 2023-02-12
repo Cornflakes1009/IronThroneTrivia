@@ -24,6 +24,7 @@
 		D99283A2256A43EB0033AB9A /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99283A1256A43EB0033AB9A /* GameButton.swift */; };
 		D99F66C9255FBF42000EE745 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99F66C8255FBF42000EE745 /* Question.swift */; };
 		D99F66D4255FC326000EE745 /* gameOfThrones.json in Resources */ = {isa = PBXBuildFile; fileRef = D99F66D3255FC326000EE745 /* gameOfThrones.json */; };
+		D9AA38DA299966F900A07C8D /* lord-of-war.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D9AA38D9299966F900A07C8D /* lord-of-war.mp3 */; };
 		D9B8A20F256CBFE100945CED /* cinzel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B8A20E256CBFE100945CED /* cinzel.ttf */; };
 		D9B8A2162571DA5600945CED /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2152571DA5600945CED /* CreditsViewController.swift */; };
 		D9B8A2192571DAB800945CED /* SurvivalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2182571DAB800945CED /* SurvivalViewController.swift */; };
@@ -36,6 +37,7 @@
 		D9B8A25825734ED900945CED /* Cormorant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B8A25725734ED900945CED /* Cormorant-Regular.ttf */; };
 		D9B8A25C25738CDB00945CED /* ConvertAllJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A25B25738CDB00945CED /* ConvertAllJSON.swift */; };
 		D9E61CDB257DCF160064C477 /* ConfigureVaryingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E61CDA257DCF160064C477 /* ConfigureVaryingViews.swift */; };
+		D9FD152629939E55002F7655 /* ShowSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD152529939E55002F7655 /* ShowSelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,7 @@
 		D99283A1256A43EB0033AB9A /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
 		D99F66C8255FBF42000EE745 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		D99F66D3255FC326000EE745 /* gameOfThrones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gameOfThrones.json; sourceTree = SOURCE_ROOT; };
+		D9AA38D9299966F900A07C8D /* lord-of-war.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "lord-of-war.mp3"; sourceTree = "<group>"; };
 		D9B8A20E256CBFE100945CED /* cinzel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = cinzel.ttf; sourceTree = SOURCE_ROOT; };
 		D9B8A2152571DA5600945CED /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		D9B8A2182571DAB800945CED /* SurvivalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		D9B8A25725734ED900945CED /* Cormorant-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cormorant-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		D9B8A25B25738CDB00945CED /* ConvertAllJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertAllJSON.swift; sourceTree = "<group>"; };
 		D9E61CDA257DCF160064C477 /* ConfigureVaryingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureVaryingViews.swift; sourceTree = "<group>"; };
+		D9FD152529939E55002F7655 /* ShowSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSelectionViewController.swift; sourceTree = "<group>"; };
 		F87EDFE6A4D94B58C1B9F038 /* Pods-IronThroneTrivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronThroneTrivia.release.xcconfig"; path = "Target Support Files/Pods-IronThroneTrivia/Pods-IronThroneTrivia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +151,7 @@
 				D9B8A20E256CBFE100945CED /* cinzel.ttf */,
 				D95EA9602508C66F00B635E4 /* SceneDelegate.swift */,
 				D9E61CDA257DCF160064C477 /* ConfigureVaryingViews.swift */,
+				D9AA38D9299966F900A07C8D /* lord-of-war.mp3 */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 		D99F66B4255EFC7D000EE745 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D9FD152529939E55002F7655 /* ShowSelectionViewController.swift */,
 				D992839E256A40E40033AB9A /* GameModeSelectionViewController.swift */,
 				D9B8A2152571DA5600945CED /* CreditsViewController.swift */,
 				D95EA9622508C66F00B635E4 /* SelectNumberOfQuestions.swift */,
@@ -256,6 +262,7 @@
 				D95EA9682508C67200B635E4 /* Assets.xcassets in Resources */,
 				D95EA9662508C66F00B635E4 /* Main.storyboard in Resources */,
 				D9B8A20F256CBFE100945CED /* cinzel.ttf in Resources */,
+				D9AA38DA299966F900A07C8D /* lord-of-war.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +317,7 @@
 			files = (
 				D95EA9742508C6FC00B635E4 /* Globals.swift in Sources */,
 				D9B8A2162571DA5600945CED /* CreditsViewController.swift in Sources */,
+				D9FD152629939E55002F7655 /* ShowSelectionViewController.swift in Sources */,
 				D95EA97F2508C8C600B635E4 /* Extensions.swift in Sources */,
 				D9B8A22B2571DE0C00945CED /* BlitzResultsViewController.swift in Sources */,
 				D9B8A2222571DD6400945CED /* HangmanPlayViewController.swift in Sources */,
