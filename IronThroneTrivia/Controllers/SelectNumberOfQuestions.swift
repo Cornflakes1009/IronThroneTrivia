@@ -32,7 +32,7 @@ class SelectNumberOfQuestions: UIViewController {
     
     private let disclaimerLabel: UILabel = {
         let label = UILabel()
-        label.font = instructionLabelFont
+        label.font = secondaryLabelFont
         label.text = "*All trivia is from the TV series*"
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -107,7 +107,7 @@ class SelectNumberOfQuestions: UIViewController {
         
         bannerView.rootViewController = self
         view.addSubview(bannerView)
-        bannerView.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: -20, paddingRight: 0, width: 281, height: 50)
+        bannerView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -20, paddingRight: 0, width: 0, height: 50)
         bannerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         setupStackView()
@@ -121,9 +121,8 @@ class SelectNumberOfQuestions: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 10
         
-        let screenHeight = UIScreen.main.bounds.size.height
-        let stackViewHeight = CGFloat(screenHeight / 2)
-        stackViewButtonHeight = CGFloat((stackViewHeight - 40) / 5)
+        let stackViewHeight = CGFloat(SCREEN_HEIGHT / 2)
+        //stackViewButtonHeight = CGFloat((stackViewHeight - 40) / 5)
         
         view.addSubview(stackView)
         stackView.anchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -30, paddingRight: 20, width: 0, height: stackViewHeight)

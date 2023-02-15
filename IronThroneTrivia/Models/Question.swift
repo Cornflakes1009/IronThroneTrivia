@@ -11,7 +11,7 @@ import Foundation
 struct Question {
     let category: String
     let question: String
-    let answer: Int
+    let answer: String
     let optionZero: String
     let optionOne: String
     let optionTwo: String

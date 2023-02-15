@@ -11,7 +11,6 @@ import MessageUI
 
 class CreditsViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
-    private let screenHeight = UIScreen.main.bounds.size.height
     private let percentageAnsweredCorrectly = round(Double(historicAnswered) / Double(historicQuestions) * 100)
     
     private let background: UIImageView = {
@@ -42,7 +41,7 @@ class CreditsViewController: UIViewController, MFMailComposeViewControllerDelega
     
     private let totalNumberOfQuestionsLabel: UILabel = {
         let label = UILabel()
-        label.font = instructionLabelFont
+        label.font = secondaryLabelFont
         label.textColor = whiteColor
         label.text = "Questions Answered: \(historicQuestions)"
         return label
@@ -50,7 +49,7 @@ class CreditsViewController: UIViewController, MFMailComposeViewControllerDelega
     
     private let totalNumberCorrectLabel: UILabel = {
         let label = UILabel()
-        label.font = instructionLabelFont
+        label.font = secondaryLabelFont
         label.textColor = whiteColor
         label.text = "Correctly Answered: \(historicAnswered)"
         return label
@@ -58,14 +57,14 @@ class CreditsViewController: UIViewController, MFMailComposeViewControllerDelega
     
     private let percentageLabel: UILabel = {
         let label = UILabel()
-        label.font = instructionLabelFont
+        label.font = secondaryLabelFont
         label.textColor = whiteColor
         return label
     }()
     
     private let numOfGamesPlayedLabel: UILabel = {
         let label = UILabel()
-        label.font = instructionLabelFont
+        label.font = secondaryLabelFont
         label.textColor = whiteColor
         label.text = "Games Played: \(numOfGamesPlayed)"
         return label
@@ -141,7 +140,7 @@ class CreditsViewController: UIViewController, MFMailComposeViewControllerDelega
         stackView = UIStackView(arrangedSubviews: [totalNumberCorrectLabel, totalNumberOfQuestionsLabel, numOfGamesPlayedLabel, percentageLabel])
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
-        let stackViewHeight = screenHeight * 0.3
+        let stackViewHeight = SCREEN_HEIGHT * 0.3
         
         if percentageAnsweredCorrectly.isNaN {
             percentageLabel.text = "Percent Correct: N/A"

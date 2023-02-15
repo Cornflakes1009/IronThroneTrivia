@@ -31,7 +31,7 @@ class GameModeSelectionViewController: UIViewController {
     
     private let inststructionLabel: UILabel = {
         let label = UILabel()
-        label.font = instructionLabelFont
+        label.font = secondaryLabelFont
         label.text = "Select a Game Type"
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -42,7 +42,7 @@ class GameModeSelectionViewController: UIViewController {
     private let disclaimerLabel: UILabel = {
         let label = UILabel()
         label.text = "- TV Series Trivia -"
-        label.font = disclaimerLabelFont
+        label.font = secondaryLabelFont
         label.textAlignment = .center
         label.textColor = subLogoColor
         return label
@@ -75,9 +75,7 @@ class GameModeSelectionViewController: UIViewController {
 // MARK: - View Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        let screenHeight = UIScreen.main.bounds.size.height
-        varyForScreenSizes(screenHeight: screenHeight)
-        
+        varyForScreenSizes(screenHeight: SCREEN_HEIGHT)
         setupViews()
     }
     
@@ -88,13 +86,12 @@ class GameModeSelectionViewController: UIViewController {
     
 // MARK: - Setting up views
     private func setupViews() {
-        classicButton.titleLabel?.font = buttonFont
-        survivalButton.titleLabel?.font = buttonFont
-        blitzButton.titleLabel?.font = buttonFont
-        disclaimerLabel.font = disclaimerLabelFont
+        classicButton.titleLabel?.font = primaryLabelFont
+        survivalButton.titleLabel?.font = primaryLabelFont
+        blitzButton.titleLabel?.font = primaryLabelFont
+        disclaimerLabel.font = secondaryLabelFont
         
-        let screenHeight = UIScreen.main.bounds.size.height
-        buttonHeight = screenHeight / 10
+        BUTTON_HEIGHT = SCREEN_HEIGHT / 10
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
@@ -123,7 +120,7 @@ class GameModeSelectionViewController: UIViewController {
         stackView.spacing = 10
         
         // calculating based on the number of buttons in stack view and adding 20 padding
-        let stackViewHeight = CGFloat(Int(buttonHeight) * stackView.arrangedSubviews.count + 30)
+        let stackViewHeight = CGFloat(Int(BUTTON_HEIGHT) * stackView.arrangedSubviews.count + 30)
         
         view.addSubview(stackView)
         stackView.anchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: stackViewHeight)
@@ -145,14 +142,15 @@ class GameModeSelectionViewController: UIViewController {
     
     @objc func survivalTapped() {
         vibrate()
-        convertAllJSON(jsonToRead: jsonString)
+        //convertAllJSON(jsonToRead: jsonString)
+        convertJSON(jsonToRead: jsonString)
         let vc = self.storyboard?.instantiateViewController(identifier: "SurvivalViewController") as! SurvivalViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func blitzTapped() {
         vibrate()
-        convertAllJSON(jsonToRead: jsonString)
+        convertJSON(jsonToRead: jsonString)
         let vc = self.storyboard?.instantiateViewController(identifier: "BlitzViewController") as! BlitzViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -160,12 +158,6 @@ class GameModeSelectionViewController: UIViewController {
     @objc func hangmanTapped() {
         vibrate()
         let vc = self.storyboard?.instantiateViewController(identifier: "HangmanSelectionViewController") as! HangmanSelectionViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func scoresTapped() {
-        vibrate()
-        let vc = self.storyboard?.instantiateViewController(identifier: "CreditsViewController") as! CreditsViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

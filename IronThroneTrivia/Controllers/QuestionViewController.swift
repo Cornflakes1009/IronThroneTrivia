@@ -32,8 +32,8 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     
     private let questionLabel: UILabel = {
         let label = UILabel()
-        label.text = ""
-        label.font = instructionLabelFont
+        label.text = "Who did Criston Cole murder in the Small Council Chamber when Otto Hightower discusses the plans he made to put Aegon on the throne?"
+        label.font = secondaryLabelFont
         label.textAlignment = .center
         label.textColor = whiteColor
         label.numberOfLines = 0
@@ -42,7 +42,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     
     private let questionNumberLabel: UILabel = {
         let label = UILabel()
-        label.font = instructionLabelFont
+        label.font = secondaryLabelFont
         label.textAlignment = .center
         label.textColor = whiteColor
         return label
@@ -107,7 +107,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     private let exitConfirmationLabel: UILabel = {
         let label = UILabel()
         label.text = "Are you sure you wish to exit? This will exit the game and you'll lose your current progress"
-        label.font = instructionLabelFont
+        label.font = secondaryLabelFont
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .white
@@ -153,7 +153,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     private let correctAnswerTopLabel: UILabel = {
         let label = UILabel()
         label.text = "Sorry, the correct answer was:"
-        label.font = instructionLabelFont
+        label.font = secondaryLabelFont
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .white
@@ -163,7 +163,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     private let correctAnswerLabel: UILabel = {
         let label = UILabel()
         label.text = "\(questionList[questionIndex].answer)"
-        label.font = instructionLabelFont
+        label.font = secondaryLabelFont
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .white
@@ -202,9 +202,6 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        let backButtonImageConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .light, scale: .large)
-        let backButtonImage = UIImage(systemName: "chevron.left.square", withConfiguration: backButtonImageConfig)
-        
         backButton.setImage(backButtonImage, for: .normal)
         view.addSubview(backButton)
         backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -217,7 +214,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
         
         bannerView.rootViewController = self
         view.addSubview(bannerView)
-        bannerView.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: -20, paddingRight: 0, width: 281, height: 50)
+        bannerView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -20, paddingRight: 0, width: 0, height: 50)
         bannerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         setupStackView()
@@ -232,7 +229,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
         stackView.spacing = 10
         
         // calculating based on the number of buttons in stack view and adding 20 padding
-        let stackViewHeight = CGFloat(Int(buttonHeight) * stackView.arrangedSubviews.count + 40)
+        let stackViewHeight = CGFloat(Int(BUTTON_HEIGHT) * stackView.arrangedSubviews.count + 40)
         
         view.addSubview(stackView)
         stackView.anchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -30, paddingRight: 20, width: 0, height: stackViewHeight)
@@ -273,7 +270,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
         exitConfirmationView.addSubview(exitStackView)
         exitStackView.centerXAnchor.constraint(equalTo: exitConfirmationView.centerXAnchor).isActive = true
         exitStackView.centerYAnchor.constraint(equalTo: exitConfirmationView.centerYAnchor).isActive = true
-        exitStackView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: exitStackViewWidth, height: buttonHeight)
+        exitStackView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: exitStackViewWidth, height: BUTTON_HEIGHT)
     }
     
     // MARK: - Updating the UI
@@ -283,7 +280,6 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
         optionOneButton.setTitle(questionList[questionIndex].optionOne, for: .normal)
         optionTwoButton.setTitle(questionList[questionIndex].optionTwo, for: .normal)
         optionThreeButton.setTitle(questionList[questionIndex].optionThree, for: .normal)
-        
         questionNumberLabel.text = "\(questionIndex + 1)/\(questionList.count)"
     }
     
@@ -295,17 +291,8 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
         UIView.animate(withDuration: 0.5) {
             self.correctAnswerView.alpha = popUpViewAlpha
         }
-        
-        let currentCorrectAnswer = questionList[questionIndex].answer
-        if currentCorrectAnswer == 0 {
-            correctAnswerLabel.text = "\(questionList[questionIndex].optionZero)"
-        } else if currentCorrectAnswer == 1 {
-            correctAnswerLabel.text = "\(questionList[questionIndex].optionOne)"
-        } else if currentCorrectAnswer == 2 {
-            correctAnswerLabel.text = "\(questionList[questionIndex].optionTwo)"
-        } else {
-            correctAnswerLabel.text = "\(questionList[questionIndex].optionThree)"
-        }
+
+        correctAnswerLabel.text = questionList[questionIndex].answer
         
         correctAnswerView.addSubview(popUpBackground)
         popUpBackground.anchor(top: correctAnswerView.topAnchor, left: correctAnswerView.leftAnchor, bottom: correctAnswerView.bottomAnchor, right: correctAnswerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -322,14 +309,14 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
         correctAnswerLabel.centerYAnchor.constraint(equalTo: correctAnswerView.centerYAnchor).isActive = true
         
         correctAnswerView.addSubview(nextQuestionButton)
-        nextQuestionButton.anchor(top: nil, left: correctAnswerView.leftAnchor, bottom: correctAnswerView.bottomAnchor, right: correctAnswerView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -20, paddingRight: 20, width: 0, height: buttonHeight)
+        nextQuestionButton.anchor(top: nil, left: correctAnswerView.leftAnchor, bottom: correctAnswerView.bottomAnchor, right: correctAnswerView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -20, paddingRight: 20, width: 0, height: BUTTON_HEIGHT)
     }
     
     // MARK: - Check if Answer Tapped is Correct
-    private func checkIfCorrect(buttonNumber: Int) {
+    private func checkIfCorrect(buttonTextValue: String) {
         historicQuestions += 1
         defaults.setValue(historicQuestions, forKey: "totalNumberOfQuestions")
-        if buttonNumber == questionList[questionIndex].answer {
+        if buttonTextValue == questionList[questionIndex].answer {
             historicAnswered += 1
             defaults.setValue(historicAnswered, forKey: "totalNumberOfCorrect")
             correctlyAnswered += 1
@@ -366,16 +353,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     }
     
     @objc func answerTapped(_ sender: UIButton!) {
-        // check if selected button has correct answer, if not, present a view with correct answer
-        if sender == optionZeroButton {
-            checkIfCorrect(buttonNumber: 0)
-        } else if sender == optionOneButton {
-            checkIfCorrect(buttonNumber: 1)
-        } else if sender == optionTwoButton {
-            checkIfCorrect(buttonNumber: 2)
-        } else if sender == optionThreeButton {
-            checkIfCorrect(buttonNumber: 3)
-        }
+        checkIfCorrect(buttonTextValue: sender.titleLabel?.text ?? "")
         vibrate()
     }
     

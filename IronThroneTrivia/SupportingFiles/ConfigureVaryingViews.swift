@@ -7,10 +7,12 @@ import UIKit
  https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/Displays/Displays.html
  
  iPhones
- 12 Pro Max                       =       926 x 428
- 12, 12 Pro                       =       844 x 390
- 11 Pro, Xs, X, 12m               =       812 x 375
+ 14 Pro Max                       =       932 x 430
+ 12 Pro Max, 14+, 13 Pro Max      =       926 x 428
  11 Pro Max, 11, Xs Max, XR       =       896 x 414
+ 14 Pro                           =       852 x 393
+ 12, 12 Pro, 13, 14               =       844 x 390
+ 11 Pro, Xs, X, 12m, 13m          =       812 x 375
  8+, 7+                           =       736 x 414
  8, 7, 6s, 6s+, 6+, 6, SE2        =       667 x 375
  SE, Touch 7                      =       568 x 320
@@ -23,9 +25,11 @@ import UIKit
 */
 
 enum Devices: CGFloat {
+    case fourteenProMaxHeight       =     932
     case twelveProMaxHeight         =     926
-    case twelveHeight               =     844
     case elevenAndProMaxHeight      =     896
+    case fourteenProHeight          =     852
+    case twelveHeight               =     844
     case elevenProHeight            =     812
     case eightPlusHeight            =     736
     case eightHeight                =     667
@@ -37,62 +41,74 @@ enum Devices: CGFloat {
 
 public func varyForScreenSizes(screenHeight: CGFloat) {
     switch screenHeight {
-    case Devices.twelveProMaxHeight.rawValue:
+    case Devices.fourteenProMaxHeight.rawValue:
         gameLabelFont           =   UIFont(name: "Game of Thrones", size: 45)
-        buttonFont              =   UIFont(name: "cinzel", size: 50)
-        disclaimerLabelFont     =   UIFont(name: "cinzel", size: 30)
+        primaryLabelFont        =   UIFont(name: "cinzel", size: 40)
+        secondaryLabelFont      =   UIFont(name: "cinzel", size: 22)
         subGameLabelFont        =   UIFont(name: "Game of Thrones", size: 40)
-        instructionLabelFont    =   UIFont(name: "cinzel", size: 30)
         answerButtonFont        =   UIFont(name: "Cormorant-Regular", size: 30)
         canceViewButtonFont     =   UIFont(name: "cinzel", size: 40)
         finalScoreFont          =   UIFont(name: "cinzel", size: 105)
         break
+    case Devices.twelveProMaxHeight.rawValue:
+        gameLabelFont           =   UIFont(name: "Game of Thrones", size: 45)
+        primaryLabelFont        =   UIFont(name: "cinzel", size: 40)
+        secondaryLabelFont      =   UIFont(name: "cinzel", size: 22)
+        subGameLabelFont        =   UIFont(name: "Game of Thrones", size: 40)
+        answerButtonFont        =   UIFont(name: "Cormorant-Regular", size: 30)
+        canceViewButtonFont     =   UIFont(name: "cinzel", size: 40)
+        finalScoreFont          =   UIFont(name: "cinzel", size: 105)
+        break
+    case Devices.fourteenProHeight.rawValue:
+        gameLabelFont           =   UIFont(name: "Game of Thrones", size: 42)
+        primaryLabelFont        =   UIFont(name: "cinzel", size: 37)
+        secondaryLabelFont      =   UIFont(name: "cinzel", size: 18)
+        subGameLabelFont        =   UIFont(name: "Game of Thrones", size: 35)
+        answerButtonFont        =   UIFont(name: "Cormorant-Regular", size: 25)
+        canceViewButtonFont     =   UIFont(name: "cinzel", size: 35)
+        finalScoreFont          =   UIFont(name: "cinzel", size: 95)
+        break
     case Devices.twelveHeight.rawValue:
         gameLabelFont           =   UIFont(name: "Game of Thrones", size: 42)
-        buttonFont              =   UIFont(name: "cinzel", size: 45)
-        disclaimerLabelFont     =   UIFont(name: "cinzel", size: 25)
+        primaryLabelFont        =   UIFont(name: "cinzel", size: 37)
+        secondaryLabelFont      =   UIFont(name: "cinzel", size: 18)
         subGameLabelFont        =   UIFont(name: "Game of Thrones", size: 35)
-        instructionLabelFont    =   UIFont(name: "cinzel", size: 25)
         answerButtonFont        =   UIFont(name: "Cormorant-Regular", size: 25)
         canceViewButtonFont     =   UIFont(name: "cinzel", size: 35)
         finalScoreFont          =   UIFont(name: "cinzel", size: 95)
         break
     case Devices.elevenAndProMaxHeight.rawValue:
         gameLabelFont           =   UIFont(name: "Game of Thrones", size: 42)
-        buttonFont              =   UIFont(name: "cinzel", size: 48)
-        disclaimerLabelFont     =   UIFont(name: "cinzel", size: 28)
+        primaryLabelFont        =   UIFont(name: "cinzel", size: 39)
+        secondaryLabelFont      =   UIFont(name: "cinzel", size: 22)
         subGameLabelFont        =   UIFont(name: "Game of Thrones", size: 38)
-        instructionLabelFont    =   UIFont(name: "cinzel", size: 28)
         answerButtonFont        =   UIFont(name: "Cormorant-Regular", size: 28)
         canceViewButtonFont     =   UIFont(name: "cinzel", size: 38)
         finalScoreFont          =   UIFont(name: "cinzel", size: 100)
         break
     case Devices.elevenProHeight.rawValue:
         gameLabelFont           =   UIFont(name: "Game of Thrones", size: 40)
-        buttonFont              =   UIFont(name: "cinzel", size: 43)
-        disclaimerLabelFont     =   UIFont(name: "cinzel", size: 23)
+        primaryLabelFont        =   UIFont(name: "cinzel", size: 35)
+        secondaryLabelFont      =   UIFont(name: "cinzel", size: 18)
         subGameLabelFont        =   UIFont(name: "Game of Thrones", size: 33)
-        instructionLabelFont    =   UIFont(name: "cinzel", size: 23)
         answerButtonFont        =   UIFont(name: "Cormorant-Regular", size: 23)
         canceViewButtonFont     =   UIFont(name: "cinzel", size: 33)
         finalScoreFont          =   UIFont(name: "cinzel", size: 90)
         break
     case Devices.eightPlusHeight.rawValue:
         gameLabelFont           =   UIFont(name: "Game of Thrones", size: 40)
-        buttonFont              =   UIFont(name: "cinzel", size: 43)
-        disclaimerLabelFont     =   UIFont(name: "cinzel", size: 23)
+        primaryLabelFont        =   UIFont(name: "cinzel", size: 33)
+        secondaryLabelFont      =   UIFont(name: "cinzel", size: 20)
         subGameLabelFont        =   UIFont(name: "Game of Thrones", size: 33)
-        instructionLabelFont    =   UIFont(name: "cinzel", size: 23)
         answerButtonFont        =   UIFont(name: "Cormorant-Regular", size: 23)
         canceViewButtonFont     =   UIFont(name: "cinzel", size: 33)
         finalScoreFont          =   UIFont(name: "cinzel", size: 90)
         break
     case Devices.eightHeight.rawValue:
         gameLabelFont           =   UIFont(name: "Game of Thrones", size: 35)
-        buttonFont              =   UIFont(name: "cinzel", size: 38)
-        disclaimerLabelFont     =   UIFont(name: "cinzel", size: 20)
+        primaryLabelFont        =   UIFont(name: "cinzel", size: 32)
+        secondaryLabelFont      =   UIFont(name: "cinzel", size: 17)
         subGameLabelFont        =   UIFont(name: "Game of Thrones", size: 30)
-        instructionLabelFont    =   UIFont(name: "cinzel", size: 20)
         answerButtonFont        =   UIFont(name: "Cormorant-Regular", size: 20)
         canceViewButtonFont     =   UIFont(name: "cinzel", size: 30)
         finalScoreFont          =   UIFont(name: "cinzel", size: 80)

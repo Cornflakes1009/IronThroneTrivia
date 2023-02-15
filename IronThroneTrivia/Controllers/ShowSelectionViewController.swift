@@ -40,7 +40,7 @@ class ShowSelectionViewController: UIViewController {
     private let disclaimerLabel: UILabel = {
         let label = UILabel()
         label.text = "- TV Series Trivia -"
-        label.font = disclaimerLabelFont
+        label.font = secondaryLabelFont
         label.textAlignment = .center
         label.textColor = subLogoColor
         return label
@@ -64,7 +64,7 @@ class ShowSelectionViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Scores & Support", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = instructionLabelFont
+        button.titleLabel?.font = secondaryLabelFont
         button.layer.shadowOffset = CGSize(width: 0, height: 3)
         button.layer.shadowOpacity = 1.0
         button.layer.shadowRadius = 10.0
@@ -76,8 +76,8 @@ class ShowSelectionViewController: UIViewController {
 // MARK: - View Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        let screenHeight = UIScreen.main.bounds.size.height
-        varyForScreenSizes(screenHeight: screenHeight)
+        SCREEN_HEIGHT = UIScreen.main.bounds.size.height
+        varyForScreenSizes(screenHeight: SCREEN_HEIGHT)
         
         setupViews()
     }
@@ -94,14 +94,13 @@ class ShowSelectionViewController: UIViewController {
     private func setupViews() {
         gameLabel.font = gameLabelFont
         subGameLabel.font = subGameLabelFont
-        gameOfThronesButton.titleLabel?.font = buttonFont
-        houseOfTheDragonButton.titleLabel?.font = buttonFont
+        gameOfThronesButton.titleLabel?.font = primaryLabelFont
+        houseOfTheDragonButton.titleLabel?.font = primaryLabelFont
         //blitzButton.titleLabel?.font = buttonFont
-        disclaimerLabel.font = disclaimerLabelFont
-        creditsButton.titleLabel?.font = instructionLabelFont
+        disclaimerLabel.font = secondaryLabelFont
+        creditsButton.titleLabel?.font = secondaryLabelFont
         
-        let screenHeight = UIScreen.main.bounds.size.height
-        buttonHeight = screenHeight / 10
+        BUTTON_HEIGHT = SCREEN_HEIGHT / 10
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
@@ -129,7 +128,7 @@ class ShowSelectionViewController: UIViewController {
         stackView.spacing = 10
         
         // calculating based on the number of buttons in stack view and adding 20 padding
-        let stackViewHeight = CGFloat(Int(buttonHeight) * stackView.arrangedSubviews.count + 30)
+        let stackViewHeight = CGFloat(Int(BUTTON_HEIGHT) * stackView.arrangedSubviews.count + 30)
         
         view.addSubview(stackView)
         stackView.anchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: stackViewHeight)
@@ -146,8 +145,9 @@ class ShowSelectionViewController: UIViewController {
     
     @objc func houseOfTheDragonTapped() {
         vibrate()
-        convertAllJSON(jsonToRead: "gameOfThrones")
+        //convertAllJSON(jsonToRead: "houseOfTheDragon")
         let vc = self.storyboard?.instantiateViewController(identifier: "GameModeSelectionViewController") as! GameModeSelectionViewController
+        vc.jsonString = "houseOfTheDragon"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

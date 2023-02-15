@@ -21,7 +21,7 @@ class GameButton: UIButton {
         layer.cornerRadius = 5
         layer.borderWidth = 2
         layer.borderColor = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 0.01).cgColor
-        titleLabel?.font = buttonFont
+        titleLabel?.font = primaryLabelFont
         layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.95).cgColor
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowOpacity = 1.0

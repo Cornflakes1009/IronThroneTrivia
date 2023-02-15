@@ -30,7 +30,7 @@ class SurvivalResultsViewController: UIViewController {
     
     private let scoreLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(correctlyAnswered)/\(allQuestionList.count)"
+        label.text = "\(correctlyAnswered)/\(questionList.count)"
         label.textColor = whiteColor
         label.font = finalScoreFont
         return label
@@ -66,7 +66,7 @@ class SurvivalResultsViewController: UIViewController {
         scoreLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         view.addSubview(restartButton)
-        restartButton.anchor(top: nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -20, paddingRight: 20, width: 0, height: buttonHeight)
+        restartButton.anchor(top: nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: -20, paddingRight: 20, width: 0, height: BUTTON_HEIGHT)
     }
     
     @objc func restartTapped() {

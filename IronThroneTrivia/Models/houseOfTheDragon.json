@@ -1,0 +1,911 @@
+[
+  {
+    "0": "Viserys I",
+    "1": "Aegon I",
+    "2": "Baelon",
+    "3": "Maegor",
+    "category": "House of the Dragon",
+    "question": "Who was named Jaehaerys's successor?",
+    "answer": 0
+  },
+  {
+    "0": "Baelon",
+    "1": "Jaehaerys",
+    "2": "Aegor",
+    "3": "Maekar",
+    "category": "House of the Dragon",
+    "question": "Who was King Viserys's father?",
+    "answer": 0
+  },
+  {
+    "0": "Viserys",
+    "1": "Daemon",
+    "2": "Aegon",
+    "3": "Aemond",
+    "category": "House of the Dragon",
+    "question": "Who was nicknamed the Rogue Prince?",
+    "answer": 1
+  },
+  {
+    "0": "Daemon",
+    "1": "Aemond",
+    "2": "Aegon",
+    "3": "Jacaerys",
+    "category": "House of the Dragon",
+    "question": "Who is crowned king in season 1?",
+    "answer": 2
+  },
+  {
+    "0": "Aegon II",
+    "1": "Aemond",
+    "2": "Helaena",
+    "3": "Rhaenyra",
+    "category": "House of the Dragon",
+    "question": "Who is the firstborn child of King Viserys?",
+    "answer": 3
+  },
+  {
+    "0": "Aemma",
+    "1": "Alicent",
+    "2": "Helaena",
+    "3": "Rhaenyra",
+    "category": "House of the Dragon",
+    "question": "Who is King Viserys's wife at the start of the series?",
+    "answer": 0
+  },
+  {
+    "0": "Aemma",
+    "1": "Alicent",
+    "2": "Helaena",
+    "3": "Rhaenyra",
+    "category": "House of the Dragon",
+    "question": "Who is King Viserys's wife at the end of season 1?",
+    "answer": 1
+  },
+  {
+    "0": "Rhaenyra",
+    "1": "Aegon",
+    "2": "Aemond",
+    "3": "Helaena",
+    "category": "House of the Dragon",
+    "question": "Who is King Viserys's youngest child?",
+    "answer": 2
+  },
+  {
+    "0": "Caraxes",
+    "1": "Seasmoke",
+    "2": "Vhagar",
+    "3": "Syrax",
+    "category": "House of the Dragon",
+    "question": "What is the name of Rhaenyra's dragon?",
+    "answer": 3
+  },
+  {
+    "0": "Caraxes",
+    "1": "Vhagar",
+    "2": "Arrax",
+    "3": "Vermax",
+    "category": "House of the Dragon",
+    "question": "What is the name of Daemon's dragon at the beginning of the series?",
+    "answer": 0
+  },
+  {
+    "0": "Caraxes",
+    "1": "Arrax",
+    "2": "Vhagar",
+    "3": "Vermax",
+    "category": "House of the Dragon",
+    "question": "What is the name of Luke's dragon?",
+    "answer": 1
+  },
+  {
+    "0": "Caraxes",
+    "1": "Seasmoke",
+    "2": "Vhagar",
+    "3": "Vermax",
+    "category": "House of the Dragon",
+    "question": "What is the name of Aemond's dragon?",
+    "answer": 2
+  },
+  {
+    "0": "Caraxes",
+    "1": "Arrax",
+    "2": "Vhagar",
+    "3": "Vermax",
+    "category": "House of the Dragon",
+    "question": "What is the name of Jace's dragon?",
+    "answer": 3
+  },
+  {
+    "0": "Meleys",
+    "1": "Syrax",
+    "2": "Vhagar",
+    "3": "Vermax",
+    "category": "House of the Dragon",
+    "question": "What is the name of Rhaenys's dragon?",
+    "answer": 0
+  },
+  {
+    "0": "Seasnake",
+    "1": "Seasmoke",
+    "2": "Vermax",
+    "3": "Caraxes",
+    "category": "House of the Dragon",
+    "question": "What is the name of Laenor's dragon?",
+    "answer": 1
+  },
+  {
+    "0": "Kraken",
+    "1": "Sea Serpent",
+    "2": "Seahorse",
+    "3": "Whale",
+    "category": "House of the Dragon",
+    "question": "What is the sigil of House Velaryon?",
+    "answer": 2
+  },
+  {
+    "0": "Greyjoy",
+    "1": "Lannister",
+    "2": "Baratheon",
+    "3": "Velaryon",
+    "category": "House of the Dragon",
+    "question": "At the start of the series, which house rules Driftmark?",
+    "answer": 3
+  },
+  {
+    "0": "Otto Hightower",
+    "1": "Ser Criston Cole",
+    "2": "Lyonel Strong",
+    "3": "Corlys Velaryon",
+    "category": "House of the Dragon",
+    "question": "At the start of the series, who is King Viserys's Hand?",
+    "answer": 0
+  },
+  {
+    "0": "Vermax",
+    "1": "Vhagar",
+    "2": "Syrax",
+    "3": "Caraxes",
+    "category": "House of the Dragon",
+    "question": "Which dragon kills Arrax?",
+    "answer": 1
+  },
+  {
+    "0": "Jacaerys Velaryon",
+    "1": "Lucerys Velaryon",
+    "2": "Laenor Velaryon",
+    "3": "Corlys Velaryon",
+    "category": "House of the Dragon",
+    "question": "Who is known as the Sea Snake?",
+    "answer": 3
+  },
+  {
+    "0": "Laenor Velaryon",
+    "1": "Daemon Targaryen",
+    "2": "Jason Lannister",
+    "3": "Harwin Strong",
+    "category": "House of the Dragon",
+    "question": "Who was Rhaenyra's first husband?",
+    "answer": 0
+  },
+  {
+    "0": "Corlys Velaryon",
+    "1": "Vaemond Velaryon",
+    "2": "Laenor Velaryon",
+    "3": "Lucerys Velaryon",
+    "category": "House of the Dragon",
+    "question": "Who is the Sea Snake's brother?",
+    "answer": 1
+  },
+  {
+    "0": "Harwin Strong",
+    "1": "Criston Cole",
+    "2": "Daemon Targaryen",
+    "3": "Jason Lannister",
+    "category": "House of the Dragon",
+    "question": "At the start of the series, who is the Commander of the City Watch?",
+    "answer": 2
+  },
+  {
+    "0": "Rhaenyra",
+    "1": "Lady Laena",
+    "2": "Mysaria",
+    "3": "Lady Rhea",
+    "category": "House of the Dragon",
+    "question": "Who is Daemon's first wife?",
+    "answer": 3
+  },
+  {
+    "0": "Lady Laena",
+    "1": "Lady Rhea",
+    "2": "Rhaenyra",
+    "3": "Mysaria",
+    "category": "House of the Dragon",
+    "question": "Who is Daemon's second wife?",
+    "answer": 0
+  },
+  {
+    "0": "Lady Rhea",
+    "1": "Rhaenyra",
+    "2": "Mysaria",
+    "3": "Lady Laena",
+    "category": "House of the Dragon",
+    "question": "Who is Daemon's third wife?",
+    "answer": 1
+  },
+  {
+    "0": "Helaena",
+    "1": "Alicent",
+    "2": "Aemma",
+    "3": "Rhaenys",
+    "category": "House of the Dragon",
+    "question": "Who is Rhaenyra's mother?",
+    "answer": 2
+  },
+  {
+    "0": "Heartsbane",
+    "1": "Red Rain",
+    "2": "Blackfyre",
+    "3": "Dark Sister",
+    "category": "House of the Dragon",
+    "question": "What is the name of Daemon's sword?",
+    "answer": 3
+  },
+  {
+    "0": "Gwayne Hightower",
+    "1": "Criston Cole",
+    "2": "Ser Louis",
+    "3": "Ser Erryk",
+    "category": "House of the Dragon",
+    "question": "During the heir's tournament, with whom does Daemon choose to joust?",
+    "answer": 0
+  },
+  {
+    "0": "Rhaenyra's",
+    "1": "Alicent's",
+    "2": "Rhaenys's",
+    "3": "Aemma's",
+    "category": "House of the Dragon",
+    "question": "Whose favor does Daemon request at the heir's tournament?",
+    "answer": 1
+  },
+  {
+    "0": "Kedry",
+    "1": "Egbert",
+    "2": "Mellos",
+    "3": "Illister",
+    "category": "House of the Dragon",
+    "question": "Who was the maester who cut open Aemma to try to save the baby?",
+    "answer": 2
+  },
+  {
+    "0": "Aemma's",
+    "1": "Alicent's",
+    "2": "Rhaenys's",
+    "3": "Rhaenyra's",
+    "category": "House of the Dragon",
+    "question": "Whose favor does Criston Cole request at the heir's tournament?",
+    "answer": 3
+  },
+  {
+    "0": "Baelon",
+    "1": "Baelor",
+    "2": "Aegon",
+    "3": "Aemond",
+    "category": "House of the Dragon",
+    "question": "What is the name of Aemma's last child?",
+    "answer": 0
+  },
+  {
+    "0": "Brandon Stark",
+    "1": "Rickon Stark",
+    "2": "Robert Stark",
+    "3": "Torrhen Stark",
+    "category": "House of the Dragon",
+    "question": "At the start of the series, who was the Lord of Winterfell?",
+    "answer": 1
+  },
+  {
+    "0": "Desmond Caron",
+    "1": "Lymond Mallister",
+    "2": "Criston Cole",
+    "3": "Arryk",
+    "category": "House of the Dragon",
+    "question": "Whom does Rhaenyra name to the Kingsguard in the first season?",
+    "answer": 2
+  },
+  {
+    "0": "Alicent",
+    "1": "Elaena",
+    "2": "Baela",
+    "3": "Laena",
+    "category": "House of the Dragon",
+    "question": "Whom does Corlys proposition Viserys to marry?",
+    "answer": 3
+  },
+  {
+    "0": "Dragonstone",
+    "1": "Harrenhall",
+    "2": "Storm's End",
+    "3": "Blackhaven",
+    "category": "House of the Dragon",
+    "question": "What castle did Daemon take over when he stole a dragon egg?",
+    "answer": 0
+  },
+  {
+    "0": "Jacaerys Velaryon",
+    "1": "Corlys Velaryon",
+    "2": "Lucerys Velaryon",
+    "3": "Laenor Velaryon",
+    "category": "House of the Dragon",
+    "question": "At the start of the series, who sits the Driftwood Throne?",
+    "answer": 1
+  },
+  {
+    "0": "Corlys Velaryon",
+    "1": "Rodrick Greyjoy",
+    "2": "Ezra Marblemaw",
+    "3": "Craghas Drahar",
+    "category": "House of the Dragon",
+    "question": "Who is known as the Crabfeeder?",
+    "answer": 3
+  },
+  {
+    "0": "Viserys",
+    "1": "Rhaenyra",
+    "2": "Daemon",
+    "3": "Criston Cole",
+    "category": "House of the Dragon",
+    "question": "Who kills the stag during Aegon's second name day?",
+    "answer": 0
+  },
+  {
+    "0": "Tytos",
+    "1": "Tyland",
+    "2": "Tyrek",
+    "3": "Tion",
+    "category": "House of the Dragon",
+    "question": "Who is Jason Lannister's twin?",
+    "answer": 1
+  },
+  {
+    "0": "Fifteen",
+    "1": "Sixteen",
+    "2": "Seventeen",
+    "3": "Eighteen",
+    "category": "House of the Dragon",
+    "question": "How old was Rhaenyra on Aegon's second name day?",
+    "answer": 2
+  },
+  {
+    "0": "Boremund Baratheon",
+    "1": "Eddard Stark",
+    "2": "Tion Lannister",
+    "3": "Willem Blackwood",
+    "category": "House of the Dragon",
+    "question": "Who stabbed the Bracken boy when Rhaenyra was hearing suitors?",
+    "answer": 3
+  },
+  {
+    "0": "Laenor Valaryon",
+    "1": "Daemon Targaryen",
+    "2": "Rhaenys Valaryon",
+    "3": "Rhaenyra Targaryen",
+    "category": "House of the Dragon",
+    "question": "During the final battle against the Crabfeeder, who rides the dragon?",
+    "answer": 0
+  },
+  {
+    "0": "Rhaenyra",
+    "1": "Viserys",
+    "2": "Daemon",
+    "3": "Criston Cole",
+    "category": "House of the Dragon",
+    "question": "Who kills a boar during Aegon's second name day?",
+    "answer": 0
+  },
+  {
+    "0": "A ship",
+    "1": "A dragon",
+    "2": "A king",
+    "3": "A castle tower",
+    "category": "House of the Dragon",
+    "question": "What stone figurine does Alicent have fixed for Viserys?",
+    "answer": 1
+  },
+  {
+    "0": "Allicent",
+    "1": "Ser Criston Cole",
+    "2": "Daemon",
+    "3": "Lucerys",
+    "category": "House of the Dragon",
+    "question": "Who leaves a note for Rhaenyra with a map showing her how to escape the castle using a secret passage?",
+    "answer": 2
+  },
+  {
+    "0": "Ser Criston Cole",
+    "1": "Ser Gerold",
+    "2": "Ser Lyonel",
+    "3": "Ser Harwin",
+    "category": "House of the Dragon",
+    "question": "Which knight does Rhaenyra run into when she snuck out of a secret passageway to meet Daemon?",
+    "answer": 3
+  },
+  {
+    "0": "Otto Hightower",
+    "1": "Alicent",
+    "2": "Ser Harwin",
+    "3": "Ser Criston Cole",
+    "category": "House of the Dragon",
+    "question": "Who informs King Viserys of Daemon and Rhaenyra sneaking out of the castle to explore the city?",
+    "answer": 0
+  },
+  {
+    "0": "Dragonstone",
+    "1": "The Vale",
+    "2": "The Free Cities",
+    "3": "Driftmark",
+    "category": "House of the Dragon",
+    "question": "To where does Viserys banish Daemon after he believes that Daemon has taken Rhaenyra's innocence?",
+    "answer": 1
+  },
+  {
+    "0": "Daemon",
+    "1": "Jason Lannister",
+    "2": "Laenor Velaryon",
+    "3": "Corys Velaryon",
+    "category": "House of the Dragon",
+    "question": "Who does King Viserys demand that Rhaenyra marry?",
+    "answer": 2
+  },
+  {
+    "0": "Daemon",
+    "1": "Alicent",
+    "2": "Otto",
+    "3": "King Viserys",
+    "category": "House of the Dragon",
+    "question": "Who sent Rhaenyra a tea to rid her of any unwanted consequences?",
+    "answer": 3
+  },
+  {
+    "0": "Lucerys",
+    "1": "Criston",
+    "2": "Daemon",
+    "3": "Aemond",
+    "category": "House of the Dragon",
+    "question": "Who killed Lady Rhea?",
+    "answer": 2
+  },
+  {
+    "0": "East Bank",
+    "1": "Hall of Nine",
+    "2": "The courtyard",
+    "3": "Baelor's Sept",
+    "category": "House of the Dragon",
+    "question": "Where does Lord Corlys await the arrival of King Viserys when Viserys goes to Driftmark?",
+    "answer": 1
+  },
+  {
+    "0": "Lord Larys",
+    "1": "Ser Criston Cole",
+    "2": "The Grand Maester",
+    "3": "Otto Hightower",
+    "category": "House of the Dragon",
+    "question": "Who informs Alicent of the tea that the maester took to Rhaenyra?",
+    "answer": 0
+  },
+  {
+    "0": "Lord Larys",
+    "1": "Lord Lyonel",
+    "2": "Lord Corlys",
+    "3": "Lord Royce",
+    "category": "House of the Dragon",
+    "question": "Whom does King Viserys replace Otto Hightower with as Hand of the King?",
+    "answer": 1
+  },
+  {
+    "0": "Criston Cole",
+    "1": "Lucerys",
+    "2": "Lonmouth",
+    "3": "Hober",
+    "category": "House of the Dragon",
+    "question": "What is the name of Laenor's paramour before his wedding?",
+    "answer": 2
+  },
+  {
+    "0": "Ser Harwin",
+    "1": "Ser Joffrey",
+    "2": "Ser Manderly",
+    "3": "Ser Gerold",
+    "category": "House of the Dragon",
+    "question": "Who accuses Daemon of murdering his first wife at Rhaenyra's wedding reception feast?",
+    "answer": 3
+  },
+  {
+    "0": "Ser Joffrey",
+    "1": "Lucerys Velaryon",
+    "2": "Ser Harwin",
+    "3": "Ser Qarl",
+    "category": "House of the Dragon",
+    "question": "Who is known as Knight of the Kisses?",
+    "answer": 0
+  },
+  {
+    "0": "Rhaenyra",
+    "1": "Alicent",
+    "2": "Aemma",
+    "3": "Lucerys",
+    "category": "House of the Dragon",
+    "question": "Who stops Ser Criston Cole from killing himself?",
+    "answer": 1
+  },
+  {
+    "0": "Ser Criston Cole",
+    "1": "Daemon Targaryen",
+    "2": "Harwin Strong",
+    "3": "Qarl Correy",
+    "category": "House of the Dragon",
+    "question": "What is the name of Rhaenerys's paramour after she marries Laenor?",
+    "answer": 2
+  },
+  {
+    "0": "Lucerys",
+    "1": "Jacerys",
+    "2": "Viserys",
+    "3": "Joffrey",
+    "category": "House of the Dragon",
+    "question": "What is the name of the baby that Alicent sent for right after he was born?",
+    "answer": 3
+  },
+  {
+    "0": "Sunfyre",
+    "1": "Seasmoke",
+    "2": "Arrax",
+    "3": "Vermax",
+    "category": "House of the Dragon",
+    "question": "What is the name of Prince Aegon's dragon?",
+    "answer": 0
+  },
+  {
+    "0": "Aegon",
+    "1": "Aemond",
+    "2": "Lucerys",
+    "3": "Jacaerys",
+    "category": "House of the Dragon",
+    "question": "Who was presented a pig with wings and a tail as a joke?",
+    "answer": 1
+  },
+  {
+    "0": "King Viserys",
+    "1": "Princess Rhaenys",
+    "2": "Lady Laena",
+    "3": "King Jaehaerys",
+    "category": "House of the Dragon",
+    "question": "Before Aemond, who rode Vhagar?",
+    "answer": 2
+  },
+  {
+    "0": "Arry",
+    "1": "Dyana",
+    "2": "Tyanna",
+    "3": "Mysaria",
+    "category": "House of the Dragon",
+    "question": "What is the name of the prostitute that Daemon said he planned to marry?",
+    "answer": 3
+  },
+  {
+    "0": "Harwin Strong",
+    "1": "Daemon",
+    "2": "Aemond",
+    "3": "Jacaerys",
+    "category": "House of the Dragon",
+    "question": "Who loses composure during training and attacks Ser Criston Cole?",
+    "answer": 0
+  },
+  {
+    "0": "Lonmouth",
+    "1": "Qarl",
+    "2": "Harwin",
+    "3": "Tyler",
+    "category": "House of the Dragon",
+    "question": "Who is Laenor's paramour after he and Rhaenyra are wed?",
+    "answer": 1
+  },
+  {
+    "0": "Driftmark",
+    "1": "The Twins",
+    "2": "Harrenhall",
+    "3": "Casterly Rock",
+    "category": "House of the Dragon",
+    "question": "To where does Lyonel Strong ask the king leave to escort his son?",
+    "answer": 2
+  },
+  {
+    "0": "Lucerys",
+    "1": "Rhaena",
+    "2": "Rhaenys",
+    "3": "Laena",
+    "category": "House of the Dragon",
+    "question": "Who willfully sacrifices themselves with dragon fire?",
+    "answer": 3
+  },
+  {
+    "0": "Larys",
+    "1": "Daemon",
+    "2": "Rhaenyra",
+    "3": "Alicent",
+    "category": "House of the Dragon",
+    "question": "Who orders the burning of Harrenhall, killing Harwin and Lyonel Strong?",
+    "answer": 0
+  },
+  {
+    "0": "Daemon",
+    "1": "Corlys",
+    "2": "Lucerys",
+    "3": "Larys",
+    "category": "House of the Dragon",
+    "question": "Who is married to Rhaenys?",
+    "answer": 1
+  },
+  {
+    "0": "Titles",
+    "1": "Deeds",
+    "2": "Names",
+    "3": "Stories",
+    "category": "House of the Dragon",
+    "question": "What does Corlys say, 'history does not remember blood, it remembers _____'?",
+    "answer": 2
+  },
+  {
+    "0": "Daemon",
+    "1": "Aegon",
+    "2": "Baela",
+    "3": "Rhaena",
+    "category": "House of the Dragon",
+    "question": "Who said that Vhagar was theirs to claim?",
+    "answer": 3
+  },
+  {
+    "0": "Luke",
+    "1": "Jace",
+    "2": "Baela",
+    "3": "Rhaena",
+    "category": "House of the Dragon",
+    "question": "Who cuts out Aemond's eye?",
+    "answer": 0
+  },
+  {
+    "0": "Daemon",
+    "1": "Alicent",
+    "2": "Ser Criston Cole",
+    "3": "King Viserys",
+    "category": "House of the Dragon",
+    "question": "Who demands that one of Rhaenyra's sons loses an eye?",
+    "answer": 1
+  },
+  {
+    "0": "Daemon",
+    "1": "Ser Criston Cole",
+    "2": "Alicent",
+    "3": "Laenor",
+    "category": "House of the Dragon",
+    "question": "Who attacks Rhaenyra and cuts her arm with a Valyrian steel dagger?",
+    "answer": 2
+  },
+  {
+    "0": "Rhaenyra",
+    "1": "Aemond",
+    "2": "Aegon",
+    "3": "Daemon",
+    "category": "House of the Dragon",
+    "question": "Who finds Syrax's eggs in a cave?",
+    "answer": 3
+  },
+  {
+    "0": "Dyana",
+    "1": "Tyanna",
+    "2": "Mysaria",
+    "3": "Arry",
+    "category": "House of the Dragon",
+    "question": "Who is the servant girl that Prince Aegon forcefully took while she was serving him wine?",
+    "answer": 0
+  },
+  {
+    "0": "Aerys's",
+    "1": "Aegon's",
+    "2": "Maegor's",
+    "3": "Jaehaerys's",
+    "category": "House of the Dragon",
+    "question": "Whose dream was A Song of Ice and Fire?",
+    "answer": 1
+  },
+  {
+    "0": "Rhaenyra",
+    "1": "Ser Otto Hightower",
+    "2": "Daemon",
+    "3": "Alicent",
+    "category": "House of the Dragon",
+    "question": "When King Viserys's crown falls, who picks it up and places it upon his head?",
+    "answer": 2
+  },
+  {
+    "0": "Corlys",
+    "1": "Aemond",
+    "2": "Aegon",
+    "3": "Daemon",
+    "category": "House of the Dragon",
+    "question": "Who cuts Vaemond's head in two?",
+    "answer": 3
+  },
+  {
+    "0": "Corlys Velaryon",
+    "1": "Lucerys Velaryon",
+    "2": "Vaemond Velaryon",
+    "3": "Baela Velaryon",
+    "category": "House of the Dragon",
+    "question": "At the end of season one, who is Lord of Driftmark?",
+    "answer": 0
+  },
+  {
+    "0": "Baela",
+    "1": "Rhaena",
+    "2": "Helaena",
+    "3": "Laena",
+    "category": "House of the Dragon",
+    "question": "To whom does Rhaenyra promise Rhaenys her son, Luke?",
+    "answer": 1
+  },
+  {
+    "0": "Rhaena",
+    "1": "Helaena",
+    "2": "Baela",
+    "3": "Laena",
+    "category": "House of the Dragon",
+    "question": "To whom does Rhaenyra promise Rhaenys her son, Jace?",
+    "answer": 2
+  },
+  {
+    "0": "Ser Criston Cole",
+    "1": "Maester Mellos",
+    "2": "Otto Hightower",
+    "3": "Talya",
+    "category": "House of the Dragon",
+    "question": "Who informed Alicent of King Viserys's death?",
+    "answer": 3
+  },
+  {
+    "0": "Lyman Beesbury",
+    "1": "Maester Benifer",
+    "2": "Lyonel Strong",
+    "3": "Maester Mellos",
+    "category": "House of the Dragon",
+    "question": "Who did Criston Cole murder in the Small Council Chamber when Otto Hightower discusses the plans he made to put Aegon on the throne?",
+    "answer": 0
+  },
+  {
+    "0": "Harwin Strong",
+    "1": "Harrold Westerling",
+    "2": "Gyles Morrigen",
+    "3": "Lyonel Bentley",
+    "category": "House of the Dragon",
+    "question": "Who was Lord Commander of the Kingsguard when Ser Criston Cole was made a Knight of the Kingsguard?",
+    "answer": 1
+  },
+  {
+    "0": "Ser Criston Cole",
+    "1": "Ser Harrold Westerling",
+    "2": "Ser Erryk",
+    "3": "Ser Arryk",
+    "category": "House of the Dragon",
+    "question": "When Aegon escapes into the city after the king has died, whom does Otto command to go into the city and find him?",
+    "answer": 2
+  },
+  {
+    "0": "Ser Criston Cole",
+    "1": "Ser Arryk",
+    "2": "Ser Erryk",
+    "3": "No one",
+    "category": "House of the Dragon",
+    "question": "When Aegon escapes into the city after the king has died, who brings him back to The Hand?",
+    "answer": 3
+  },
+  {
+    "0": "Blackfyre",
+    "1": "Dark Sister",
+    "2": "Heartsbane",
+    "3": "Red Rain",
+    "category": "House of the Dragon",
+    "question": "What sword was Aegon given on his coronation?",
+    "answer": 0
+  },
+  {
+    "0": "Ser Erryk",
+    "1": "Ser Arryk",
+    "2": "Daemon",
+    "3": "Ser Erryk",
+    "category": "House of the Dragon",
+    "question": "Who smuggled Rhaenys out of her locked room?",
+    "answer": 1
+  },
+  {
+    "0": "Of course",
+    "1": "More than anything",
+    "2": "You imbecile",
+    "3": "Don't be stupid",
+    "category": "House of the Dragon",
+    "question": "In the carriage, Aegon asks Queen Alicent if she loves him; with what does she respond?",
+    "answer": 2
+  },
+  {
+    "0": "The High Septom",
+    "1": "Ser Otto Hightower",
+    "2": "Queen Alicent",
+    "3": "Ser Criston Cole",
+    "category": "House of the Dragon",
+    "question": "Who first placed the Conqueror's Crown upon Aegon's head?",
+    "answer": 3
+  },
+  {
+    "0": "Meleys",
+    "1": "Sunfyre",
+    "2": "Syrax",
+    "3": "Vhagar",
+    "category": "House of the Dragon",
+    "question": "Which dragon busts through the floor of the Dragon Pit at Aegon's coronation?",
+    "answer": 0
+  },
+  {
+    "0": "Thirteen",
+    "1": "Fourteen",
+    "2": "Fifteen",
+    "3": "Sixteen",
+    "category": "House of the Dragon",
+    "question": "How old was Rhaenyra when she was named heir?",
+    "answer": 1
+  },
+  {
+    "0": "Alicent",
+    "1": "Ser Lawrence",
+    "2": "Rhaenys",
+    "3": "Ser Arryk",
+    "category": "House of the Dragon",
+    "question": "Who informs Rhaenyra of her father's death?",
+    "answer": 2
+  },
+  {
+    "0": "Ser Arryk",
+    "1": "Lord Corlys Velaryon",
+    "2": "Princess Rhaenys",
+    "3": "Prince Daemon",
+    "category": "House of the Dragon",
+    "question": "Who first places the crown upon Rhaenyra's head?",
+    "answer": 3
+  },
+  {
+    "0": "Storm's End",
+    "1": "The Vale",
+    "2": "Winterfell",
+    "3": "The Twins",
+    "category": "House of the Dragon",
+    "question": "Where does Queen Rhaenyra send Lucerys to deliver a letter?",
+    "answer": 0
+  },
+  {
+    "0": "Ser Arryk",
+    "1": "Ser Criston Cole",
+    "2": "Ser Lawrence",
+    "3": "Prince Aemond",
+    "category": "House of the Dragon",
+    "question": "Who knocks Daemon from his horse at the heir's tournament?",
+    "answer": 1
+  },
+  {
+    "0": "The Pink Wyrm",
+    "1": "The Pink Fury",
+    "2": "The Pink Dread",
+    "3": "The Pink Queen",
+    "category": "House of the Dragon",
+    "question": "What is the name of the pig that was presented to Aemond?",
+    "answer": 2
+  }
+]

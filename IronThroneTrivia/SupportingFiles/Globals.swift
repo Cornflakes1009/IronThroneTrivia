@@ -16,17 +16,17 @@ var historicAnswered        =   defaults.integer(forKey: "totalNumberOfCorrect")
 var numOfGamesPlayed        =   defaults.integer(forKey: "numOfGamesPlayed")
 
 // MARK: - Fonts
-var gameLabelFont           =   UIFont(name: "Game of Thrones", size: 35)
-var subGameLabelFont        =   UIFont(name: "Game of Thrones", size: 25)
-var instructionLabelFont    =   UIFont(name: "cinzel", size: 20)
-var disclaimerLabelFont     =   UIFont(name: "cinzel", size: 20)
-var buttonFont              =   UIFont(name: "cinzel", size: 35)
-var canceViewButtonFont     =   UIFont(name: "cinzel", size: 25)
-var categoryFont            =   UIFont(name: "cinzel", size: 35)
-var subCategoryButtonFont   =   UIFont(name: "cinzel", size: 17)
+let cinzel                  =   "cinzel"
+let gameOfThrones           =   "Game of Thrones"
+var gameLabelFont           =   UIFont(name: gameOfThrones, size: 35)
+var subGameLabelFont        =   UIFont(name: gameOfThrones, size: 25)
+var primaryLabelFont        =   UIFont(name: cinzel, size: 26)
+var secondaryLabelFont      =   UIFont(name: cinzel, size: 15)
+var canceViewButtonFont     =   UIFont(name: cinzel, size: 25)
+var subCategoryButtonFont   =   UIFont(name: cinzel, size: 17)
 var answerButtonFont        =   UIFont(name: "Cormorant-Regular", size: 21)
-var finalScoreFont          =   UIFont(name: "cinzel", size: 80)
-var nextQuestionFont        =   UIFont(name: "cinzel", size: 32)
+var finalScoreFont          =   UIFont(name: cinzel, size: 80)
+var nextQuestionFont        =   UIFont(name: cinzel, size: 32)
 
 // MARK: - Colors
 let subLogoColor            =   UIColor.rgb(red: 222, green: 222, blue: 222, alpha: 1)
@@ -38,18 +38,18 @@ let whiteColor              =   UIColor.rgb(red: 255, green: 255, blue: 255, alp
 // MARK: - Images
 let backgroundImage         =   UIImage(named: "background_image")
 let popUpBackgroundImage    =   UIImage(named: "direwolf")
-let backButtonSymbol        =   "chevron.left.square"
+let backButtonImageConfig   =   UIImage.SymbolConfiguration(pointSize: 25, weight: .light, scale: .large)
+let backButtonImage         =   UIImage(systemName: "chevron.left.square", withConfiguration: backButtonImageConfig)
 let closePopupSymbol        =   "xmark.square"
 
 // MARK: - Miscellaneous
-var stackViewButtonHeight   =   CGFloat(0)
-var buttonHeight            =   CGFloat(0)
+var SCREEN_HEIGHT           =   CGFloat(0)
+var BUTTON_HEIGHT           =   CGFloat(0)
 let popUpViewAlpha          =   CGFloat(1)
 var completedGame           =   false
 
 // MARK: - Question Variables
 var questionList            =   [Question]()
-var allQuestionList         =   [Question]()
 var questionIndex           =   0
 var correctlyAnswered       =   0
 
@@ -65,10 +65,14 @@ let rewardedAdUnitID        =   "ca-app-pub-6504174477930496/1456782244"
 //let interstitialAdUnitID    =   "ca-app-pub-3940256099942544/4411468910"
 //let rewardedAdUnitID        =   "ca-app-pub-3940256099942544/1712485313"
 
+// SCREENSHOT
+//let adUnitId                =   ""
+//let interstitialAdUnitID    =   ""
+//let rewardedAdUnitID        =   ""
+
 // MARK: - Reset Game
-func resetGame() {
+public func resetGame() {
     questionList = []
-    allQuestionList = []
     questionIndex = 0
     correctlyAnswered = 0
 }
