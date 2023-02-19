@@ -78,7 +78,7 @@ class ShowSelectionViewController: UIViewController {
         super.viewDidLoad()
         SCREEN_HEIGHT = UIScreen.main.bounds.size.height
         varyForScreenSizes(screenHeight: SCREEN_HEIGHT)
-        
+        print("\(UIScreen.main.bounds.size.width) x \(SCREEN_HEIGHT)")
         setupViews()
     }
     
@@ -88,7 +88,10 @@ class ShowSelectionViewController: UIViewController {
         if completedGame && numOfGamesPlayed >= 3 {
             SKStoreReviewController.requestReview()
         }
+        
+        AppUtility.lockOrientation(UIInterfaceOrientationMask.portrait, andRotateTo: UIInterfaceOrientation.portrait)
     }
+
     
 // MARK: - Setting up views
     private func setupViews() {

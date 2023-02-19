@@ -12,6 +12,8 @@ import UIKit
 class QuestionViewController: UIViewController, GADInterstitialDelegate {
 
     private var interstitial: GADInterstitial!
+    private var time = 15
+    private var timer = Timer()
     
     private let background: UIImageView = {
         let image = UIImageView()
@@ -30,7 +32,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
         return button
     }()
     
-    private let questionLabel: UILabel = {
+    private let questionLabel: UILabel = { // label.text is set to the longest question - this is to ensure that the text will fit. 
         let label = UILabel()
         label.text = "Who did Criston Cole murder in the Small Council Chamber when Otto Hightower discusses the plans he made to put Aegon on the throne?"
         label.font = secondaryLabelFont
@@ -189,12 +191,18 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
         interstitial = GADInterstitial(adUnitID: interstitialAdUnitID)
         let request = GADRequest()
         interstitial.load(request)
+        
+        startTimer()
+        totalPoints = 0
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+    
     
     // MARK: - Setting up views
     private func setupViews() {
@@ -275,7 +283,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     
     // MARK: - Updating the UI
     private func updateUI() {
-        questionLabel.text = "\(questionList[questionIndex].question)"
+        //questionLabel.text = "\(questionList[questionIndex].question)"
         optionZeroButton.setTitle(questionList[questionIndex].optionZero, for: .normal)
         optionOneButton.setTitle(questionList[questionIndex].optionOne, for: .normal)
         optionTwoButton.setTitle(questionList[questionIndex].optionTwo, for: .normal)
@@ -285,6 +293,8 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     
     // MARK: - Show Correct Answer View
     private func showCorrectAnswer() {
+        timer.invalidate()
+        time = 15
         backButton.isEnabled = false
         view.addSubview(correctAnswerView)
         correctAnswerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: -10, paddingRight: 10, width: 0, height: 0)
@@ -317,9 +327,17 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
         historicQuestions += 1
         defaults.setValue(historicQuestions, forKey: "totalNumberOfQuestions")
         if buttonTextValue == questionList[questionIndex].answer {
+            timer.invalidate()
             historicAnswered += 1
             defaults.setValue(historicAnswered, forKey: "totalNumberOfCorrect")
             correctlyAnswered += 1
+            
+            // points earned per question
+            totalPoints += 100
+            totalPoints += time * 10
+            time = 15
+            startTimer()
+            //print(totalPoints)
         } else {
             showCorrectAnswer()
         }
@@ -334,7 +352,24 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
             }
             
             let vc = self.storyboard?.instantiateViewController(identifier: "ResultsViewController") as! ResultsViewController
+            vc.finalScore = totalPoints
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    // MARK: - Timer
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(SurvivalViewController.updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        time -= 1
+        // rounding to the tenths. example: 8.1
+        //time = round(10 * time) / 10
+        //print("\(String(describing: time))")
+        if(time == 0) {
+            timer.invalidate()
+            //showCorrectAnswer()
         }
     }
     
@@ -376,5 +411,6 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
             self.correctAnswerView.alpha = 0
         }
         backButton.isEnabled = true
+        startTimer()
     }
 }

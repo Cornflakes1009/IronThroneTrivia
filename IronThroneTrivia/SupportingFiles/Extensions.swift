@@ -88,7 +88,7 @@ extension UIViewController {
     
     var topbarHeight: CGFloat {
         return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
-            (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        (self.navigationController?.navigationBar.frame.height ?? 0.0)
     }
 }
 
@@ -167,7 +167,7 @@ extension UIDevice {
     }
 }
 
-// MARK: Adding a Light Vibration
+// MARK: - Adding a Light Vibration
 /** Light Haptic Feeback for button taps
  # For other vibrations, see: #
  https://www.hackingwithswift.com/example-code/uikit/how-to-generate-haptic-feedback-with-uifeedbackgenerator
@@ -177,7 +177,7 @@ func vibrate() {
     generator.impactOccurred()
 }
 
-// MARK: Trim String
+// MARK: - Trim String
 /** Usage: let someString = "Hello   ".trim() */
 extension String
 {
@@ -199,4 +199,25 @@ extension UIButton {
             addTarget(target, action: action, for: .primaryActionTriggered)
         }
     }
+}
+
+// MARK: - Restricting Device Orientation
+// https://stackoverflow.com/questions/28938660/how-to-lock-orientation-of-one-view-controller-to-portrait-mode-only-in-swift
+struct AppUtility {
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+    
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.orientationLock = orientation
+        }
+    }
+
+    /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+   
+        self.lockOrientation(orientation)
+    
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+        UINavigationController.attemptRotationToDeviceOrientation()
+    }
+
 }

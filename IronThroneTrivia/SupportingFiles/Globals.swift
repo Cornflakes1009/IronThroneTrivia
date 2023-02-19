@@ -18,13 +18,15 @@ var numOfGamesPlayed        =   defaults.integer(forKey: "numOfGamesPlayed")
 // MARK: - Fonts
 let cinzel                  =   "cinzel"
 let gameOfThrones           =   "Game of Thrones"
+let cormorant               =   "Cormorant-Regular"
+
 var gameLabelFont           =   UIFont(name: gameOfThrones, size: 35)
 var subGameLabelFont        =   UIFont(name: gameOfThrones, size: 25)
 var primaryLabelFont        =   UIFont(name: cinzel, size: 26)
 var secondaryLabelFont      =   UIFont(name: cinzel, size: 15)
 var canceViewButtonFont     =   UIFont(name: cinzel, size: 25)
 var subCategoryButtonFont   =   UIFont(name: cinzel, size: 17)
-var answerButtonFont        =   UIFont(name: "Cormorant-Regular", size: 21)
+var answerButtonFont        =   UIFont(name: cormorant, size: 21)
 var finalScoreFont          =   UIFont(name: cinzel, size: 80)
 var nextQuestionFont        =   UIFont(name: cinzel, size: 32)
 
@@ -52,6 +54,7 @@ var completedGame           =   false
 var questionList            =   [Question]()
 var questionIndex           =   0
 var correctlyAnswered       =   0
+var totalPoints             =   0
 
 // MARK: - Admobs
 // PROD
@@ -72,8 +75,9 @@ let rewardedAdUnitID        =   "ca-app-pub-6504174477930496/1456782244"
 
 // MARK: - Reset Game
 public func resetGame() {
-    questionList = []
-    questionIndex = 0
-    correctlyAnswered = 0
+    questionList        = []
+    questionIndex       = 0
+    correctlyAnswered   = 0
+    totalPoints         = 0
 }
 

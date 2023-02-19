@@ -9,7 +9,8 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
-
+    public var finalScore = 0
+    
     private let background: UIImageView = {
         let image = UIImageView()
         image.image = backgroundImage
@@ -30,7 +31,7 @@ class ResultsViewController: UIViewController {
     
     private let scoreLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(correctlyAnswered)/\(questionList.count)"
+        //label.text = "\(correctlyAnswered)/\(questionList.count)"
         label.textColor = whiteColor
         label.font = finalScoreFont
         return label
@@ -52,6 +53,7 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         completedGame = true
+        scoreLabel.text = "\(finalScore)"
     }
     
     // MARK: - Setup UI
