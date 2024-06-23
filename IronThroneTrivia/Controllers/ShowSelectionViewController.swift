@@ -95,6 +95,7 @@ class ShowSelectionViewController: UIViewController {
     
 // MARK: - Setting up views
     private func setupViews() {
+        view.backgroundColor = .black
         gameLabel.font = gameLabelFont
         subGameLabel.font = subGameLabelFont
         gameOfThronesButton.titleLabel?.font = primaryLabelFont

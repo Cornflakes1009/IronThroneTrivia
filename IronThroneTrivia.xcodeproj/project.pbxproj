@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2CA15E3D08C14CCD206FBDE3 /* Pods_IronThroneTrivia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FD3944171F7A0D08FA71A8 /* Pods_IronThroneTrivia.framework */; };
 		D95EA95F2508C66F00B635E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA95E2508C66F00B635E4 /* AppDelegate.swift */; };
 		D95EA9612508C66F00B635E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA9602508C66F00B635E4 /* SceneDelegate.swift */; };
 		D95EA9632508C66F00B635E4 /* SelectNumberOfQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EA9622508C66F00B635E4 /* SelectNumberOfQuestions.swift */; };
@@ -36,13 +35,12 @@
 		D9B8A2282571DDF600945CED /* HangmanResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A2272571DDF600945CED /* HangmanResultsViewController.swift */; };
 		D9B8A22B2571DE0C00945CED /* BlitzResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A22A2571DE0C00945CED /* BlitzResultsViewController.swift */; };
 		D9B8A25825734ED900945CED /* Cormorant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B8A25725734ED900945CED /* Cormorant-Regular.ttf */; };
+		D9D93CA42C2796B2004322FE /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D9D93CA32C2796B2004322FE /* GoogleMobileAds */; };
 		D9E61CDB257DCF160064C477 /* ConfigureVaryingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E61CDA257DCF160064C477 /* ConfigureVaryingViews.swift */; };
 		D9FD152629939E55002F7655 /* ShowSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD152529939E55002F7655 /* ShowSelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		99FD3944171F7A0D08FA71A8 /* Pods_IronThroneTrivia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IronThroneTrivia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A57AD71C4C1B291D88C79B46 /* Pods-IronThroneTrivia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronThroneTrivia.debug.xcconfig"; path = "Target Support Files/Pods-IronThroneTrivia/Pods-IronThroneTrivia.debug.xcconfig"; sourceTree = "<group>"; };
 		D95EA95B2508C66F00B635E4 /* IronThroneTrivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IronThroneTrivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95EA95E2508C66F00B635E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D95EA9602508C66F00B635E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 		D9B8A25725734ED900945CED /* Cormorant-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cormorant-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		D9E61CDA257DCF160064C477 /* ConfigureVaryingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureVaryingViews.swift; sourceTree = "<group>"; };
 		D9FD152529939E55002F7655 /* ShowSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSelectionViewController.swift; sourceTree = "<group>"; };
-		F87EDFE6A4D94B58C1B9F038 /* Pods-IronThroneTrivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronThroneTrivia.release.xcconfig"; path = "Target Support Files/Pods-IronThroneTrivia/Pods-IronThroneTrivia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,37 +80,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CA15E3D08C14CCD206FBDE3 /* Pods_IronThroneTrivia.framework in Frameworks */,
+				D9D93CA42C2796B2004322FE /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3CAC1FE0BF7260ADCF7BBD22 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A57AD71C4C1B291D88C79B46 /* Pods-IronThroneTrivia.debug.xcconfig */,
-				F87EDFE6A4D94B58C1B9F038 /* Pods-IronThroneTrivia.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		8B080E5A9992AC224EB15376 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				99FD3944171F7A0D08FA71A8 /* Pods_IronThroneTrivia.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		D95EA9522508C66F00B635E4 = {
 			isa = PBXGroup;
 			children = (
 				D95EA95D2508C66F00B635E4 /* IronThroneTrivia */,
 				D95EA95C2508C66F00B635E4 /* Products */,
-				3CAC1FE0BF7260ADCF7BBD22 /* Pods */,
-				8B080E5A9992AC224EB15376 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -202,17 +180,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D95EA96F2508C67200B635E4 /* Build configuration list for PBXNativeTarget "IronThroneTrivia" */;
 			buildPhases = (
-				9D492BE74F9E8D47A1C6A129 /* [CP] Check Pods Manifest.lock */,
 				D95EA9572508C66F00B635E4 /* Sources */,
 				D95EA9582508C66F00B635E4 /* Frameworks */,
 				D95EA9592508C66F00B635E4 /* Resources */,
-				897B52E2EF4C9139055F9AB3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = IronThroneTrivia;
+			packageProductDependencies = (
+				D9D93CA32C2796B2004322FE /* GoogleMobileAds */,
+			);
 			productName = IronThroneTrivia;
 			productReference = D95EA95B2508C66F00B635E4 /* IronThroneTrivia.app */;
 			productType = "com.apple.product-type.application";
@@ -241,6 +220,9 @@
 				Base,
 			);
 			mainGroup = D95EA9522508C66F00B635E4;
+			packageReferences = (
+				D9D93CA22C2796B2004322FE /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = D95EA95C2508C66F00B635E4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -268,48 +250,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		897B52E2EF4C9139055F9AB3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IronThroneTrivia/Pods-IronThroneTrivia-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IronThroneTrivia/Pods-IronThroneTrivia-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IronThroneTrivia/Pods-IronThroneTrivia-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9D492BE74F9E8D47A1C6A129 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IronThroneTrivia-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D95EA9572508C66F00B635E4 /* Sources */ = {
@@ -480,12 +420,12 @@
 		};
 		D95EA9702508C67200B635E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A57AD71C4C1B291D88C79B46 /* Pods-IronThroneTrivia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 464PVQ34ND;
 				INFOPLIST_FILE = IronThroneTrivia/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,12 +442,12 @@
 		};
 		D95EA9712508C67200B635E4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F87EDFE6A4D94B58C1B9F038 /* Pods-IronThroneTrivia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 464PVQ34ND;
 				INFOPLIST_FILE = IronThroneTrivia/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -544,6 +484,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D9D93CA22C2796B2004322FE /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D9D93CA32C2796B2004322FE /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9D93CA22C2796B2004322FE /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D95EA9532508C66F00B635E4 /* Project object */;
 }

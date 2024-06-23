@@ -9,24 +9,11 @@
 import GoogleMobileAds
 import UIKit
 
-class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewardedAdDelegate {
-    
-    // MARK: - handle the completion of watching rewarded ad
-    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
-        UIView.animate(withDuration: 1) {
-            self.correctAnswerView.alpha = 0
-            self.extraLifeExitButton.removeFromSuperview()
-        }
-        
-        time = 15
-        startTimer()
-        backButton.isEnabled = true
-        createAndLoadRewardedAd()
-    }
+class SurvivalViewController: UIViewController, GADFullScreenContentDelegate {
     
     private var timer = Timer()
     private var time: Double = 15
-    private var interstitial: GADInterstitial!
+    private var interstitial: GADInterstitialAd?
     private var rewardedAd: GADRewardedAd?
     
     private let background: UIImageView = {
@@ -245,13 +232,11 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         numOfGamesPlayed += 1
         defaults.setValue(numOfGamesPlayed, forKey: "numOfGamesPlayed")
         
-        // interstitial ad
-        interstitial = GADInterstitial(adUnitID: interstitialAdUnitID)
-        let request = GADRequest()
-        interstitial.load(request)
-        
-        // rewarded ad
-        createAndLoadRewardedAd()
+        setupBannerView()
+        Task {
+            await loadInterstitial()
+            await loadRewardedAd()
+        }
         
         // handling the app moving to the background and foreground
         let notificationCenter = NotificationCenter.default
@@ -273,6 +258,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
     
     // MARK: - Setup Views
     private func setupViews() {
+        view.backgroundColor = .black
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
@@ -397,7 +383,7 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         let backButtonImage = UIImage(systemName: closePopupSymbol, withConfiguration: backButtonImageConfig)
         
         extraLifeExitButton.setImage(backButtonImage, for: .normal)
-        view.addSubview(extraLifeExitButton)
+        correctAnswerView.addSubview(extraLifeExitButton)
         extraLifeExitButton.anchor(top: correctAnswerView.topAnchor, left: correctAnswerView.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
 //        let currentCorrectAnswer = questionList[questionIndex].answer
@@ -432,23 +418,78 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
     }
     
     // MARK: - AdMob Functions
-    private func createAd() -> GADInterstitial {
-        let inter = GADInterstitial(adUnitID: interstitialAdUnitID)
-        inter.delegate = self
-        inter.load(GADRequest())
-        return inter
+    // MARK: - AdMob
+    fileprivate func setupBannerView() {
+        // starting ads on the bannerview
+        bannerView.adUnitID = adUnitId
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
-    private func createAndLoadRewardedAd() {
-      rewardedAd = GADRewardedAd(adUnitID: rewardedAdUnitID)
-      rewardedAd?.load(GADRequest()) { error in
-        if let error = error {
-          print("Loading failed: \(error)")
-        } else {
-          print("Loading Succeeded")
+    fileprivate func loadInterstitial() async {
+        do {
+            interstitial = try await GADInterstitialAd.load(
+                withAdUnitID: interstitialAdUnitID, request: GADRequest())
+        } catch {
+            print("Failed to load interstitial ad with error: \(error.localizedDescription)")
         }
-      }
     }
+    
+    func showInterstitial() async {
+        guard let interstitial = interstitial else {
+            return print("Ad wasn't ready.")
+        }
+        // The UIViewController parameter is an optional.
+        interstitial.present(fromRootViewController: nil)
+    }
+    
+    func loadRewardedAd() async {
+        do {
+            rewardedAd = try await GADRewardedAd.load(
+                withAdUnitID: rewardedAdUnitID, request: GADRequest())
+            rewardedAd?.fullScreenContentDelegate = self
+        } catch {
+            print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+        }
+    }
+    
+    /// Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+    }
+    
+    /// Tells the delegate that the ad will present full screen content.
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad will present full screen content.")
+    }
+    
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        timer.invalidate()
+        UIView.animate(withDuration: 1) {
+            self.correctAnswerView.alpha = 0
+        }
+        backButton.isEnabled = true
+        vibrate()
+        time = 15
+        startTimer()
+        Task {
+            await loadRewardedAd()
+        }
+    }
+    
+    func showRewardedAd() {
+        guard let rewardedAd = rewardedAd else {
+            return print("Ad wasn't ready.")
+        }
+        
+        // The UIViewController parameter is an optional.
+        rewardedAd.present(fromRootViewController: nil) {
+            let reward = rewardedAd.adReward
+            print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+        }
+    }
+
     
     // MARK: - Check if Answer Tapped is Correct
     private func checkIfCorrect(buttonTextValue: String) {
@@ -471,9 +512,8 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
             updateUI()
         } else {
             timer.invalidate()
-            if (interstitial.isReady) {
-                interstitial.present(fromRootViewController: self)
-                interstitial = createAd()
+            Task {
+                await showInterstitial()
             }
             
             let vc = self.storyboard?.instantiateViewController(identifier: "SurvivalResultsViewController") as! SurvivalResultsViewController
@@ -532,17 +572,17 @@ class SurvivalViewController: UIViewController, GADInterstitialDelegate, GADRewa
         timer.invalidate()
         time = 15
         // show rewarded ad
-        if rewardedAd?.isReady == true {
-               rewardedAd?.present(fromRootViewController: self, delegate:self)
+
+        Task {
+            showRewardedAd()
         }
+        
     }
     
     @objc func extraLifeExitTapped() {
         timer.invalidate()
-        
-        if (interstitial.isReady) {
-            interstitial.present(fromRootViewController: self)
-            interstitial = createAd()
+        Task {
+            await showInterstitial()
         }
         
         let vc = self.storyboard?.instantiateViewController(identifier: "SurvivalResultsViewController") as! SurvivalResultsViewController

@@ -86,6 +86,7 @@ class GameModeSelectionViewController: UIViewController {
     
 // MARK: - Setting up views
     private func setupViews() {
+        view.backgroundColor = .black
         classicButton.titleLabel?.font = primaryLabelFont
         survivalButton.titleLabel?.font = primaryLabelFont
         blitzButton.titleLabel?.font = primaryLabelFont

@@ -9,9 +9,9 @@
 import GoogleMobileAds
 import UIKit
 
-class QuestionViewController: UIViewController, GADInterstitialDelegate {
+class QuestionViewController: UIViewController, GADFullScreenContentDelegate {
 
-    private var interstitial: GADInterstitial!
+    private var interstitial: GADInterstitialAd?
     private var time = 15
     private var timer = Timer()
     
@@ -34,7 +34,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     
     private let questionLabel: UILabel = { // label.text is set to the longest question - this is to ensure that the text will fit. 
         let label = UILabel()
-        label.text = "Who did Criston Cole murder in the Small Council Chamber when Otto Hightower discusses the plans he made to put Aegon on the throne?"
+//        label.text = "Who did Criston Cole murder in the Small Council Chamber when Otto Hightower discusses the plans he made to put Aegon on the throne?"
         label.font = secondaryLabelFont
         label.textAlignment = .center
         label.textColor = whiteColor
@@ -182,19 +182,14 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupViews()
         numOfGamesPlayed += 1
         defaults.setValue(numOfGamesPlayed, forKey: "numOfGamesPlayed")
-        
-        // interstitial ad
-        interstitial = GADInterstitial(adUnitID: interstitialAdUnitID)
-        let request = GADRequest()
-        interstitial.load(request)
-        
+        Task {
+            await loadInterstitial()
+        }
         startTimer()
         totalPoints = 0
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -202,10 +197,9 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    
-    
     // MARK: - Setting up views
     private func setupViews() {
+        view.backgroundColor = .black
         updateUI()
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -283,7 +277,7 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     
     // MARK: - Updating the UI
     private func updateUI() {
-        //questionLabel.text = "\(questionList[questionIndex].question)"
+        questionLabel.text = "\(questionList[questionIndex].question)"
         optionZeroButton.setTitle(questionList[questionIndex].optionZero, for: .normal)
         optionOneButton.setTitle(questionList[questionIndex].optionOne, for: .normal)
         optionTwoButton.setTitle(questionList[questionIndex].optionTwo, for: .normal)
@@ -333,10 +327,10 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
             correctlyAnswered += 1
             
             // points earned per question
-            totalPoints += 100
-            totalPoints += time * 10
-            time = 15
-            startTimer()
+            totalPoints += 1
+//            totalPoints += time * 10
+//            time = 15
+//            startTimer()
             //print(totalPoints)
         } else {
             showCorrectAnswer()
@@ -346,9 +340,8 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
             questionIndex += 1
             updateUI()
         } else {
-            if (interstitial.isReady) {
-                interstitial.present(fromRootViewController: self)
-                interstitial = createAd()
+            Task {
+                await showInterstitial()
             }
             
             let vc = self.storyboard?.instantiateViewController(identifier: "ResultsViewController") as! ResultsViewController
@@ -374,11 +367,29 @@ class QuestionViewController: UIViewController, GADInterstitialDelegate {
     }
     
     // MARK: - AdMob Functions
-    private func createAd() -> GADInterstitial {
-        let inter = GADInterstitial(adUnitID: interstitialAdUnitID)
-        inter.delegate = self
-        inter.load(GADRequest())
-        return inter
+    fileprivate func loadInterstitial() async {
+        do {
+            interstitial = try await GADInterstitialAd.load(
+                withAdUnitID: interstitialAdUnitID, request: GADRequest())
+        } catch {
+            print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+        }
+    }
+    
+    func showInterstitial() async {
+        guard let interstitial = interstitial else {
+            return print("Ad wasn't ready.")
+        }
+        // The UIViewController parameter is an optional.
+        interstitial.present(fromRootViewController: nil)
+    }
+    
+    // MARK: AdMob
+    fileprivate func setupBannerView() {
+        // starting ads on the bannerview
+        bannerView.adUnitID = adUnitId
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
     // MARK: - Button Actions

@@ -9,24 +9,11 @@
 import GoogleMobileAds
 import UIKit
 
-class BlitzViewController: UIViewController, GADInterstitialDelegate, GADRewardedAdDelegate {
-    
-    // MARK: - handle the completion of watching rewarded ad
-    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
-        UIView.animate(withDuration: 1) {
-            self.correctAnswerView.alpha = 0
-            self.extraLifeExitButton.removeFromSuperview()
-        }
-        
-        time = 30
-        startTimer()
-        backButton.isEnabled = true
-        createAndLoadRewardedAd()
-    }
+class BlitzViewController: UIViewController, GADFullScreenContentDelegate {
     
     private var timer = Timer()
     private var time: Double = 120
-    private var interstitial: GADInterstitial!
+    private var interstitial: GADInterstitialAd?
     private var rewardedAd: GADRewardedAd?
     
     private let background: UIImageView = {
@@ -252,13 +239,11 @@ class BlitzViewController: UIViewController, GADInterstitialDelegate, GADRewarde
         numOfGamesPlayed += 1
         defaults.setValue(numOfGamesPlayed, forKey: "numOfGamesPlayed")
         
-        // interstitial ad
-        interstitial = GADInterstitial(adUnitID: interstitialAdUnitID)
-        let request = GADRequest()
-        interstitial.load(request)
-        
-        // rewarded ad
-        createAndLoadRewardedAd()
+        setupBannerView()
+        Task {
+            await loadInterstitial()
+            await loadRewardedAd()
+        }
         
         // handling the app moving to the background and foreground
         let notificationCenter = NotificationCenter.default
@@ -280,6 +265,7 @@ class BlitzViewController: UIViewController, GADInterstitialDelegate, GADRewarde
     
     // MARK: - Setup Views
     private func setupViews() {
+        view.backgroundColor = .black
         view.addSubview(background)
         background.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 
@@ -480,21 +466,91 @@ class BlitzViewController: UIViewController, GADInterstitialDelegate, GADRewarde
     }
     
     // MARK: - AdMob Functions
-    private func createAd() -> GADInterstitial {
-        let inter = GADInterstitial(adUnitID: interstitialAdUnitID)
-        inter.delegate = self
-        inter.load(GADRequest())
-        return inter
+//    private func createAd() -> GADInterstitialAd {
+//        let inter = GADInterstitialAd(adUnitID: interstitialAdUnitID)
+//        inter.delegate = self
+//        inter.load(GADRequest())
+//        return inter
+//    }
+//    
+//    private func createAndLoadRewardedAd() {
+//        rewardedAd = GADRewardedAd(adUnitID: rewardedAdUnitID)
+//        rewardedAd?.load(GADRequest()) { error in
+//            if let error = error {
+//                print("Loading failed: \(error)")
+//            } else {
+//                print("Loading Succeeded")
+//            }
+//        }
+//    }
+    
+    // MARK: - AdMob
+    fileprivate func setupBannerView() {
+        // starting ads on the bannerview
+        bannerView.adUnitID = adUnitId
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
-    private func createAndLoadRewardedAd() {
-        rewardedAd = GADRewardedAd(adUnitID: rewardedAdUnitID)
-        rewardedAd?.load(GADRequest()) { error in
-            if let error = error {
-                print("Loading failed: \(error)")
-            } else {
-                print("Loading Succeeded")
-            }
+    fileprivate func loadInterstitial() async {
+        do {
+            interstitial = try await GADInterstitialAd.load(
+                withAdUnitID: interstitialAdUnitID, request: GADRequest())
+        } catch {
+            print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+        }
+    }
+    
+    func showInterstitial() async {
+        guard let interstitial = interstitial else {
+            return print("Ad wasn't ready.")
+        }
+        // The UIViewController parameter is an optional.
+        interstitial.present(fromRootViewController: nil)
+    }
+    
+    func loadRewardedAd() async {
+        do {
+            rewardedAd = try await GADRewardedAd.load(
+                withAdUnitID: rewardedAdUnitID, request: GADRequest())
+            rewardedAd?.fullScreenContentDelegate = self
+        } catch {
+            print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+        }
+    }
+    
+    /// Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+    }
+    
+    /// Tells the delegate that the ad will present full screen content.
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad will present full screen content.")
+    }
+    
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        timer.invalidate()
+        UIView.animate(withDuration: 1) {
+            self.correctAnswerView.alpha = 0
+        }
+        time = 30
+        startTimer()
+        Task {
+            await loadRewardedAd()
+        }
+    }
+    
+    func showRewardedAd() {
+        guard let rewardedAd = rewardedAd else {
+            return print("Ad wasn't ready.")
+        }
+        
+        // The UIViewController parameter is an optional.
+        rewardedAd.present(fromRootViewController: nil) {
+            let reward = rewardedAd.adReward
+            print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
         }
     }
     
@@ -514,9 +570,8 @@ class BlitzViewController: UIViewController, GADInterstitialDelegate, GADRewarde
             questionIndex += 1
             updateUI()
         } else {
-            if (interstitial.isReady) {
-                interstitial.present(fromRootViewController: self)
-                interstitial = createAd()
+            Task {
+                await showInterstitial()
             }
             
             let vc = self.storyboard?.instantiateViewController(identifier: "BlitzResultsViewController") as! BlitzResultsViewController
@@ -574,19 +629,13 @@ class BlitzViewController: UIViewController, GADInterstitialDelegate, GADRewarde
     @objc func extraLifeTapped() {
         timer.invalidate()
         time = 30
-        // show rewarded ad
-        if rewardedAd?.isReady == true {
-            rewardedAd?.present(fromRootViewController: self, delegate:self)
-        }
+        showRewardedAd()
     }
     
     @objc func extraLifeExitTapped() {
         timer.invalidate()
         
-        if (interstitial.isReady) {
-            interstitial.present(fromRootViewController: self)
-            interstitial = createAd()
-        }
+        showRewardedAd()
         
         let vc = self.storyboard?.instantiateViewController(identifier: "BlitzResultsViewController") as! BlitzResultsViewController
         self.navigationController?.pushViewController(vc, animated: true)

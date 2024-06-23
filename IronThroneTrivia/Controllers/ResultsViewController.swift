@@ -31,7 +31,7 @@ class ResultsViewController: UIViewController {
     
     private let scoreLabel: UILabel = {
         let label = UILabel()
-        //label.text = "\(correctlyAnswered)/\(questionList.count)"
+        label.text = "\(correctlyAnswered)/\(questionList.count)"
         label.textColor = whiteColor
         label.font = finalScoreFont
         return label
@@ -53,7 +53,7 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         completedGame = true
-        scoreLabel.text = "\(finalScore)"
+        //scoreLabel.text = "\(finalScore)"
     }
     
     // MARK: - Setup UI
